@@ -275,6 +275,60 @@ nav {
     background: #2980b9;
 }
 
+/* Microclimate Modeling Section */
+.microclimate-embed {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    padding: 2rem;
+    text-align: center;
+}
+
+.microclimate-embed a {
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.microclimate-embed a:hover {
+    transform: scale(1.02);
+}
+
+.microclimate-embed img {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+.image-caption {
+    margin-top: 1.5rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.image-caption i {
+    color: var(--secondary-color);
+    margin-right: 0.5rem;
+}
+
+.inline-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--secondary-color);
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.inline-link:hover {
+    color: #2980b9;
+    border-bottom-color: #2980b9;
+}
+
 /* Publications */
 .publication-list {
     max-width: 900px;
