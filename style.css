@@ -1,58 +1,87 @@
-/* BREEZE Section - Simplified */
-.breeze-section {
-    padding: 80px 0;
-    min-height: 100vh;
-}
-
-.breeze-wrapper {
-    max-width: 100%;
+/* BREEZE Section - Info Only (No Embed) */
+.breeze-info {
+    max-width: 900px;
     margin: 0 auto;
-}
-
-.breeze-embed {
-    width: 100%;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    overflow: hidden;
-    margin-bottom: 2rem;
-}
-
-.breeze-embed iframe {
-    width: 100%;
-    height: 85vh;
-    min-height: 700px;
-    border: none;
-    display: block;
-}
-
-.breeze-actions {
-    text-align: center;
     padding: 2rem 0;
+}
+
+.breeze-description {
+    background: white;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.breeze-description h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.breeze-description h3:first-child {
+    margin-top: 0;
+}
+
+.breeze-description p {
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.feature-list li {
+    padding: 0.75rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.feature-list li:last-child {
+    border-bottom: none;
+}
+
+.feature-list i {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    min-width: 24px;
+}
+
+.breeze-cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
 }
 
 .btn-large {
     padding: 15px 40px;
     font-size: 18px;
     display: inline-block;
+    margin-bottom: 1rem;
 }
 
-.breeze-note {
-    margin-top: 1rem;
+.app-note {
     color: #666;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-style: italic;
+    margin-top: 0.5rem;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .breeze-embed iframe {
-        height: 70vh;
-        min-height: 500px;
+    .breeze-description {
+        padding: 2rem 1.5rem;
     }
     
     .btn-large {
         padding: 12px 30px;
         font-size: 16px;
+        width: 100%;
     }
 }
