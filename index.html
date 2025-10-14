@@ -1,293 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yen-Shuo Huang | PhD Researcher</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#home" class="logo">Yen-Shuo Huang</a>
-            <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#breeze">BREEZE App</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Yen-Shuo Huang</h1>
-            <h2>PhD Researcher in Urban Climate & Sustainable Mobility</h2>
-            <p>Architecture & Climate, LAB, LOCI, UCLouvain</p>
-            <div class="social-links">
-                <a href="mailto:yen-shuo.huang@uclouvain.be"><i class="fas fa-envelope"></i></a>
-                <a href="https://github.com/YenShuoHuang" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/yen-shuo-huang-813684215/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://scholar.google.com/citations?user=YOURUSER" target="_blank"><i class="fas fa-graduation-cap"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I am a PhD candidate at UCLouvain, Belgium, working on bridging urban planning 
-                        and individual mobility through dynamic multi-dimensional environmental exposure 
-                        assessments for sustainable soft mobility.
-                    </p>
-                    <p>
-                        My research focuses on developing frameworks that integrate heat stress, air 
-                        pollution, and greenery exposure data to support both urban planning decisions 
-                        and citizen navigation strategies.
-                    </p>
-                    <h3>Research Interests</h3>
-                    <ul>
-                        <li>Urban Climate & Microclimate Modeling</li>
-                        <li>Environmental Exposure Assessment</li>
-                        <li>Sustainable Mobility & Active Transportation</li>
-                        <li>Urban Planning & Health</li>
-                        <li>Geospatial Analysis & Data Visualization</li>
-                    </ul>
-                </div>
-                <div class="about-image">
-                    <img src="image/1679342544769.jpg" alt="Yen-Shuo Huang">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Research Section -->
-    <section id="research" class="section section-alt">
-        <div class="container">
-            <h2>Research</h2>
-            <div class="research-grid">
-                <div class="research-card">
-                    <h3>Work Package 1</h3>
-                    <h4>Multi-dimensional Exposure Assessment</h4>
-                    <p>
-                        Developed a transferable framework integrating heat, air pollution, and 
-                        greenery with dynamic population data at street-level resolution.
-                    </p>
-                    <span class="status completed">Completed</span>
-                </div>
-                <div class="research-card">
-                    <h3>Work Package 2</h3>
-                    <h4>Urban Planning Applications</h4>
-                    <p>
-                        Translating exposure assessments into tactical urbanism interventions 
-                        and citizen navigation tools (BREEZE application).
-                    </p>
-                    <span class="status completed">Completed</span>
-                </div>
-                <div class="research-card">
-                    <h3>Work Package 3</h3>
-                    <h4>Socio-demographic Disparities</h4>
-                    <p>
-                        Integrating transport modeling to quantify exposure-health relationships 
-                        across population subgroups.
-                    </p>
-                    <span class="status ongoing">Ongoing</span>
-                </div>
-                <div class="research-card">
-                    <h3>Work Package 4</h3>
-                    <h4>Physiological Validation</h4>
-                    <p>
-                        Calibrating thermoregulation models using thermal walk experiments 
-                        for dynamic outdoor conditions.
-                    </p>
-                    <span class="status ongoing">Ongoing</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BREEZE App Section -->
-    <section id="breeze" class="section">
-        <div class="container-full">
-            <h2>BREEZE Application</h2>
-            <p class="section-description">
-                Bioclimatic Route Evaluation for Environmental haZard avoidancE - 
-                An interactive web application for personalized route optimization in Brussels
-            </p>
+// Fullscreen functionality for BREEZE app
+document.addEventListener('DOMContentLoaded', function() {
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    const breezeContainer = document.getElementById('breeze-container');
+    const breezeIframe = document.getElementById('breeze-iframe');
+    
+    if (fullscreenBtn && breezeContainer) {
+        fullscreenBtn.addEventListener('click', function() {
+            if (!breezeContainer.classList.contains('fullscreen')) {
+                // Enter fullscreen
+                breezeContainer.classList.add('fullscreen');
+                fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i> Exit Fullscreen';
+                
+                // Try to use native fullscreen API
+                if (breezeContainer.requestFullscreen) {
+                    breezeContainer.requestFullscreen();
+                } else if (breezeContainer.webkitRequestFullscreen) {
+                    breezeContainer.webkitRequestFullscreen();
+                } else if (breezeContainer.mozRequestFullScreen) {
+                    breezeContainer.mozRequestFullScreen();
+                } else if (breezeContainer.msRequestFullscreen) {
+                    breezeContainer.msRequestFullscreen();
+                }
+            } else {
+                // Exit fullscreen
+                exitFullscreen();
+            }
+        });
+        
+        // Handle ESC key and native fullscreen exit
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+        document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+        document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+        
+        function handleFullscreenChange() {
+            if (!document.fullscreenElement && 
+                !document.webkitFullscreenElement && 
+                !document.mozFullScreenElement && 
+                !document.msFullscreenElement) {
+                exitFullscreen();
+            }
+        }
+        
+        function exitFullscreen() {
+            breezeContainer.classList.remove('fullscreen');
+            fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i> Fullscreen';
             
-            <div class="app-container">
-                <div class="app-description">
-                    <h3>Features</h3>
-                    <ul>
-                        <li><i class="fas fa-thermometer-half"></i> Real-time heat exposure mapping</li>
-                        <li><i class="fas fa-wind"></i> Air quality assessment</li>
-                        <li><i class="fas fa-tree"></i> Greenery coverage analysis</li>
-                        <li><i class="fas fa-route"></i> Personalized route optimization</li>
-                        <li><i class="fas fa-clock"></i> Day/night temporal variation</li>
-                    </ul>
-                    <a href="breeze/" target="_blank" class="btn-primary">
-                        <i class="fas fa-external-link-alt"></i> Open Full App
-                    </a>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
-                        The BREEZE application provides personalized route recommendations 
-                        that balance environmental exposure minimization with travel efficiency.
-                    </p>
-                </div>
-                
-                <div class="app-embed">
-                    <iframe 
-                        src="BREEZE/BREEZE.html" 
-                        title="BREEZE Application"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-            
-            <!-- Alternative: If breeze is in HESTIA repo -->
-            <!-- Uncomment this if you prefer to keep BREEZE in separate HESTIA repo -->
-            <!--
-            <div class="app-container">
-                <div class="app-description">
-                    <h3>Features</h3>
-                    <ul>
-                        <li><i class="fas fa-thermometer-half"></i> Real-time heat exposure mapping</li>
-                        <li><i class="fas fa-wind"></i> Air quality assessment</li>
-                        <li><i class="fas fa-tree"></i> Greenery coverage analysis</li>
-                        <li><i class="fas fa-route"></i> Personalized route optimization</li>
-                        <li><i class="fas fa-clock"></i> Day/night temporal variation</li>
-                    </ul>
-                    <a href="https://yenshuohuang.github.io/HESTIA/BREEZE/" target="_blank" class="btn-primary">
-                        <i class="fas fa-external-link-alt"></i> Open Full App
-                    </a>
-                </div>
-                
-                <div class="app-embed">
-                    <iframe 
-                        src="https://yenshuohuang.github.io/HESTIA/BREEZE/" 
-                        title="BREEZE Application"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-            -->
-        </div>
-    </section>
-
-    <!-- Publications Section -->
-    <section id="publications" class="section section-alt">
-        <div class="container">
-            <h2>Publications & Presentations</h2>
-            
-            <div class="publication-list">
-                <div class="publication-item">
-                    <h3>Conference Papers</h3>
-                    <div class="pub-entry">
-                        <p class="pub-title">
-                            Multidimensional environmental exposure assessment of soft mobility users; 
-                            a case study in the Brussels Capital Region
-                        </p>
-                        <p class="pub-venue">
-                            12th International Conference on Urban Climate (ICUC12), Rotterdam, 2024
-                        </p>
-                        <a href="https://doi.org/10.5194/icuc12-686" target="_blank" class="pub-link">
-                            <i class="fas fa-link"></i> DOI
-                        </a>
-                    </div>
-                    
-                    <div class="pub-entry">
-                        <p class="pub-title">
-                            Towards dynamic and high-resolution urban environmental exposure assessments
-                        </p>
-                        <p class="pub-venue">
-                            CISBAT 2025, Lausanne, Switzerland
-                        </p>
-                        <a href="https://cisbat.epfl.ch/pdf/W5-Huang10336.pdf" target="_blank" class="pub-link">
-                            <i class="fas fa-file-pdf"></i> PDF
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="publication-item">
-                    <h3>Journal Papers</h3>
-                    <div class="pub-entry">
-                        <p class="pub-title">
-                            Multi-dimensional exposure assessment framework for sustainable soft mobility
-                        </p>
-                        <p class="pub-venue">
-                            Sustainable Cities and Society (Under Review)
-                        </p>
-                        <span class="pub-status">Under Review</span>
-                    </div>
-                </div>
-                
-                <div class="publication-item">
-                    <h3>Awards</h3>
-                    <div class="pub-entry">
-                        <p class="pub-title">
-                            <i class="fas fa-trophy"></i> Best Poster Award - LAB Day 2024
-                        </p>
-                        <p class="pub-venue">UCLouvain Faculty Conference</p>
-                        <a href="https://www.uclouvain.be/fr/instituts-recherche/lab/news/successful-lab-day" target="_blank" class="pub-link">
-                            <i class="fas fa-link"></i> View Poster
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Contact</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:yen-shuo.huang@uclouvain.be">yen-shuo.huang@uclouvain.be</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>
-                            Architecture & Climate, LAB, LOCI<br>
-                            UCLouvain<br>
-                            Louvain-la-Neuve, Belgium
-                        </p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-building"></i>
-                        <a href="https://uclouvain.be/en/research-institutes/loci/lab" target="_blank">
-                            LAB - Architecture & Climate
-                        </a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <a href="https://github.com/YenShuoHuang" target="_blank">
-                            GitHub: YenShuoHuang
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Yen-Shuo Huang. All rights reserved.</p>
-            <p>PhD Candidate - Architecture & Climate, UCLouvain</p>
-            <p>Last updated: January 2025</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+    }
+});
