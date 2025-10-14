@@ -115,7 +115,7 @@
     </section>
 
     <!-- BREEZE App Section -->
-    <section id="breeze" class="section">
+    <section id="breeze" class="section breeze-section">
         <div class="container-full">
             <h2>BREEZE Application</h2>
             <p class="section-description">
@@ -123,17 +123,10 @@
                 An interactive web application for personalized route optimization in Brussels
             </p>
             
-            <!-- Full width app container -->
-            <div class="app-container-fullwidth">
-                <!-- Fullscreen button -->
-                <button id="fullscreen-btn" class="fullscreen-button" title="Open in fullscreen">
-                    <i class="fas fa-expand"></i> Fullscreen
-                </button>
-                
-                <!-- App embed -->
-                <div class="app-embed-large" id="breeze-container">
+            <!-- Large app embed -->
+            <div class="breeze-wrapper">
+                <div class="breeze-embed">
                     <iframe 
-                        id="breeze-iframe"
                         src="BREEZE/BREEZE.html" 
                         title="BREEZE Application"
                         allowfullscreen>
@@ -141,10 +134,13 @@
                 </div>
                 
                 <!-- Open in new tab button -->
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="BREEZE/BREEZE.html" target="_blank" class="btn-primary">
-                        <i class="fas fa-external-link-alt"></i> Open in New Tab
+                <div class="breeze-actions">
+                    <a href="BREEZE/BREEZE.html" target="_blank" class="btn-primary btn-large">
+                        <i class="fas fa-external-link-alt"></i> Open BREEZE in New Tab
                     </a>
+                    <p class="breeze-note">
+                        For the best experience, open the application in a new tab or on a larger screen.
+                    </p>
                 </div>
             </div>
         </div>
