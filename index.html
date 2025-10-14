@@ -116,41 +116,35 @@
 
     <!-- BREEZE App Section -->
     <section id="breeze" class="section">
-        <div class="container">
+        <div class="container-full">
             <h2>BREEZE Application</h2>
             <p class="section-description">
                 Bioclimatic Route Evaluation for Environmental haZard avoidancE - 
                 An interactive web application for personalized route optimization in Brussels
             </p>
             
-            <div class="breeze-info">
-                <div class="breeze-description">
-                    <h3>About BREEZE</h3>
-                    <p>
-                        The BREEZE application provides personalized route recommendations that balance 
-                        environmental exposure minimization with travel efficiency. Users can customize 
-                        their route preferences based on heat sensitivity, air quality concerns, and 
-                        greenery preferences.
-                    </p>
-                    
-                    <h3>Key Features</h3>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-thermometer-half"></i> Real-time heat exposure mapping at street level</li>
-                        <li><i class="fas fa-wind"></i> Air quality assessment (NO₂, PM₂.₅, PM₁₀, O₃)</li>
-                        <li><i class="fas fa-tree"></i> Greenery coverage and vegetation analysis</li>
-                        <li><i class="fas fa-route"></i> Personalized route optimization algorithms</li>
-                        <li><i class="fas fa-clock"></i> Day/night temporal variation modeling</li>
-                        <li><i class="fas fa-user-cog"></i> Customizable environmental sensitivity settings</li>
-                    </ul>
-                    
-                    <div class="breeze-cta">
-                        <a href="BREEZE/BREEZE.html" target="_blank" class="btn-primary btn-large">
-                            <i class="fas fa-external-link-alt"></i> Launch BREEZE Application
-                        </a>
-                        <p class="app-note">
-                            Opens in a new tab for optimal viewing experience
-                        </p>
-                    </div>
+            <!-- Full width app container -->
+            <div class="app-container-fullwidth">
+                <!-- Fullscreen button -->
+                <button id="fullscreen-btn" class="fullscreen-button" title="Open in fullscreen">
+                    <i class="fas fa-expand"></i> Fullscreen
+                </button>
+                
+                <!-- App embed -->
+                <div class="app-embed-large" id="breeze-container">
+                    <iframe 
+                        id="breeze-iframe"
+                        src="BREEZE/BREEZE.html" 
+                        title="BREEZE Application"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <!-- Open in new tab button -->
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="BREEZE/BREEZE.html" target="_blank" class="btn-primary">
+                        <i class="fas fa-external-link-alt"></i> Open in New Tab
+                    </a>
                 </div>
             </div>
         </div>

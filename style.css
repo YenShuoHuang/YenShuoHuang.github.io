@@ -1,87 +1,85 @@
-/* BREEZE Section - Info Only (No Embed) */
-.breeze-info {
-    max-width: 900px;
+/* Full-width app container (replaces app-container) */
+.app-container-fullwidth {
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 2rem 0;
+    position: relative;
 }
 
-.breeze-description {
-    background: white;
-    padding: 3rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.breeze-description h3 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    margin-top: 2rem;
-}
-
-.breeze-description h3:first-child {
-    margin-top: 0;
-}
-
-.breeze-description p {
-    line-height: 1.8;
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
-}
-
-.feature-list {
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0;
-}
-
-.feature-list li {
-    padding: 0.75rem 0;
+/* Fullscreen button */
+.fullscreen-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    padding: 10px 20px;
+    background: rgba(52, 152, 219, 0.9);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    border-bottom: 1px solid var(--border-color);
+    gap: 8px;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-.feature-list li:last-child {
-    border-bottom: none;
+.fullscreen-button:hover {
+    background: rgba(41, 128, 185, 0.9);
+    transform: translateY(-2px);
 }
 
-.feature-list i {
-    color: var(--secondary-color);
-    font-size: 1.2rem;
-    min-width: 24px;
+.fullscreen-button i {
+    font-size: 16px;
 }
 
-.breeze-cta {
-    text-align: center;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 2px solid var(--border-color);
+/* Large app embed */
+.app-embed-large {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    position: relative;
 }
 
-.btn-large {
-    padding: 15px 40px;
-    font-size: 18px;
-    display: inline-block;
-    margin-bottom: 1rem;
+.app-embed-large iframe {
+    width: 100%;
+    height: 800px;
+    border: none;
+    display: block;
 }
 
-.app-note {
-    color: #666;
-    font-size: 0.9rem;
-    font-style: italic;
-    margin-top: 0.5rem;
+/* Fullscreen mode */
+.app-embed-large.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    border-radius: 0;
+    max-width: none;
+}
+
+.app-embed-large.fullscreen iframe {
+    height: 100vh;
+}
+
+.fullscreen .fullscreen-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .breeze-description {
-        padding: 2rem 1.5rem;
+    .app-embed-large iframe {
+        height: 500px;
     }
     
-    .btn-large {
-        padding: 12px 30px;
-        font-size: 16px;
-        width: 100%;
+    .fullscreen-button {
+        padding: 8px 15px;
+        font-size: 12px;
     }
 }
