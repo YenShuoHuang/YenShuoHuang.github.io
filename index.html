@@ -123,28 +123,31 @@
                 An interactive web application for personalized route optimization in Brussels
             </p>
             
-            <!-- Full width app container -->
-            <div class="app-container-fullwidth">
-                <!-- Fullscreen button -->
-                <button id="fullscreen-btn" class="fullscreen-button" title="Open in fullscreen">
-                    <i class="fas fa-expand"></i> Fullscreen
-                </button>
+            <div class="app-container">
+                <div class="app-description">
+                    <h3>Features</h3>
+                    <ul>
+                        <li><i class="fas fa-thermometer-half"></i> Real-time heat exposure mapping</li>
+                        <li><i class="fas fa-wind"></i> Air quality assessment</li>
+                        <li><i class="fas fa-tree"></i> Greenery coverage analysis</li>
+                        <li><i class="fas fa-route"></i> Personalized route optimization</li>
+                        <li><i class="fas fa-clock"></i> Day/night temporal variation</li>
+                    </ul>
+                    <a href="BREEZE/BREEZE.html" target="_blank" class="btn-primary">
+                        <i class="fas fa-external-link-alt"></i> Open Full App
+                    </a>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                        The BREEZE application provides personalized route recommendations 
+                        that balance environmental exposure minimization with travel efficiency.
+                    </p>
+                </div>
                 
-                <!-- App embed -->
-                <div class="app-embed-large" id="breeze-container">
+                <div class="app-embed">
                     <iframe 
-                        id="breeze-iframe"
                         src="BREEZE/BREEZE.html" 
                         title="BREEZE Application"
                         allowfullscreen>
                     </iframe>
-                </div>
-                
-                <!-- Open in new tab button -->
-                <div style="text-align: center; margin-top: 1rem;">
-                    <a href="BREEZE/BREEZE.html" target="_blank" class="btn-primary">
-                        <i class="fas fa-external-link-alt"></i> Open in New Tab
-                    </a>
                 </div>
             </div>
         </div>
