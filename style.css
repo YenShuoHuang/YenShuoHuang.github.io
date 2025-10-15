@@ -85,9 +85,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%), 
-                url('../image/abstract_1.png'); /* linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
-	background-size: cover;
+    background: url('../image/abstract_1.png'); /* linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
+	background-size: 70%;
     background-position: center;
     background-attachment: fixed;
     color: white;
