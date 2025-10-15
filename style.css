@@ -85,10 +85,10 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('../image/abstract_1.png'); /* linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 80%), url('../image/abstract_1.png'); /* linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
 	background-size: 70%;
     background-position: center;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: white;
     text-align: center;
     margin-top: -70px;
