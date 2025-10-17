@@ -85,13 +85,13 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 30%), url('../image/abstract_1.png'); /* linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
+    background:  url('../image/abstract_1.png'); /* linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 30%),*/
 	background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: white;
     text-align: center;
-    margin-top: -90px;
+    margin-top: -110px;
 }
 
 .hero-content h1 {
