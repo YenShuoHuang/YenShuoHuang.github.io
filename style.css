@@ -118,7 +118,7 @@ nav {
 }
 
 .social-links a {
-    color: white;
+    color: var(--primary-color);
     transition: transform 0.3s, opacity 0.3s;
 }
 
