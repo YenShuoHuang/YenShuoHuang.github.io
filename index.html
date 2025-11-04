@@ -15,6 +15,7 @@
             <ul class="nav-menu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#research">Research</a></li>
+				<li><a href="#digital-twin">Digital Twin</a></li>
                 <li><a href="#umep">Microclimate</a></li>
                 <li><a href="#breeze">BREEZE App</a></li>
                 <li><a href="#publications">Publications</a></li>
@@ -114,7 +115,44 @@
             </div>
         </div>
     </section>
-
+	<!-- City Digital Twin Section -->
+	<section id="digital-twin" class="section">
+		<div class="container-full">
+			<h2>City Digital Twin</h2>
+			<p class="section-description">
+				Interactive 3D visualization of Brussels urban morphology
+			</p>
+			
+			<div class="app-container-wide">
+				<div class="model-viewer-container">
+					<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+					<model-viewer 
+						src="brussels_3D/EU_park.gltf" 
+						alt="Brussels 3D Model"
+						camera-controls
+						auto-rotate
+						shadow-intensity="1"
+						environment-image="neutral"
+						exposure="1"
+						style="width: 100%; height: 700px;">
+						
+						<!-- Loading message -->
+						<div slot="poster" style="background: white; display: flex; align-items: center; justify-content: center; height: 100%;">
+							<p>Loading 3D Model...</p>
+						</div>
+					</model-viewer>
+					
+					<div class="model-controls">
+						<p class="model-instructions">
+							<i class="fas fa-mouse"></i> Click and drag to rotate • 
+							<i class="fas fa-search-plus"></i> Scroll to zoom • 
+							<i class="fas fa-arrows-alt"></i> Right-click + drag to pan
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
     <!-- Microclimate Modeling Section -->
     <section id="umep" class="section">
         <div class="container-full">
