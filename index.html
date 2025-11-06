@@ -120,74 +120,63 @@
 		<div class="container-full">
 			<h2>City Digital Twin</h2>
 			<p class="section-description">
-				Interactive 3D visualization of Brussels urban morphology through 
-				<a href="https://fme.safe.com/pricing/charitable-licenses/" target="_blank" class="inline-link">FME Software</a>.
+				Interactive 3D visualization of Brussels urban morphology using 3DCityDB Web Map
 			</p>
 			
 			<div class="app-container-wide">
 				<div class="model-viewer-container">
-					<!-- Warning and Load Button (shown by default) -->
+					<!-- Warning Screen -->
 					<div id="model-warning" class="model-warning">
 						<div class="warning-content">
-							<i class="fas fa-exclamation-triangle warning-icon"></i>
-							<h3>Large 3D Model</h3>
+							<i class="fas fa-cube warning-icon"></i>
+							<h3>3D City Model Viewer</h3>
 							<p>
-								This interactive 3D model is a large file and may:
+								View Brussels urban morphology in an optimized 3D web viewer with:
 							</p>
 							<ul class="warning-list">
-								<li><i class="fas fa-wifi"></i> Use significant bandwidth (recommended: WiFi connection)</li>
-								<li><i class="fas fa-memory"></i> Require substantial RAM (recommended: 4GB+ available)</li>
-								<li><i class="fas fa-clock"></i> Take 30-60 seconds to load</li>
-								<li><i class="fas fa-mobile-alt"></i> May not work well on mobile devices</li>
+								<li><i class="fas fa-tachometer-alt"></i> Efficient tile-based streaming</li>
+								<li><i class="fas fa-layer-group"></i> Level-of-detail (LOD) optimization</li>
+								<li><i class="fas fa-mobile-alt"></i> Works on most devices</li>
+								<li><i class="fas fa-info-circle"></i> May take 10-20 seconds to load</li>
 							</ul>
 							<div class="warning-buttons">
 								<button id="load-model-btn" class="btn-primary btn-large">
-									<i class="fas fa-download"></i> Load 3D Model
+									<i class="fas fa-map"></i> Launch 3D Viewer
 								</button>
 								<button id="view-screenshot-btn" class="btn-secondary">
-									<i class="fas fa-image"></i> View Screenshot Instead
+									<i class="fas fa-image"></i> View Screenshot
 								</button>
 							</div>
 						</div>
 					</div>
 
-					<!-- Screenshot Preview (hidden by default) -->
+					<!-- Screenshot Preview -->
 					<div id="model-screenshot" class="model-screenshot" style="display: none;">
-						<img src="image/brussels_3d_preview.png" alt="Brussels 3D Model Preview">
+						<img src="image/brussels_3d_preview.jpg" alt="Brussels 3D Model Preview">
 						<p class="screenshot-caption">
-							<i class="fas fa-info-circle"></i> Static preview of the 3D model
+							<i class="fas fa-info-circle"></i> Static preview of the 3D city model
 						</p>
 						<button id="load-from-screenshot-btn" class="btn-primary">
-							<i class="fas fa-cube"></i> Load Interactive 3D Model
+							<i class="fas fa-cube"></i> Launch Interactive Viewer
 						</button>
 					</div>
 
-					<!-- 3D Model Viewer (hidden by default) -->
+					<!-- 3DCityDB Web Map (iframe) -->
 					<div id="model-container" style="display: none;">
-						<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-						<model-viewer 
-							id="brussels-model"
-							alt="Brussels 3D Model"
-							camera-controls
-							auto-rotate
-							shadow-intensity="1"
-							environment-image="neutral"
-							exposure="1"
-							style="width: 100%; height: 700px;">
-							
-							<!-- Loading indicator -->
-							<div slot="poster" class="model-loading">
-								<div class="spinner"></div>
-								<p>Loading 3D Model...</p>
-								<p class="loading-tip">This may take up to 60 seconds</p>
-							</div>
-						</model-viewer>
+						<iframe 
+							id="citydb-viewer"
+							src=""
+							title="Brussels 3D City Model"
+							allowfullscreen
+							style="width: 100%; height: 700px; border: none; border-radius: 10px;">
+						</iframe>
 						
 						<div class="model-controls">
 							<p class="model-instructions">
-								<i class="fas fa-mouse"></i> Click and drag to rotate • 
-								<i class="fas fa-search-plus"></i> Scroll to zoom • 
-								<i class="fas fa-arrows-alt"></i> Right-click + drag to pan
+								<i class="fas fa-external-link-alt"></i> 
+								<a href="3dcitydb-web-map/index.html?modelUrl=../brussels_3D/EU_park.gltf" target="_blank">
+									Open in full screen
+								</a>
 							</p>
 						</div>
 					</div>
