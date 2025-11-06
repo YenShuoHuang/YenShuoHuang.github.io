@@ -43,7 +43,7 @@ document.querySelectorAll('.research-card, .pub-entry').forEach(el => {
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
 });
-// 3D Model Loading with Cesium
+// 3D Model Loading with Cesium (Fixed)
 document.addEventListener('DOMContentLoaded', function() {
     const loadModelBtn = document.getElementById('load-model-btn');
     const viewScreenshotBtn = document.getElementById('view-screenshot-btn');
@@ -72,18 +72,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function loadCesium() {
+        // Set base URL before loading Cesium
+        window.CESIUM_BASE_URL = 'https://cesium.com/downloads/cesiumjs/releases/1.109/Build/Cesium/';
+        
         // Load Cesium CSS
         if (!document.querySelector('link[href*="cesium"]')) {
             const cesiumCSS = document.createElement('link');
             cesiumCSS.rel = 'stylesheet';
-            cesiumCSS.href = 'https://cesium.com/downloads/cesiumjs/releases/1.109/Build/Cesium/Widgets/widgets.css';
+            cesiumCSS.href = window.CESIUM_BASE_URL + 'Widgets/widgets.css';
             document.head.appendChild(cesiumCSS);
         }
 
         // Load Cesium JS
         if (!window.Cesium) {
             const cesiumScript = document.createElement('script');
-            cesiumScript.src = 'https://cesium.com/downloads/cesiumjs/releases/1.109/Build/Cesium/Cesium.js';
+            cesiumScript.src = window.CESIUM_BASE_URL + 'Cesium.js';
             cesiumScript.onload = initCesiumViewer;
             cesiumScript.onerror = function() {
                 console.error('Failed to load Cesium library');
@@ -97,12 +100,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function initCesiumViewer() {
         try {
-            // Create viewer with minimal dependencies
+            console.log('Initializing Cesium viewer...');
+
+            // Create viewer without terrain provider
             const viewer = new Cesium.Viewer('cesiumContainer', {
-                // Use default imagery and terrain (no Ion token needed)
                 imageryProvider: new Cesium.OpenStreetMapImageryProvider({
-                    url: 'https://a.tile.openstreetmap.org/'
+                    url: 'https://tile.openstreetmap.org/'
                 }),
+                terrainProvider: undefined, // No terrain
                 baseLayerPicker: false,
                 geocoder: false,
                 homeButton: true,
@@ -113,35 +118,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 fullscreenButton: true,
                 vrButton: false,
                 infoBox: false,
-                selectionIndicator: false,
-                shouldAnimate: false
+                selectionIndicator: false
             });
 
-            // Remove terrain provider (causes issues without Ion token)
-            viewer.scene.globe.depthTestAgainstTerrain = false;
+            console.log('Viewer created successfully');
 
             // Brussels coordinates
             const longitude = 4.3517;
             const latitude = 50.8503;
-            const height = 50; // Slightly above ground
+            const height = 50;
 
-            // Calculate position
+            // Create position
             const position = Cesium.Cartesian3.fromDegrees(longitude, latitude, height);
             
-            // Calculate orientation
+            // Create orientation
             const heading = Cesium.Math.toRadians(0);
-            const pitch = Cesium.Math.toRadians(0);
-            const roll = Cesium.Math.toRadians(0);
+            const pitch = 0;
+            const roll = 0;
             const hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
             const orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
 
-            // Load model with error handling
-            const modelPath = window.location.pathname.includes('YenShuoHuang.github.io') 
-                ? '/brussels_3D/EU_park.gltf'  // GitHub Pages path
-                : 'brussels_3D/EU_park.gltf';   // Local path
-
+            // Model path
+            const modelPath = 'brussels_3D/EU_park.gltf';
             console.log('Loading model from:', modelPath);
 
+            // Add model entity
             const modelEntity = viewer.entities.add({
                 name: 'Brussels Urban Model',
                 position: position,
@@ -149,15 +150,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 model: {
                     uri: modelPath,
                     minimumPixelSize: 64,
-                    maximumScale: 10000,
-                    scale: 1.0,
-                    runAnimations: false
+                    maximumScale: 20000
                 }
             });
 
-            // Set initial camera view
+            console.log('Model entity added');
+
+            // Set camera position
             viewer.camera.setView({
-                destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, 800),
+                destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, 500),
                 orientation: {
                     heading: Cesium.Math.toRadians(0),
                     pitch: Cesium.Math.toRadians(-45),
@@ -165,31 +166,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            // Fly to model after short delay
+            // Zoom to model
             setTimeout(() => {
-                viewer.flyTo(modelEntity, {
-                    duration: 3,
-                    offset: new Cesium.HeadingPitchRange(
-                        Cesium.Math.toRadians(0),
-                        Cesium.Math.toRadians(-30),
-                        400
-                    )
-                }).catch(err => {
-                    console.error('Error flying to model:', err);
-                });
-            }, 1000);
+                viewer.zoomTo(modelEntity);
+            }, 2000);
 
-            // Listen for model load events
-            modelEntity.model.readyPromise.then(model => {
-                console.log('Model loaded successfully');
-            }).catch(error => {
-                console.error('Error loading model:', error);
-                alert('Failed to load 3D model. The file may be too large or in an incompatible format. Please try viewing the screenshot instead.');
-            });
+            console.log('3D Model viewer initialized successfully');
 
         } catch (error) {
             console.error('Error initializing Cesium viewer:', error);
-            alert('Failed to initialize 3D viewer: ' + error.message);
+            document.getElementById('cesiumContainer').innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #f8d7da; color: #721c24; flex-direction: column; padding: 2rem; text-align: center;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h3>Failed to Initialize 3D Viewer</h3>
+                    <p>Error: ${error.message}</p>
+                    <button onclick="document.getElementById('view-screenshot-btn').click()" class="btn-primary" style="margin-top: 1rem; padding: 0.75rem 1.5rem; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                        View Screenshot Instead
+                    </button>
+                </div>
+            `;
         }
     }
 
