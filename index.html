@@ -120,7 +120,7 @@
 		<div class="container-full">
 			<h2>City Digital Twin</h2>
 			<p class="section-description">
-				Interactive 3D visualization of Brussels urban morphology using 3DCityDB Web Map
+				Interactive 3D visualization of Brussels urban morphology
 			</p>
 			
 			<div class="app-container-wide">
@@ -130,23 +130,18 @@
 						<div class="warning-content">
 							<i class="fas fa-cube warning-icon"></i>
 							<h3>3D City Model Viewer</h3>
-							<p>
-								View Brussels urban morphology in an optimized 3D web viewer with:
-							</p>
+							<p>Interactive 3D model with optimized rendering</p>
 							<ul class="warning-list">
-								<li><i class="fas fa-tachometer-alt"></i> Efficient tile-based streaming</li>
-								<li><i class="fas fa-layer-group"></i> Level-of-detail (LOD) optimization</li>
+								<li><i class="fas fa-tachometer-alt"></i> Hardware-accelerated rendering</li>
 								<li><i class="fas fa-mobile-alt"></i> Works on most devices</li>
-								<li><i class="fas fa-info-circle"></i> May take 10-20 seconds to load</li>
+								<li><i class="fas fa-clock"></i> May take 10-30 seconds to load</li>
 							</ul>
-							<div class="warning-buttons">
-								<button id="load-model-btn" class="btn-primary btn-large">
-									<i class="fas fa-map"></i> Launch 3D Viewer
-								</button>
-								<button id="view-screenshot-btn" class="btn-secondary">
-									<i class="fas fa-image"></i> View Screenshot
-								</button>
-							</div>
+							<button id="load-model-btn" class="btn-primary btn-large">
+								<i class="fas fa-cube"></i> Launch 3D Viewer
+							</button>
+							<button id="view-screenshot-btn" class="btn-secondary">
+								<i class="fas fa-image"></i> View Screenshot
+							</button>
 						</div>
 					</div>
 
@@ -161,22 +156,14 @@
 						</button>
 					</div>
 
-					<!-- 3DCityDB Web Map (iframe) -->
+					<!-- Cesium 3D Viewer -->
 					<div id="model-container" style="display: none;">
-						<iframe 
-							id="citydb-viewer"
-							src=""
-							title="Brussels 3D City Model"
-							allowfullscreen
-							style="width: 100%; height: 700px; border: none; border-radius: 10px;">
-						</iframe>
-						
+						<div id="cesiumContainer" style="width: 100%; height: 700px; background: #000;"></div>
 						<div class="model-controls">
 							<p class="model-instructions">
-								<i class="fas fa-external-link-alt"></i> 
-								<a href="3dcitydb-web-map/index.html?modelUrl=../brussels_3D/EU_park.gltf" target="_blank">
-									Open in full screen
-								</a>
+								<i class="fas fa-mouse"></i> Left-click + drag to rotate • 
+								<i class="fas fa-search-plus"></i> Scroll to zoom • 
+								<i class="fas fa-arrows-alt"></i> Right-click + drag to pan
 							</p>
 						</div>
 					</div>

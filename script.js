@@ -44,7 +44,7 @@ document.querySelectorAll('.research-card, .pub-entry').forEach(el => {
     observer.observe(el);
 });
 
-// 3DCityDB Web Map Loading
+// 3D Model Loading with Cesium
 document.addEventListener('DOMContentLoaded', function() {
     const loadModelBtn = document.getElementById('load-model-btn');
     const viewScreenshotBtn = document.getElementById('view-screenshot-btn');
@@ -52,43 +52,110 @@ document.addEventListener('DOMContentLoaded', function() {
     const modelWarning = document.getElementById('model-warning');
     const modelScreenshot = document.getElementById('model-screenshot');
     const modelContainer = document.getElementById('model-container');
-    const citydbViewer = document.getElementById('citydb-viewer');
 
-    // Function to load 3DCityDB viewer
+    let viewerLoaded = false;
+
     function load3DViewer() {
         if (modelWarning) modelWarning.style.display = 'none';
         if (modelScreenshot) modelScreenshot.style.display = 'none';
         if (modelContainer) modelContainer.style.display = 'block';
         
-        // Lazy load iframe
-        if (citydbViewer && !citydbViewer.getAttribute('src')) {
-            // Configure 3DCityDB with your model
-            const viewerUrl = '3dcitydb-web-map/index.html?' + 
-                'title=Brussels%20Urban%20Model&' +
-                'latitude=50.8503&' +
-                'longitude=4.3517&' +
-                'height=200&' +
-                'heading=0&' +
-                'pitch=-45&' +
-                'roll=0&' +
-                'layer_0=' + encodeURIComponent(
-                    JSON.stringify({
-                        url: '../brussels_3D/EU_park.gltf',
-                        name: 'Brussels Model',
-                        active: true,
-                        spreadsheetUrl: ''
-                    })
-                );
-            
-            citydbViewer.setAttribute('src', viewerUrl);
+        if (!viewerLoaded) {
+            loadCesium();
+            viewerLoaded = true;
         }
     }
 
-    // Function to show screenshot
     function showScreenshot() {
         if (modelWarning) modelWarning.style.display = 'none';
         if (modelContainer) modelContainer.style.display = 'none';
         if (modelScreenshot) modelScreenshot.style.display = 'block';
+    }
+
+    function loadCesium() {
+        // Load Cesium CSS
+        if (!document.querySelector('link[href*="cesium"]')) {
+            const cesiumCSS = document.createElement('link');
+            cesiumCSS.rel = 'stylesheet';
+            cesiumCSS.href = 'https://cesium.com/downloads/cesiumjs/releases/1.109/Build/Cesium/Widgets/widgets.css';
+            document.head.appendChild(cesiumCSS);
+        }
+
+        // Load Cesium JS
+        if (!window.Cesium) {
+            const cesiumScript = document.createElement('script');
+            cesiumScript.src = 'https://cesium.com/downloads/cesiumjs/releases/1.109/Build/Cesium/Cesium.js';
+            cesiumScript.onload = initCesiumViewer;
+            document.head.appendChild(cesiumScript);
+        } else {
+            initCesiumViewer();
+        }
+    }
+
+    function initCesiumViewer() {
+        try {
+            // Set Cesium Ion token (free account)
+            Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYWE1OWUxNy1mMWZiLTQzYjYtYTQ0OS1kMWFjYmFkNjc5YzciLCJpZCI6NTc3MzMsImlhdCI6MTYyNzg0NTE4Mn0.XcKpgANiY19MC4bdFUXMVEBToBmqS8kuYpUlxJHYZxk';
+
+            const viewer = new Cesium.Viewer('cesiumContainer', {
+                terrainProvider: Cesium.createWorldTerrain(),
+                animation: false,
+                timeline: false,
+                baseLayerPicker: false,
+                geocoder: false,
+                homeButton: true,
+                sceneModePicker: false,
+                navigationHelpButton: true,
+                fullscreenButton: true,
+                vrButton: false,
+                infoBox: false,
+                selectionIndicator: false
+            });
+
+            // Brussels coordinates
+            const longitude = 4.3517;
+            const latitude = 50.8503;
+            const height = 0;
+
+            // Position for the model
+            const position = Cesium.Cartesian3.fromDegrees(longitude, latitude, height);
+            
+            // Orientation
+            const heading = Cesium.Math.toRadians(0);
+            const pitch = 0;
+            const roll = 0;
+            const hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
+            const orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
+
+            // Add the GLTF model
+            const modelEntity = viewer.entities.add({
+                name: 'Brussels Urban Model',
+                position: position,
+                orientation: orientation,
+                model: {
+                    uri: 'brussels_3D/EU_park.gltf',
+                    minimumPixelSize: 128,
+                    maximumScale: 20000,
+                    scale: 1.0
+                }
+            });
+
+            // Fly to the model
+            viewer.flyTo(modelEntity, {
+                duration: 2,
+                offset: new Cesium.HeadingPitchRange(
+                    Cesium.Math.toRadians(0),
+                    Cesium.Math.toRadians(-45),
+                    500
+                )
+            });
+
+            console.log('3D Model loaded successfully');
+
+        } catch (error) {
+            console.error('Error initializing Cesium viewer:', error);
+            alert('Failed to load 3D viewer. Please try again or view the screenshot instead.');
+        }
     }
 
     // Event listeners
