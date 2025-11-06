@@ -44,7 +44,7 @@ document.querySelectorAll('.research-card, .pub-entry').forEach(el => {
     observer.observe(el);
 });
 
-// 3D Model Loading with Cesium
+// 3D Model Loading with Model-Viewer (Most Reliable)
 document.addEventListener('DOMContentLoaded', function() {
     const loadModelBtn = document.getElementById('load-model-btn');
     const viewScreenshotBtn = document.getElementById('view-screenshot-btn');
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modelContainer) modelContainer.style.display = 'block';
         
         if (!viewerLoaded) {
-            loadCesium();
+            initModelViewer();
             viewerLoaded = true;
         }
     }
@@ -72,142 +72,102 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modelScreenshot) modelScreenshot.style.display = 'block';
     }
 
-    function loadCesium() {
-        // Use CDN (fixes 404 errors)
-        window.CESIUM_BASE_URL = 'https://cesium.com/downloads/cesiumjs/releases/1.109/Build/Cesium/';
-        
-        const cesiumCSS = document.createElement('link');
-        cesiumCSS.rel = 'stylesheet';
-        cesiumCSS.href = 'https://cesium.com/downloads/cesiumjs/releases/1.109/Build/Cesium/Widgets/widgets.css';
-        document.head.appendChild(cesiumCSS);
+    function initModelViewer() {
+        const container = document.getElementById('cesiumContainer');
+        if (!container) return;
 
-        const cesiumScript = document.createElement('script');
-        cesiumScript.src = 'https://cesium.com/downloads/cesiumjs/releases/1.109/Build/Cesium/Cesium.js';
-        cesiumScript.onload = initCesiumViewer;
-        cesiumScript.onerror = function() {
-            showError('Failed to load Cesium library from CDN.');
-        };
-        document.head.appendChild(cesiumScript);
+        // Load model-viewer
+        if (!customElements.get('model-viewer')) {
+            const script = document.createElement('script');
+            script.type = 'module';
+            script.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js';
+            script.onload = createViewer;
+            script.onerror = function() {
+                showError('Failed to load 3D viewer library.');
+            };
+            document.head.appendChild(script);
+        } else {
+            createViewer();
+        }
     }
 
-    function initCesiumViewer() {
-        try {
-            console.log('Cesium version:', Cesium.VERSION);
-
-            // Disable web workers
-            if (typeof Cesium !== 'undefined') {
-                Cesium.TaskProcessor.prototype._getWebWorkerResource = function() {
-                    return undefined;
-                };
-            }
-
-            const container = document.getElementById('cesiumContainer');
-            if (!container) {
-                throw new Error('Container element not found');
-            }
-
-            const viewer = new Cesium.Viewer(container, {
-                imageryProvider: new Cesium.OpenStreetMapImageryProvider({
-                    url: 'https://tile.openstreetmap.org/'
-                }),
-                terrainProvider: new Cesium.EllipsoidTerrainProvider(),
-                baseLayerPicker: false,
-                geocoder: false,
-                homeButton: true,
-                sceneModePicker: false,
-                navigationHelpButton: false,
-                animation: false,
-                timeline: false,
-                fullscreenButton: true,
-                vrButton: false,
-                infoBox: false,
-                selectionIndicator: false
-            });
-
-            viewer.scene.globe.depthTestAgainstTerrain = false;
-            viewer.scene.globe.enableLighting = false;
-
-            console.log('Viewer created');
-
-            const longitude = 4.3517;
-            const latitude = 50.8503;
-            const height = 50;
-
-            viewer.camera.setView({
-                destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, 1000),
-                orientation: {
-                    heading: 0,
-                    pitch: Cesium.Math.toRadians(-45),
-                    roll: 0
+    function createViewer() {
+        const container = document.getElementById('cesiumContainer');
+        
+        container.innerHTML = `
+            <style>
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
                 }
-            });
-
-            console.log('Camera positioned');
-
-            // Use entity API (correct for Cesium 1.109)
-            const position = Cesium.Cartesian3.fromDegrees(longitude, latitude, height);
-            const heading = Cesium.Math.toRadians(0);
-            const pitch = 0;
-            const roll = 0;
-            const hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
-            const orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
-
-            const modelEntity = viewer.entities.add({
-                name: 'Brussels Urban Model',
-                position: position,
-                orientation: orientation,
-                model: {
-                    uri: 'brussels_3D/EU_park.gltf',
-                    minimumPixelSize: 128,
-                    maximumScale: 20000,
-                    scale: 1.0
+                .loading-screen {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    flex-direction: column;
+                    padding: 2rem;
                 }
-            });
+                .spinner {
+                    border: 4px solid rgba(255,255,255,0.3);
+                    border-top: 4px solid white;
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    animation: spin 1s linear infinite;
+                    margin-bottom: 1.5rem;
+                }
+            </style>
+            <model-viewer 
+                id="brussels-model"
+                src="brussels_3D/EU_park.gltf"
+                alt="Brussels 3D Model"
+                camera-controls
+                auto-rotate
+                auto-rotate-delay="3000"
+                shadow-intensity="1"
+                camera-orbit="45deg 75deg 500m"
+                min-camera-orbit="auto auto 100m"
+                max-camera-orbit="auto auto 2000m"
+                style="width: 100%; height: 700px; background: #e8f4f8;">
+                
+                <div slot="poster" class="loading-screen">
+                    <div class="spinner"></div>
+                    <p style="font-size: 1.2rem; margin: 0.5rem 0;">Loading 3D Model...</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">This may take 30-60 seconds</p>
+                </div>
+            </model-viewer>
+        `;
 
-            console.log('Model entity added');
+        const modelViewer = container.querySelector('#brussels-model');
+        
+        modelViewer.addEventListener('load', () => {
+            console.log('✓ Model loaded successfully');
+        });
 
-            // Fly to model
-            setTimeout(function() {
-                viewer.flyTo(modelEntity, {
-                    duration: 3,
-                    offset: new Cesium.HeadingPitchRange(0, Cesium.Math.toRadians(-30), 500)
-                }).then(function() {
-                    console.log('✓ Model visible');
-                }).catch(function(error) {
-                    console.error('Fly error:', error);
-                });
-            }, 2000);
-
-        } catch (error) {
-            console.error('Init error:', error);
-            showError('Failed to initialize: ' + error.message);
-        }
+        modelViewer.addEventListener('error', (event) => {
+            console.error('Model error:', event.detail);
+            showError('Failed to load 3D model. The file may be corrupted or too large.');
+        });
     }
 
     function showError(message) {
         const container = document.getElementById('cesiumContainer');
-        if (container) {
-            container.innerHTML = `
-                <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #f8d7da; color: #721c24; flex-direction: column; padding: 2rem; text-align: center;">
-                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                    <h3>3D Viewer Error</h3>
-                    <p style="max-width: 500px;">${message}</p>
-                    <button onclick="document.getElementById('view-screenshot-btn').click()" style="margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                        View Screenshot
-                    </button>
-                </div>
-            `;
-        }
+        container.innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: center; height: 700px; background: #f8d7da; color: #721c24; flex-direction: column; padding: 2rem; text-align: center;">
+                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                <h3>Failed to Load 3D Model</h3>
+                <p style="max-width: 500px;">${message}</p>
+                <button onclick="document.getElementById('view-screenshot-btn').click()" style="margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    View Screenshot Instead
+                </button>
+            </div>
+        `;
     }
 
     if (loadModelBtn) loadModelBtn.addEventListener('click', load3DViewer);
     if (viewScreenshotBtn) viewScreenshotBtn.addEventListener('click', showScreenshot);
     if (loadFromScreenshotBtn) loadFromScreenshotBtn.addEventListener('click', load3DViewer);
-
-    window.addEventListener('error', function(e) {
-        if (e.message && e.message.includes('importScripts')) {
-            e.preventDefault();
-            return true;
-        }
-    });
 });
