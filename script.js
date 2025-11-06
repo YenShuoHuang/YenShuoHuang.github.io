@@ -43,6 +43,7 @@ document.querySelectorAll('.research-card, .pub-entry').forEach(el => {
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
 });
+
 // 3D Model Loading with Cesium
 document.addEventListener('DOMContentLoaded', function() {
     const loadModelBtn = document.getElementById('load-model-btn');
@@ -72,18 +73,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function loadCesium() {
-        window.CESIUM_BASE_URL = './cesium/';
+        // Use CDN (fixes 404 errors)
+        window.CESIUM_BASE_URL = 'https://cesium.com/downloads/cesiumjs/releases/1.109/Build/Cesium/';
         
         const cesiumCSS = document.createElement('link');
         cesiumCSS.rel = 'stylesheet';
-        cesiumCSS.href = './cesium/Widgets/widgets.css';
+        cesiumCSS.href = 'https://cesium.com/downloads/cesiumjs/releases/1.109/Build/Cesium/Widgets/widgets.css';
         document.head.appendChild(cesiumCSS);
 
         const cesiumScript = document.createElement('script');
-        cesiumScript.src = './cesium/Cesium.js';
+        cesiumScript.src = 'https://cesium.com/downloads/cesiumjs/releases/1.109/Build/Cesium/Cesium.js';
         cesiumScript.onload = initCesiumViewer;
         cesiumScript.onerror = function() {
-            showError('Failed to load Cesium library. Please check your internet connection.');
+            showError('Failed to load Cesium library from CDN.');
         };
         document.head.appendChild(cesiumScript);
     }
@@ -92,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             console.log('Cesium version:', Cesium.VERSION);
 
+            // Disable web workers
             if (typeof Cesium !== 'undefined') {
                 Cesium.TaskProcessor.prototype._getWebWorkerResource = function() {
                     return undefined;
@@ -118,13 +121,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 fullscreenButton: true,
                 vrButton: false,
                 infoBox: false,
-                selectionIndicator: false,
-                requestRenderMode: false,
-                maximumRenderTimeChange: Infinity
+                selectionIndicator: false
             });
 
             viewer.scene.globe.depthTestAgainstTerrain = false;
             viewer.scene.globe.enableLighting = false;
+
+            console.log('Viewer created');
 
             const longitude = 4.3517;
             const latitude = 50.8503;
@@ -141,39 +144,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
             console.log('Camera positioned');
 
-            const modelPath = 'brussels_3D/EU_park.gltf';
+            // Use entity API (correct for Cesium 1.109)
             const position = Cesium.Cartesian3.fromDegrees(longitude, latitude, height);
-            const hpr = new Cesium.HeadingPitchRoll(0, 0, 0);
-            const modelMatrix = Cesium.Transforms.headingPitchRollToFixedFrame(
-                position, hpr, Cesium.Ellipsoid.WGS84
-            );
+            const heading = Cesium.Math.toRadians(0);
+            const pitch = 0;
+            const roll = 0;
+            const hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
+            const orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
 
-            const model = viewer.scene.primitives.add(
-                Cesium.Model.fromGltf({
-                    url: modelPath,
-                    modelMatrix: modelMatrix,
-                    scale: 1.0,
+            const modelEntity = viewer.entities.add({
+                name: 'Brussels Urban Model',
+                position: position,
+                orientation: orientation,
+                model: {
+                    uri: 'brussels_3D/EU_park.gltf',
                     minimumPixelSize: 128,
-                    asynchronous: false,
-                    incrementallyLoadTextures: false
-                })
-            );
-
-            model.readyPromise.then(function(m) {
-                console.log('✓ Model loaded');
-                const boundingSphere = m.boundingSphere;
-                viewer.camera.flyToBoundingSphere(boundingSphere, {
-                    duration: 2,
-                    offset: new Cesium.HeadingPitchRange(0, -0.5, boundingSphere.radius * 2.5)
-                });
-            }).catch(function(error) {
-                console.error('Model error:', error);
-                showError('Model loading failed: ' + error.message);
+                    maximumScale: 20000,
+                    scale: 1.0
+                }
             });
 
+            console.log('Model entity added');
+
+            // Fly to model
+            setTimeout(function() {
+                viewer.flyTo(modelEntity, {
+                    duration: 3,
+                    offset: new Cesium.HeadingPitchRange(0, Cesium.Math.toRadians(-30), 500)
+                }).then(function() {
+                    console.log('✓ Model visible');
+                }).catch(function(error) {
+                    console.error('Fly error:', error);
+                });
+            }, 2000);
+
         } catch (error) {
-            console.error('Viewer error:', error);
-            showError('Viewer init failed: ' + error.message);
+            console.error('Init error:', error);
+            showError('Failed to initialize: ' + error.message);
         }
     }
 
@@ -199,7 +206,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('error', function(e) {
         if (e.message && e.message.includes('importScripts')) {
-            console.error('Worker error:', e);
             e.preventDefault();
             return true;
         }
