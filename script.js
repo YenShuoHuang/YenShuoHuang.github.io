@@ -171,3 +171,27 @@ document.addEventListener('DOMContentLoaded', function() {
     if (viewScreenshotBtn) viewScreenshotBtn.addEventListener('click', showScreenshot);
     if (loadFromScreenshotBtn) loadFromScreenshotBtn.addEventListener('click', load3DViewer);
 });
+// ── Navigation Dropdown (touch support for mobile) ───────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.querySelector('.nav-dropdown');
+    if (!dropdown) return;
+
+    const menu = dropdown.querySelector('.dropdown-menu');
+
+    // Toggle on tap for mobile (hover handles desktop)
+    dropdown.querySelector('a').addEventListener('click', function(e) {
+        // Only intercept on touch devices — desktop uses CSS hover
+        if (window.matchMedia('(hover: none)').matches) {
+            e.preventDefault();
+            const isOpen = menu.style.display === 'block';
+            menu.style.display = isOpen ? '' : 'block';
+        }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!dropdown.contains(e.target)) {
+            menu.style.display = '';
+        }
+    });
+});

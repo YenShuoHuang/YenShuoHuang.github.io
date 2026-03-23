@@ -673,3 +673,69 @@ model-viewer {
         height: 500px;
     }
 }
+/* ── Navigation Dropdown ────────────────────────────────────────────────────── */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    border-radius: 8px;
+    list-style: none;
+    min-width: 180px;
+    padding: 0.5rem 0;
+    z-index: 2000;
+    margin-top: 0.5rem;
+}
+
+/* Small arrow indicator above dropdown */
+.nav-dropdown .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid white;
+}
+
+.nav-dropdown .dropdown-menu li {
+    padding: 0;
+}
+
+.nav-dropdown .dropdown-menu a {
+    display: block;
+    padding: 0.6rem 1.2rem;
+    color: var(--text-color);
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+    border-radius: 4px;
+    margin: 0 0.3rem;
+}
+
+.nav-dropdown .dropdown-menu a:hover {
+    background: var(--light-bg);
+    color: var(--secondary-color);
+}
+
+/* Show on hover */
+.nav-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Keep dropdown open when mouse moves into it */
+.nav-dropdown .dropdown-menu:hover {
+    display: block;
+}
+
+/* Highlight the Research link when dropdown is visible */
+.nav-dropdown:hover > a {
+    color: var(--secondary-color);
+}
