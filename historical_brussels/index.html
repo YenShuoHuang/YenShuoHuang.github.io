@@ -15,7 +15,7 @@
 html,body{height:100%;font-family:Georgia,serif;background:var(--bg);color:var(--tx);overflow:hidden}
 #app{display:flex;flex-direction:column;height:100vh}
 #hdr{background:var(--s1);border-bottom:1px solid var(--b0);padding:10px 14px 8px;z-index:2000;flex-shrink:0;position:relative}
-#hdr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}#hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}#credit{font-size:10px;color:var(--tm);font-family:sans-serif;letter-spacing:.03em}#credit a{color:var(--gold);text-decoration:none}#credit a:hover{text-decoration:underline}
+#hdr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}#hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}#credit{font-size:10px;color:var(--tm);font-family:sans-serif}#credit a{color:var(--gold);text-decoration:none}#credit a:hover{text-decoration:underline}
 #hdr h1{font-size:15px;font-weight:normal;letter-spacing:.08em;color:var(--gold);text-transform:uppercase}
 #hdr h1 span{color:var(--tm);font-size:10px;letter-spacing:.12em;display:block;margin-top:1px}
 #langs{display:flex;gap:4px}
@@ -81,11 +81,10 @@ html,body{height:100%;font-family:Georgia,serif;background:var(--bg);color:var(-
   <div id="hdr">
     <div id="hdr-top">
       <h1>Brussels Heritage <span>monument.heritage.brussels · 35 000+ buildings</span></h1>
-      <div id="hdr-right">
-        <div id="langs">
-          <button class="lb on" data-lang="en">EN</button>
-          <button class="lb" data-lang="zh">中文</button>
-          <button class="lb" data-lang="fr">FR</button>
+      <div id="hdr-right"><div id="langs">
+        <button class="lb on" data-lang="en">EN</button>
+        <button class="lb" data-lang="zh">中文</button>
+        <button class="lb" data-lang="fr">FR</button>
         </div>
         <div id="credit">by <a href="https://yenshuohuang.github.io/" target="_blank">Yen-Shuo Huang</a></div>
       </div>
@@ -115,15 +114,23 @@ const IMG_BASE = BASE + '/medias/66/buildings/';
 const BLDG_URL = BASE + '/fr/buildings/';
 const NOMINATIM = 'https://nominatim.openstreetmap.org';
 
+const ZIP = {'1000':'Bruxelles','1020':'Laeken','1030':'Schaerbeek','1040':'Etterbeek',
+  '1050':'Ixelles','1060':'Saint-Gilles','1070':'Anderlecht','1080':'Molenbeek',
+  '1081':'Koekelberg','1082':'Berchem-Ste-Agathe','1083':'Ganshoren','1090':'Jette',
+  '1120':'Neder-Over-Heembeek','1130':'Haren','1140':'Evere','1150':'Woluwe-St-Pierre',
+  '1160':'Auderghem','1170':'Watermael-Boitsfort','1180':'Uccle','1190':'Forest',
+  '1200':'Woluwe-St-Lambert','1210':'Saint-Josse','1001':'Bruxelles Sud',
+  '1002':'Bruxelles Est','1003':'Bruxelles Nord'};
+
 let map, cluster, gpsMark = null, allF = [], userLang = 'en';
 
 const I = {
   en:{ph:'Search name, street, address…',nearby:'Nearby buildings',none:'No buildings within 150 m',
       away:m=>m+'m',searching:'Searching…',locating:'Getting location…',
       translate:'Translate',translating:'Translating…',view:'View full record',results:n=>n+' results'},
-  zh:{ph:'搜尋名稱、街道、地址…',nearby:'附近建築',none:'150米内无建筑',
+  zh:{ph:'搜尋名稱、街道、地址…',nearby:'附近建築',none:'5米內無建築',
       away:m=>m+'米',searching:'搜尋中…',locating:'定位中…',
-      translate:'AI翻譯',translating:'翻譯中…',view:'查看記錄',results:n=>n+'個結果'},
+      translate:'翻譯',translating:'翻譯中…',view:'查看記錄',results:n=>n+'個結果'},
   fr:{ph:'Nom, rue, adresse…',nearby:'Bâtiments proches',none:'Aucun bâtiment à 150 m',
       away:m=>m+' m',searching:'Recherche…',locating:'Localisation…',
       translate:'Traduire',translating:'Traduction…',view:'Voir la fiche',results:n=>n+' résultats'}
@@ -150,19 +157,27 @@ function initMap() {
     })
   });
   map.addLayer(cluster);
+  pinIco = L.divIcon({className:'', html:'<div class="hpin"></div>', iconSize:[18,18], iconAnchor:[9,18]});
+  map.on('moveend zoomend', () => { if (allF.length) buildMarkers(allF); });
 }
 
 // ── MARKERS ───────────────────────────────────────────────────────────────────
-const pinIco = L.divIcon({className:'', html:'<div class="hpin"></div>', iconSize:[18,18], iconAnchor:[9,18]});
+let pinIco; // initialised inside initMap() after Leaflet is ready
 
 function buildMarkers(features) {
+  if (!map || !pinIco) return;
+  const bounds = map.getBounds().pad(0.5);
   cluster.clearLayers();
-  const ms = features.map(f => {
+  const visible = features.filter(f => {
+    const [lng, lat] = f.geometry.coordinates;
+    return bounds.contains([lat, lng]);
+  });
+  const ms = visible.map(f => {
     const [lng, lat] = f.geometry.coordinates;
     const p = f.properties;
     const name = p.nom || p.name || '—';
     const m = L.marker([lat, lng], {icon: pinIco});
-    m.bindPopup(`<div class="lpname">${name}</div><div class="lpaddr">${p.city||''}</div>`, {autoPan:false});
+    m.bindPopup(`<div class="lpname">${name}</div><div class="lpaddr">${ZIP[p.city]||p.city||''}</div>`, {autoPan:false});
     m.on('click', () => showDetail(f, null, null));
     return m;
   });
@@ -300,7 +315,7 @@ async function doTranslate(f) {
     desc.style.cssText = ''; btn.style.display = 'none';
   } catch(e) {
     desc.style.cssText = '';
-    desc.textContent = userLang === 'zh' ? '翻譯失败，请检查网络。' : 'Translation failed.';
+    desc.textContent = userLang === 'zh' ? '翻译失败，请检查网络。' : 'Translation failed.';
     btn.classList.remove('busy'); btn.innerHTML = `✦ ${t('translate')}`;
   }
 }
@@ -378,7 +393,6 @@ document.querySelectorAll('.lb').forEach(b => b.addEventListener('click', () => 
 // ── BOOT ──────────────────────────────────────────────────────────────────────
 initMap();
 
-// ↓↓↓ PASTE monuments.fr.json CONTENT ON THE NEXT LINE ↓↓↓
 
 // Load monument data from separate file (browser caches it after first load)
 setSt('Loading heritage data…', '');
@@ -394,7 +408,7 @@ fetch('./monuments.fr.json')
     buildMarkers(allF);
     setSt('Ready — tap ▶ or search', allF.length.toLocaleString() + ' buildings');
   })
-  .catch(e => setSt('Could not load data: ' + e.message, '')); ↑↑↑
+  .catch(e => setSt('Could not load data: ' + e.message, ''));
 
 </script>
 </body>
