@@ -375,7 +375,6 @@ document.querySelectorAll('.lb').forEach(b => b.addEventListener('click', () => 
 // ── BOOT ──────────────────────────────────────────────────────────────────────
 initMap();
 
-// ↓↓↓ PASTE monuments.fr.json CONTENT ON THE NEXT LINE ↓↓↓
 
 // Load monument data from separate file (browser caches it after first load)
 setSt('Loading heritage data…', '');
@@ -391,7 +390,7 @@ fetch('./monuments.fr.json')
     buildMarkers(allF);
     setSt('Ready — tap ▶ or search', allF.length.toLocaleString() + ' buildings');
   })
-  .catch(e => setSt('Could not load data: ' + e.message, '')); ↑↑↑
+  .catch(e => setSt('Could not load data: ' + e.message, ''));
 
 </script>
 </body>
