@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Brussels Heritage Explorer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#C9A84C;--gl:#F0D080;--gd:#7A5A18;--bg:#0f0e0c;--s1:#1a1915;--s2:#242219;--s3:#2e2b22;--tx:#f0ead8;--tm:#9a9280;--td:#6a6358;--b0:rgba(201,168,76,0.15);--b1:rgba(201,168,76,0.35);--r:12px;--rs:8px}
+html,body{height:100%;font-family:Georgia,serif;background:var(--bg);color:var(--tx);overflow:hidden}
+#app{display:flex;flex-direction:column;height:100vh}
+#hdr{background:var(--s1);border-bottom:1px solid var(--b0);padding:10px 14px 8px;z-index:1000;flex-shrink:0}
+#hdr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+#hdr h1{font-size:15px;font-weight:normal;letter-spacing:.08em;color:var(--gold);text-transform:uppercase}
+#hdr h1 span{color:var(--tm);font-size:10px;letter-spacing:.12em;display:block;margin-top:1px}
+#langs{display:flex;gap:4px}
+.lb{background:var(--s2);border:1px solid var(--b0);color:var(--tm);font-size:11px;padding:4px 9px;border-radius:6px;cursor:pointer;font-family:inherit;transition:all .15s}
+.lb.on{background:var(--gd);border-color:var(--gold);color:var(--gl)}
+#srow{display:flex;gap:6px}
+#sinput{flex:1;background:var(--s2);border:1px solid var(--b0);border-radius:var(--rs);padding:8px 12px;font-size:13px;color:var(--tx);font-family:inherit;outline:none;transition:border-color .15s}
+#sinput:focus{border-color:var(--gold)}
+#sinput::placeholder{color:var(--td)}
+.ibtn{background:var(--s2);border:1px solid var(--b0);color:var(--gold);padding:8px 13px;border-radius:var(--rs);cursor:pointer;font-size:13px;transition:all .15s;flex-shrink:0;font-family:sans-serif;white-space:nowrap}
+.ibtn:hover{background:var(--s3);border-color:var(--gold)}
+#locbtn.on{background:var(--gd);border-color:var(--gold)}
+#map{flex:1;z-index:1}
+#sbar{position:absolute;bottom:0;left:0;right:0;background:var(--s1);border-top:1px solid var(--b0);padding:7px 14px;z-index:1000;display:flex;align-items:center;justify-content:space-between;min-height:34px}
+#stxt{font-size:12px;color:var(--tm);font-family:sans-serif}
+#scnt{font-size:12px;color:var(--gold);font-family:sans-serif;white-space:nowrap}
+#panel{position:absolute;bottom:34px;left:0;right:0;background:var(--s1);border-top:1px solid var(--b1);z-index:1500;max-height:65vh;overflow-y:auto;transform:translateY(100%);transition:transform .3s ease;border-radius:var(--r) var(--r) 0 0}
+#panel.open{transform:translateY(0)}
+#phandle{text-align:center;padding:10px;cursor:pointer;position:sticky;top:0;background:var(--s1);border-bottom:1px solid var(--b0);z-index:1}
+#phandle::before{content:'';display:inline-block;width:36px;height:4px;background:var(--b1);border-radius:2px}
+#phdr{padding:10px 14px 6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;justify-content:space-between}
+#pcls{background:none;border:none;color:var(--tm);cursor:pointer;font-size:22px;padding:0;line-height:1}
+#blist{padding:0 14px 14px}
+.bi{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--b0);cursor:pointer;align-items:flex-start}
+.bi:hover{opacity:.75}
+.bi:last-child{border-bottom:none}
+.bthumb{width:54px;height:54px;border-radius:var(--rs);flex-shrink:0;background:var(--s3);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--td)}
+.bthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.binfo{flex:1;min-width:0}
+.bname{font-size:13px;color:var(--tx);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bmeta{font-size:11px;color:var(--td);font-family:sans-serif}
+.bdist{font-size:11px;color:var(--gold);font-family:sans-serif;margin-top:2px}
+#bdet{padding:0 14px 20px;display:none}
+.dimg{width:100%;max-height:200px;object-fit:cover;border-radius:var(--rs);margin-bottom:12px;display:block;background:var(--s3)}
+.dnopic{width:100%;height:80px;background:var(--s3);border-radius:var(--rs);margin-bottom:12px;display:flex;align-items:center;justify-content:center;font-size:40px}
+.dname{font-size:18px;color:var(--gl);margin-bottom:4px;line-height:1.3}
+.daddr{font-size:12px;color:var(--tm);font-family:sans-serif;margin-bottom:10px}
+.dtags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.tag{background:var(--s3);border:1px solid var(--b0);border-radius:5px;padding:3px 9px;font-size:11px;color:var(--tm);font-family:sans-serif}
+.tag.hi{border-color:var(--gd);color:var(--gold)}
+.ddesc{font-size:13px;line-height:1.75;font-family:sans-serif;margin-bottom:12px;background:var(--s2);border-radius:var(--rs);padding:11px 13px;border-left:2px solid var(--gd);min-height:44px;color:var(--tx)}
+.dacts{display:flex;gap:8px;flex-wrap:wrap}
+.abtn{display:inline-flex;align-items:center;gap:5px;background:transparent;border:1px solid var(--b0);color:var(--tm);font-size:12px;padding:7px 12px;border-radius:var(--rs);cursor:pointer;font-family:sans-serif;transition:all .15s;text-decoration:none;white-space:nowrap}
+.abtn:hover{border-color:var(--gold);color:var(--gold)}
+.abtn.busy{opacity:.45;pointer-events:none}
+.spin{display:inline-block;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.gpsdot{width:14px;height:14px;background:#4a9eff;border:2.5px solid white;border-radius:50%;box-shadow:0 0 0 5px rgba(74,158,255,.22)}
+.hpin{width:18px;height:18px;background:var(--gold);border:2px solid #0f0e0c;border-radius:50% 50% 50% 0;transform:rotate(-45deg);cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.5)}
+.myCluster{background:var(--gd);border:2px solid var(--gold);border-radius:50%;color:var(--gl);font-size:12px;font-family:sans-serif;font-weight:600;display:flex;align-items:center;justify-content:center;width:36px;height:36px}
+.leaflet-popup-content-wrapper{background:var(--s1)!important;border:1px solid var(--b1)!important;border-radius:var(--rs)!important;color:var(--tx)!important;box-shadow:0 4px 20px rgba(0,0,0,.6)!important}
+.leaflet-popup-tip{background:var(--s1)!important}
+.leaflet-popup-content{margin:8px 12px!important;font-family:sans-serif;min-width:160px}
+.lpname{font-size:13px;color:var(--gl);margin-bottom:4px}
+.lpaddr{font-size:11px;color:var(--tm)}
+.leaflet-control-zoom a{background:var(--s1)!important;color:var(--gold)!important;border-color:var(--b0)!important}
+.leaflet-control-attribution{background:rgba(15,14,12,.7)!important;color:var(--td)!important;font-size:9px!important}
+.leaflet-control-attribution a{color:var(--td)!important}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hdr">
+    <div id="hdr-top">
+      <h1>Brussels Heritage <span>monument.heritage.brussels · 35 000+ buildings</span></h1>
+      <div id="langs">
+        <button class="lb on" data-lang="en">EN</button>
+        <button class="lb" data-lang="zh">中文</button>
+        <button class="lb" data-lang="fr">FR</button>
+      </div>
+    </div>
+    <div id="srow">
+      <input id="sinput" type="text" placeholder="Search name, street, address…" autocomplete="off"/>
+      <button class="ibtn" id="sbtn">Search</button>
+      <button class="ibtn" id="locbtn">&#9654;</button>
+    </div>
+  </div>
+  <div id="map"></div>
+  <div id="panel">
+    <div id="phandle"></div>
+    <div id="phdr"><span id="ptitle">Buildings</span><button id="pcls">&#215;</button></div>
+    <div id="blist"></div>
+    <div id="bdet"></div>
+  </div>
+  <div id="sbar">
+    <span id="stxt">Ready</span>
+    <span id="scnt"></span>
+  </div>
+</div>
+
+<script>
+const BASE     = 'https://monument.heritage.brussels';
+const IMG_BASE = BASE + '/medias/66/buildings/';
+const BLDG_URL = BASE + '/fr/buildings/';
+const NOMINATIM = 'https://nominatim.openstreetmap.org';
+
+let map, cluster, gpsMark = null, allF = [], userLang = 'en';
+
+const I = {
+  en:{ph:'Search name, street, address…',nearby:'Nearby buildings',none:'No buildings within 150 m',
+      away:m=>m+'m',searching:'Searching…',locating:'Getting location…',
+      translate:'Translate',translating:'Translating…',view:'View full record',results:n=>n+' results'},
+  zh:{ph:'搜索名称、街道、地址…',nearby:'附近建筑',none:'150米内无建筑',
+      away:m=>m+'米',searching:'搜索中…',locating:'定位中…',
+      translate:'AI翻译',translating:'翻译中…',view:'查看记录',results:n=>n+'个结果'},
+  fr:{ph:'Nom, rue, adresse…',nearby:'Bâtiments proches',none:'Aucun bâtiment à 150 m',
+      away:m=>m+' m',searching:'Recherche…',locating:'Localisation…',
+      translate:'Traduire',translating:'Traduction…',view:'Voir la fiche',results:n=>n+' résultats'}
+};
+const t = k => (I[userLang]||I.en)[k];
+
+const setSt = (txt, cnt='') => {
+  document.getElementById('stxt').textContent = txt;
+  document.getElementById('scnt').textContent = cnt;
+};
+
+// ── MAP ───────────────────────────────────────────────────────────────────────
+function initMap() {
+  map = L.map('map', {zoomControl:true}).setView([50.847, 4.352], 13);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
+  }).addTo(map);
+  cluster = L.markerClusterGroup({
+    showCoverageOnHover:false, chunkedLoading:true, disableClusteringAtZoom:18,
+    spiderfyOnMaxZoom:false,
+    iconCreateFunction: c => L.divIcon({
+      html:`<div class="myCluster">${c.getChildCount()}</div>`,
+      className:'', iconSize:[36,36]
+    })
+  });
+  map.addLayer(cluster);
+}
+
+// ── MARKERS ───────────────────────────────────────────────────────────────────
+const pinIco = L.divIcon({className:'', html:'<div class="hpin"></div>', iconSize:[18,18], iconAnchor:[9,18]});
+
+function buildMarkers(features) {
+  cluster.clearLayers();
+  const ms = features.map(f => {
+    const [lng, lat] = f.geometry.coordinates;
+    const p = f.properties;
+    const name = p.nom || p.name || '—';
+    const m = L.marker([lat, lng], {icon: pinIco});
+    m.bindPopup(`<div class="lpname">${name}</div><div class="lpaddr">${p.city||''}</div>`, {autoPan:false});
+    m.on('click', () => showDetail(f, null, null));
+    return m;
+  });
+  cluster.addLayers(ms);
+}
+
+// ── HAVERSINE ─────────────────────────────────────────────────────────────────
+function hav(a,b,c,d) {
+  const R=6371000, dL=(c-a)*Math.PI/180, dG=(d-b)*Math.PI/180;
+  const x = Math.sin(dL/2)**2 + Math.cos(a*Math.PI/180)*Math.cos(c*Math.PI/180)*Math.sin(dG/2)**2;
+  return Math.round(R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x)));
+}
+
+// ── NEARBY ────────────────────────────────────────────────────────────────────
+function showNearby(lat, lng) {
+  const near = allF
+    .map(f => { const [lo,la] = f.geometry.coordinates; return {f, d:hav(lat,lng,la,lo)}; })
+    .filter(x => x.d <= 150)
+    .sort((a,b) => a.d - b.d)
+    .slice(0, 30);
+  openP(t('nearby'));
+  document.getElementById('blist').style.display = 'block';
+  document.getElementById('bdet').style.display = 'none';
+  const el = document.getElementById('blist');
+  if (!near.length) {
+    el.innerHTML = `<div style="padding:16px;color:var(--tm);font-family:sans-serif;font-size:13px;">${t('none')}</div>`;
+    return;
+  }
+  el.innerHTML = '';
+  near.forEach(({f, d}) => {
+    const p = f.properties, name = p.nom||p.name||'—';
+    const img = p.firstimage ? IMG_BASE+p.firstimage : null;
+    const row = document.createElement('div'); row.className = 'bi';
+    row.innerHTML = `
+      <div class="bthumb">${img ? `<img src="${img}" loading="lazy" onerror="this.parentElement.textContent='🏛'">` : '🏛'}</div>
+      <div class="binfo">
+        <div class="bname">${name}</div>
+        <div class="bmeta">${[p.street, p.number].filter(Boolean).join(' ')||p.city||''}</div>
+        <div class="bdist">${t('away')(d)}</div>
+      </div>`;
+    row.addEventListener('click', () => showDetail(f, lat, lng));
+    el.appendChild(row);
+  });
+  setSt(t('nearby'), near.length + ' / 150m');
+}
+
+// ── DETAIL ────────────────────────────────────────────────────────────────────
+function showDetail(f, clat, clng) {
+  const p = f.properties, [flo, fla] = f.geometry.coordinates;
+  const name = p.nom||p.name||'—';
+  const img  = p.firstimage ? IMG_BASE+p.firstimage : null;
+  const d    = clat != null ? hav(clat, clng, fla, flo) : null;
+  openP(name);
+  document.getElementById('blist').style.display = 'none';
+  const det = document.getElementById('bdet'); det.style.display = 'block';
+  det.innerHTML = `
+    ${img ? `<img class="dimg" src="${img}" loading="lazy" onerror="this.style.display='none'">` : `<div class="dnopic">🏛</div>`}
+    <div class="dname">${name}</div>
+    <div class="daddr">${addr(p)}${d!=null ? ' · '+t('away')(d) : ''}</div>
+    <div class="dtags">
+      ${p.styles       ? `<span class="tag hi">${p.styles}</span>`              : ''}
+      ${p.typologies   ? `<span class="tag">${p.typologies}</span>`            : ''}
+      ${arch(p)         ? `<span class="tag">✦ ${arch(p)}</span>`                : ''}
+    </div>
+    <div class="ddesc" id="ddesc" style="color:var(--td);font-style:italic">
+      ${userLang==='fr' && p.description ? p.description : 'Tap translate for a description in your language.'}
+    </div>
+    <div class="dacts">
+      <a class="abtn" href="${gtUrl(BLDG_URL+p.id)}" target="_blank">⊞ ${t('view')}</a>
+    </div>`;
+  map.setView([fla, flo], Math.max(map.getZoom(), 17));
+}
+
+// ── FIELD HELPERS ────────────────────────────────────────────────────────────
+// The JSON uses: street, number, city, zip_code, styles, typologies,
+// intervenants (array), nom/name. Normalise here once.
+function archStr(v) {
+  if (!v) return '';
+  return Array.isArray(v) ? v.join(', ') : String(v);
+}
+function arch(p) { return archStr(p.intervenants); }
+function addr(p) {
+  const parts = [p.street, p.number].filter(Boolean).join(' ');
+  return [parts, p.city].filter(Boolean).join(', ');
+}
+
+// ── TRANSLATE via Google Translate (free gtx endpoint, open CORS) ─────────────
+async function gtxTranslate(text, targetLang) {
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=fr&tl=${encodeURIComponent(targetLang)}&dt=t&q=${encodeURIComponent(text)}`;
+  const r = await fetch(url);
+  const d = await r.json();
+  return (d[0] || []).map(x => x[0] || '').join('');
+}
+
+// ── gtUrl: open heritage page via Google Translate in user's language ───────────
+function gtUrl(pageUrl) {
+  const tl = userLang === 'zh' ? 'zh-CN' : userLang === 'fr' ? 'fr' : 'en';
+  if (tl === 'fr') return pageUrl;
+  return 'https://translate.google.com/translate?sl=fr&tl=' + tl + '&u=' + encodeURIComponent(pageUrl);
+}
+
+async function doTranslate(f) {
+  const p = f.properties;
+  const btn = document.getElementById('trbtn'), desc = document.getElementById('ddesc');
+  if (!btn || !desc) return;
+  btn.classList.add('busy');
+  btn.innerHTML = `<span class="spin">↻</span> ${t('translating')}`;
+  desc.style.fontStyle = 'italic'; desc.style.color = 'var(--td)';
+  desc.textContent = t('translating');
+
+  const name      = p.nom || p.name || '';
+  const address   = addr(p);
+  const style     = p.styles || '';
+  const typology  = p.typologies || '';
+  const architect = arch(p);
+
+  // Build a rich French sentence from all available fields
+  const parts = [];
+  if (name) parts.push(name);
+  if (address) parts.push(`situé au ${address}`);
+  if (style && typology) parts.push(`de style ${style}, de type ${typology}`);
+  else if (style) parts.push(`de style ${style}`);
+  else if (typology) parts.push(`de type ${typology}`);
+  if (architect && !architect.includes('INCONNU')) parts.push(`conçu par ${architect}`);
+  const frText = parts.join(', ') + `. Ce bâtiment est répertorié dans l'inventaire du patrimoine architectural de la Région de Bruxelles-Capitale.`;
+
+  if (userLang === 'fr') {
+    desc.textContent = frText; desc.style.cssText = ''; btn.style.display = 'none'; return;
+  }
+
+  const tgt = userLang === 'zh' ? 'zh-CN' : 'en';
+  try {
+    const translated = await gtxTranslate(frText, tgt);
+    desc.textContent = translated || frText;
+    desc.style.cssText = ''; btn.style.display = 'none';
+  } catch(e) {
+    desc.style.cssText = '';
+    desc.textContent = userLang === 'zh' ? '翻译失败，请检查网络。' : 'Translation failed.';
+    btn.classList.remove('busy'); btn.innerHTML = `✦ ${t('translate')}`;
+  }
+}
+
+// ── SEARCH ────────────────────────────────────────────────────────────────────
+async function doSearch() {
+  const q = document.getElementById('sinput').value.trim(); if (!q) return;
+  const ql = q.toLowerCase();
+  const hits = allF.filter(f => {
+    const p = f.properties;
+    return [p.nom, p.name, p.street, p.city, archStr(p.intervenants), p.styles, p.typologies]
+      .filter(Boolean).join(' ').toLowerCase().includes(ql);
+  }).slice(0, 100);
+  if (hits.length) {
+    openP(t('results')(hits.length));
+    document.getElementById('blist').style.display = 'block';
+    document.getElementById('bdet').style.display = 'none';
+    const el = document.getElementById('blist'); el.innerHTML = '';
+    hits.forEach(f => {
+      const p = f.properties, name = p.nom||p.name||'—';
+      const img = p.firstimage ? IMG_BASE+p.firstimage : null;
+      const row = document.createElement('div'); row.className = 'bi';
+      row.innerHTML = `
+        <div class="bthumb">${img ? `<img src="${img}" loading="lazy" onerror="this.parentElement.textContent='🏛'">` : '🏛'}</div>
+        <div class="binfo"><div class="bname">${name}</div><div class="bmeta">${p.city||''}</div></div>`;
+      row.addEventListener('click', () => showDetail(f, null, null));
+      el.appendChild(row);
+    });
+    const [lo,la] = hits[0].geometry.coordinates; map.setView([la,lo], 16);
+    setSt(t('results')(hits.length), '"'+q+'"'); return;
+  }
+  // No local match — geocode the address
+  setSt(t('searching'), '');
+  try {
+    const r = await fetch(`${NOMINATIM}/search?q=${encodeURIComponent(q+' Brussels')}&format=json&limit=1&countrycodes=be`, {headers:{'Accept-Language':'fr'}});
+    const d = await r.json();
+    if (d[0]) { map.setView([+d[0].lat, +d[0].lon], 17); showNearby(+d[0].lat, +d[0].lon); }
+    else setSt('Not found: '+q, '');
+  } catch(e) { setSt('Search error', ''); }
+}
+document.getElementById('sbtn').addEventListener('click', doSearch);
+document.getElementById('sinput').addEventListener('keydown', e => { if (e.key==='Enter') doSearch(); });
+
+// ── GPS ───────────────────────────────────────────────────────────────────────
+document.getElementById('locbtn').addEventListener('click', () => {
+  if (!navigator.geolocation) { setSt('Geolocation not supported',''); return; }
+  setSt(t('locating'),''); document.getElementById('locbtn').classList.add('on');
+  navigator.geolocation.getCurrentPosition(pos => {
+    const {latitude:lat, longitude:lng} = pos.coords;
+    if (gpsMark) map.removeLayer(gpsMark);
+    gpsMark = L.marker([lat,lng], {
+      icon: L.divIcon({className:'', html:'<div class="gpsdot"></div>', iconSize:[14,14], iconAnchor:[7,7]}),
+      zIndexOffset:1000
+    }).addTo(map);
+    map.setView([lat,lng], 18);
+    showNearby(lat, lng);
+  }, () => {
+    document.getElementById('locbtn').classList.remove('on');
+    setSt('Location denied','');
+  }, {enableHighAccuracy:true, timeout:12000});
+});
+
+// ── PANEL ─────────────────────────────────────────────────────────────────────
+const openP = title => { document.getElementById('ptitle').textContent = title; document.getElementById('panel').classList.add('open'); };
+document.getElementById('phandle').addEventListener('click', () => document.getElementById('panel').classList.toggle('open'));
+document.getElementById('pcls').addEventListener('click', () => document.getElementById('panel').classList.remove('open'));
+
+// ── LANGUAGE ──────────────────────────────────────────────────────────────────
+document.querySelectorAll('.lb').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.lb').forEach(x => x.classList.remove('on'));
+  b.classList.add('on'); userLang = b.dataset.lang;
+  document.getElementById('sinput').placeholder = t('ph');
+}));
+
+// ── BOOT ──────────────────────────────────────────────────────────────────────
+initMap();
+
+// ↓↓↓ PASTE monuments.fr.json CONTENT ON THE NEXT LINE ↓↓↓
+
+// Load monument data from separate file (browser caches it after first load)
+setSt('Loading heritage data…', '');
+fetch('./monuments.fr.json')
+  .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+  .then(data => {
+    const seen = new Set();
+    allF = (data.features || data).filter(f => {
+      const id = f.properties.id;
+      if (seen.has(id)) return false;
+      seen.add(id); return true;
+    });
+    buildMarkers(allF);
+    setSt('Ready — tap ▶ or search', allF.length.toLocaleString() + ' buildings');
+  })
+  .catch(e => setSt('Could not load data: ' + e.message, '')); ↑↑↑
+
+</script>
+</body>
+</html>
