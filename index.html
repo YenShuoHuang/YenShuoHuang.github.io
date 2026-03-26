@@ -37,7 +37,7 @@
             <h2>PhD Researcher in Urban Climate & Sustainable Mobility</h2>
             <p>Architecture & Climate, LAB, LOCI, UCLouvain</p>
             <div class="social-links">
-                <a href="/cdn-cgi/l/email-protection#add4c8c380dec5d8c283c5d8ccc3caedd8cec1c2d8dbccc4c383cfc8"><i class="fas fa-envelope"></i></a>
+                <a href="mailto:yenshuo.huang@uclouvain.be"><i class="fas fa-envelope"></i></a>
                 <a href="https://github.com/YenShuoHuang" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/yen-shuo-huang-813684215/" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://scholar.google.com/citations?user=YOURUSER" target="_blank"><i class="fas fa-graduation-cap"></i></a>
@@ -121,62 +121,75 @@
             </div>
         </div>
     </section>
-	<!-- City Digital Twin Section -->
-	<section id="digital-twin" class="section">
-		<div class="container-full">
-			<h2>City Digital Twin</h2>
-			<p class="section-description">
-				Interactive 3D visualization of Brussels urban morphology
-			</p>
-			
-			<div class="app-container-wide">
-				<div class="model-viewer-container">
-					<!-- Warning Screen -->
-					<div id="model-warning" class="model-warning">
-						<div class="warning-content">
-							<i class="fas fa-cube warning-icon"></i>
-							<h3>3D City Model Viewer</h3>
-							<p>Interactive 3D model with optimized rendering</p>
-							<ul class="warning-list">
-								<li><i class="fas fa-tachometer-alt"></i> Hardware-accelerated rendering</li>
-								<li><i class="fas fa-mobile-alt"></i> Works on most devices</li>
-								<li><i class="fas fa-clock"></i> May take 10-30 seconds to load</li>
-							</ul>
-							<button id="load-model-btn" class="btn-primary btn-large">
-								<i class="fas fa-cube"></i> Launch 3D Viewer
-							</button>
-							<button id="view-screenshot-btn" class="btn-secondary">
-								<i class="fas fa-image"></i> View Screenshot
-							</button>
-						</div>
-					</div>
 
-					<!-- Screenshot Preview -->
-					<div id="model-screenshot" class="model-screenshot" style="display: none;">
-						<img src="image/brussels_3d_preview.png" alt="Brussels 3D Model Preview">
-						<p class="screenshot-caption">
-							<i class="fas fa-info-circle"></i> Static preview of the 3D city model
-						</p>
-						<button id="load-from-screenshot-btn" class="btn-primary">
-							<i class="fas fa-cube"></i> Launch Interactive Viewer
-						</button>
-					</div>
+    <!-- City Digital Twin Section -->
+    <section id="digital-twin" class="section">
+        <div class="container-full">
+            <h2>City Digital Twin</h2>
+            <p class="section-description">
+                Interactive 3D visualization of Brussels urban morphology
+            </p>
+            
+            <div class="app-container-wide">
+                <div class="model-viewer-container">
+                    <!-- Warning Screen -->
+                    <div id="model-warning" class="model-warning">
+                        <div class="warning-content">
+                            <i class="fas fa-cube warning-icon"></i>
+                            <h3>3D City Model Viewer</h3>
+                            <p>Interactive 3D model of Brussels — please read before launching</p>
+                            <ul class="warning-list">
+                                <li>
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span><strong>Large download — approx. 500 MB</strong> of 3D geometry data will be transferred. Make sure you are on a reliable connection.</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-wifi"></i>
+                                    <span>Not recommended on mobile data or metered connections — this will consume a significant portion of your data allowance.</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-clock"></i>
+                                    <span>Loading may take <strong>1–5 minutes</strong> depending on your connection speed. Please be patient.</span>
+                                </li>
+                            </ul>
+                            <div class="warning-buttons">
+                                <button id="load-model-btn" class="btn-primary btn-large">
+                                    <i class="fas fa-cube"></i> Launch 3D Viewer
+                                </button>
+                                <button id="view-screenshot-btn" class="btn-secondary">
+                                    <i class="fas fa-image"></i> View Screenshot
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-					<!-- Cesium 3D Viewer -->
-					<div id="model-container" style="display: none;">
-						<div id="cesiumContainer" style="width: 100%; height: 700px; background: #000;"></div>
-						<div class="model-controls">
-							<p class="model-instructions">
-								<i class="fas fa-mouse"></i> Left-click + drag to rotate • 
-								<i class="fas fa-search-plus"></i> Scroll to zoom • 
-								<i class="fas fa-arrows-alt"></i> Right-click + drag to pan
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                    <!-- Screenshot Preview -->
+                    <div id="model-screenshot" class="model-screenshot" style="display: none;">
+                        <img src="image/brussels_3d_preview.png" alt="Brussels 3D Model Preview">
+                        <p class="screenshot-caption">
+                            <i class="fas fa-info-circle"></i> Static preview of the 3D city model
+                        </p>
+                        <button id="load-from-screenshot-btn" class="btn-primary">
+                            <i class="fas fa-cube"></i> Launch Interactive Viewer
+                        </button>
+                    </div>
+
+                    <!-- 3D Model Viewer -->
+                    <div id="model-container" style="display: none;">
+                        <div id="cesiumContainer" style="width: 100%; height: 700px; background: #000;"></div>
+                        <div class="model-controls">
+                            <p class="model-instructions">
+                                <i class="fas fa-mouse"></i> Left-click + drag to rotate • 
+                                <i class="fas fa-search-plus"></i> Scroll to zoom • 
+                                <i class="fas fa-arrows-alt"></i> Right-click + drag to pan
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Microclimate Modeling Section -->
     <section id="umep" class="section">
         <div class="container-full">
@@ -202,15 +215,15 @@
         </div>
     </section>
 
-    <!-- BREEZE App Section -->
-	<!--
+    <!-- BREEZE App Section (commented out) -->
+    <!--
     <section id="breeze" class="section section-alt">
         <div class="container-full">
             <h2>BREEZE Application</h2>
             <p class="section-description">
                 Bioclimatic Route Evaluation for Environmental haZard avoidancE - <br>
                 An interactive web application for personalized route optimization. <br>
-				Demonstrated with the hottest day in Brussels in 2011 (28 June).
+                Demonstrated with the hottest day in Brussels in 2011 (28 June).
             </p>
             
             <div class="app-container-wide">
@@ -230,103 +243,101 @@
             </div>
         </div>
     </section>
-	-->
+    -->
 
+    <!-- Publications Section -->
+    <section id="publications" class="section">
+        <div class="container">
+            <h2>Publications & Presentations</h2>
+            
+            <div class="publication-list">
+                <div class="publication-item">
+                    <h3>Journal Papers</h3>
+                    <!--
+                    <div class="pub-entry">
+                        <p class="pub-title">
+                            Multi-dimensional exposure assessment framework for sustainable soft mobility
+                        </p>
+                        <p class="pub-venue">
+                            Sustainable Cities and Society (Under Review)
+                        </p>
+                        <span class="pub-status">Under Review</span>
+                    </div>
+                    -->
+                    <div class="pub-entry">
+                        <p class="pub-title">
+                            From Exploring the Source of the Rziha Formula to Evaluating Time of Concentration
+                        </p>
+                        <p class="pub-venue">
+                            Journal of Chinese Soil and Water Conservation, 52 (3): 135-144 (2021) 
+                        </p>
+                        <a href="https://cswcs.org.tw/AllDataPos/JournalPos/VOL52/NO3/jcswc52(3)_02_135-14.pdf" target="_blank" class="pub-link">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </a>
+                        <a href="https://youtu.be/-h0nuofF600" target="_blank" class="pub-link pub-link-video">
+                            <i class="fab fa-youtube"></i> Video
+                        </a>
+                    </div>
+                </div>
 
+                <div class="publication-item">
+                    <h3>Conference Papers</h3>
+                    <div class="pub-entry">
+                        <p class="pub-title">
+                            Multidimensional environmental exposure assessment of soft mobility users; 
+                            a case study in the Brussels Capital Region
+                        </p>
+                        <p class="pub-venue">
+                            12th International Conference on Urban Climate (ICUC12), Rotterdam, 2024
+                        </p>
+                        <a href="https://doi.org/10.5194/icuc12-686" target="_blank" class="pub-link">
+                            <i class="fas fa-link"></i> DOI
+                        </a>
+                    </div>
+                    
+                    <div class="pub-entry">
+                        <p class="pub-title">
+                            Towards dynamic and high-resolution urban environmental exposure assessments
+                        </p>
+                        <p class="pub-venue">
+                            CISBAT 2025, Lausanne, Switzerland
+                        </p>
+                        <a href="https://cisbat.epfl.ch/pdf/W5-Huang10336.pdf" target="_blank" class="pub-link">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </a>
+                    </div>
+                </div>
 
-	<!-- Publications Section -->
-	<section id="publications" class="section">
-		<div class="container">
-			<h2>Publications & Presentations</h2>
-			
-			<div class="publication-list">
-				<div class="publication-item">
-					<h3>Journal Papers</h3>
-					<!--
-					<div class="pub-entry">
-						<p class="pub-title">
-							Multi-dimensional exposure assessment framework for sustainable soft mobility
-						</p>
-						<p class="pub-venue">
-							Sustainable Cities and Society (Under Review)
-						</p>
-						<span class="pub-status">Under Review</span>
-					</div>
-					-->
-					<div class="pub-entry">
-						<p class="pub-title">
-							From Exploring the Source of the Rziha Formula to Evaluating Time of Concentration
-						</p>
-						<p class="pub-venue">
-							Journal of Chinese Soil and Water Conservation, 52 (3): 135-144 (2021) 
-						</p>
-						<a href="https://cswcs.org.tw/AllDataPos/JournalPos/VOL52/NO3/jcswc52(3)_02_135-14.pdf" target="_blank" class="pub-link">
-							<i class="fas fa-file-pdf"></i> PDF
-						</a>
-						<a href="https://youtu.be/-h0nuofF600" target="_blank" class="pub-link pub-link-video">
-							<i class="fab fa-youtube"></i> Video
-						</a>
-					</div>
-				</div>
+                <div class="publication-item">
+                    <h3>Awards</h3>
+                    <div class="pub-entry">
+                        <p class="pub-title">
+                            <i class="fas fa-trophy"></i> Best Poster Award - LAB Day 2024
+                        </p>
+                        <p class="pub-venue">UCLouvain Faculty Conference</p>
+                        <a href="https://www.uclouvain.be/fr/instituts-recherche/lab/news/successful-lab-day" target="_blank" class="pub-link">
+                            <i class="fas fa-link"></i> View Poster
+                        </a>
+                    </div>
+                </div>
 
-				<div class="publication-item">
-					<h3>Conference Papers</h3>
-					<div class="pub-entry">
-						<p class="pub-title">
-							Multidimensional environmental exposure assessment of soft mobility users; 
-							a case study in the Brussels Capital Region
-						</p>
-						<p class="pub-venue">
-							12th International Conference on Urban Climate (ICUC12), Rotterdam, 2024
-						</p>
-						<a href="https://doi.org/10.5194/icuc12-686" target="_blank" class="pub-link">
-							<i class="fas fa-link"></i> DOI
-						</a>
-					</div>
-					
-					<div class="pub-entry">
-						<p class="pub-title">
-							Towards dynamic and high-resolution urban environmental exposure assessments
-						</p>
-						<p class="pub-venue">
-							CISBAT 2025, Lausanne, Switzerland
-						</p>
-						<a href="https://cisbat.epfl.ch/pdf/W5-Huang10336.pdf" target="_blank" class="pub-link">
-							<i class="fas fa-file-pdf"></i> PDF
-						</a>
-					</div>
-				</div>
-
-				<div class="publication-item">
-					<h3>Awards</h3>
-					<div class="pub-entry">
-						<p class="pub-title">
-							<i class="fas fa-trophy"></i> Best Poster Award - LAB Day 2024
-						</p>
-						<p class="pub-venue">UCLouvain Faculty Conference</p>
-						<a href="https://www.uclouvain.be/fr/instituts-recherche/lab/news/successful-lab-day" target="_blank" class="pub-link">
-							<i class="fas fa-link"></i> View Poster
-						</a>
-					</div>
-				</div>
-
-				<div class="publication-item">
-					<h3>Teaching</h3>
-					<div class="pub-entry">
-						<p class="pub-title">
-							Python Workshop
-						</p>
-						<p class="pub-venue">
-							Spontaneously organized workshop for the LAB faculty.
-						</p>
-						<a href="https://www.uclouvain.be/fr/instituts-recherche/lab/news/python-workshop" target="_blank" class="pub-link">
-							<i class="fas fa-link"></i> View News
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                <div class="publication-item">
+                    <h3>Teaching</h3>
+                    <div class="pub-entry">
+                        <p class="pub-title">
+                            Python Workshop
+                        </p>
+                        <p class="pub-venue">
+                            Spontaneously organized workshop for the LAB faculty.
+                        </p>
+                        <a href="https://www.uclouvain.be/fr/instituts-recherche/lab/news/python-workshop" target="_blank" class="pub-link">
+                            <i class="fas fa-link"></i> View News
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Side Projects Section -->
     <section id="side-projects" class="section section-alt">
@@ -361,18 +372,18 @@
             <h2>Contact</h2>
             <div class="contact-content">
                 <div class="contact-info">
-					<div class="contact-item">
-						<i class="fas fa-envelope"></i>
-						<a href="mailto:yen-shuo.huang@uclouvain.be">yen-shuo.huang@uclouvain.be</a>
-					</div>
-					<div class="contact-item">
-						<i class="fas fa-map-marker-alt"></i>
-						<a href="https://www.google.com/maps/place/UCLouvain+Faculty+of+Architecture,+Architectural+Engineering+and+Urban+Planning+(LOCI)/@50.6686913,4.6220267,18z/data=!4m6!3m5!1s0x47c17e79b13553b9:0x53430d7eaa980a11!8m2!3d50.6683936!4d4.6227438!16s%2Fg%2F11f6157n6m?hl=zh-TW&entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank">
-							Architecture & Climate, LAB, LOCI<br>
-							UCLouvain<br>
-							Louvain-la-Neuve, Belgium
-						</a>
-					</div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:yenshuo.huang@uclouvain.be">yenshuo.huang@uclouvain.be</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <a href="https://www.google.com/maps/place/UCLouvain+Faculty+of+Architecture,+Architectural+Engineering+and+Urban+Planning+(LOCI)/@50.6686913,4.6220267,18z/data=!4m6!3m5!1s0x47c17e79b13553b9:0x53430d7eaa980a11!8m2!3d50.6683936!4d4.6227438!16s%2Fg%2F11f6157n6m?hl=zh-TW&entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+                            Architecture & Climate, LAB, LOCI<br>
+                            UCLouvain<br>
+                            Louvain-la-Neuve, Belgium
+                        </a>
+                    </div>
                     <div class="contact-item">
                         <i class="fas fa-building"></i>
                         <a href="https://www.uclouvain.be/en/research-institutes/lab/archi-cli" target="_blank">
@@ -390,8 +401,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Yen-Shuo Huang. All rights reserved.</p>
-    
+    <!-- ✅ FIX: script.js was missing from the original — added here -->
+    <script src="script.js"></script>
+</body>
+</html>
