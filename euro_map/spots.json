@@ -102,7 +102,41 @@
       "wiki": "https://en.wikipedia.org/wiki/Atomium",
       "photo": "Atomium.jpg"
     },
-
- 
+    {
+      "name": "Hundertwasserhaus",
+      "city": "Vienna",
+      "lat": 48.207656,
+      "lon": 16.393998,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://en.wikipedia.org/wiki/Hundertwasserhaus",
+      "photo": "Hundertwasserhaus.jpg"
+    },
+    {
+      "name": "La Conciergerie",
+      "city": "Paris",
+      "lat": 48.856260,
+      "lon": 2.345571,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://en.wikipedia.org/wiki/Conciergerie",
+      "photo": "Conciergerie.jpg"
+    },
+    {
+      "name": "Château Comtal",
+      "city": "Carcassonne",
+      "lat": 43.207223,
+      "lon": 2.363239,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://en.wikipedia.org/wiki/Cit%C3%A9_de_Carcassonne#Chateau_Comtal",
+      "photo": "Comtal.jpg"
+    },
+    {
+      "name": "Panthéon",
+      "city": "Paris",
+      "lat": 48.84614, 
+      "lon": 2.346198,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://en.wikipedia.org/wiki/Panth%C3%A9on",
+      "photo": "Panthéon.jpg"
+    },
   ]
 }
