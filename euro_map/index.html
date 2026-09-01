@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>0€ Souvenir Map</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#C9962E;--gl:#E4B54A;--gd:#8a6a1e;--pink:#C4699A;--purple:#6B3F94;--purpleD:#4B2568;--purpleL:#9C6FC2;--bg:#F8F3EA;--s1:#FFFFFF;--s2:#F3EAF7;--s3:#E9DCF1;--tx:#3A2050;--tm:#7C6B94;--td:#B3A2C6;--b0:rgba(107,63,148,0.14);--b1:rgba(107,63,148,0.32);--r:12px;--rs:8px}
+html,body{height:100%;font-family:Georgia,serif;background:var(--bg);color:var(--tx);overflow:hidden}
+#app{display:flex;flex-direction:column;height:100vh;height:100dvh;position:relative}
+#hdr{background:var(--s1);border-bottom:1px solid var(--b0);padding:10px 14px 8px;z-index:2000;flex-shrink:0;position:sticky;top:0;box-shadow:0 1px 0 0 rgba(201,150,46,.25)}
+#hdr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}#hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}#credit{font-size:10px;color:var(--tm);font-family:sans-serif}#credit a{color:var(--purple);text-decoration:none}#credit a:hover{text-decoration:underline}
+#hdr h1{font-size:15px;font-weight:normal;letter-spacing:.08em;color:var(--purpleD);text-transform:uppercase}
+#hdr h1 span{color:var(--tm);font-size:10px;letter-spacing:.12em;display:block;margin-top:1px}
+#ctry{display:flex;gap:4px;flex-wrap:wrap}
+.cb{background:var(--s2);border:1px solid var(--b0);color:var(--tm);font-size:11px;padding:4px 9px;border-radius:6px;cursor:pointer;font-family:sans-serif;transition:all .15s}
+.cb.on{background:var(--purple);border-color:var(--purpleD);color:#fff}
+#srow{display:flex;gap:6px}
+#sinput{flex:1;background:var(--s2);border:1px solid var(--b0);border-radius:var(--rs);padding:8px 12px;font-size:13px;color:var(--tx);font-family:inherit;outline:none;transition:border-color .15s}
+#sinput:focus{border-color:var(--purple)}
+#sinput::placeholder{color:var(--td)}
+.ibtn{background:var(--s2);border:1px solid var(--b0);color:var(--purple);padding:8px 13px;border-radius:var(--rs);cursor:pointer;font-size:13px;transition:all .15s;flex-shrink:0;font-family:sans-serif;white-space:nowrap}
+.ibtn:hover{background:var(--s3);border-color:var(--purple)}
+#locbtn.on{background:var(--purple);border-color:var(--purpleD);color:#fff}
+#map{flex:1;z-index:1}
+#sbar{position:absolute;bottom:0;left:0;right:0;background:var(--s1);border-top:1px solid var(--b0);padding:7px 14px;z-index:1000;display:flex;align-items:center;justify-content:space-between;min-height:34px}
+#stxt{font-size:12px;color:var(--tm);font-family:sans-serif}
+#scnt{font-size:12px;color:var(--purple);font-family:sans-serif;white-space:nowrap}
+#panel{position:absolute;bottom:34px;left:0;right:0;background:var(--s1);border-top:1px solid var(--b1);z-index:1500;max-height:65vh;overflow-y:auto;transform:translateY(100%);transition:transform .3s ease;border-radius:var(--r) var(--r) 0 0}
+#panel.open{transform:translateY(0)}
+#phandle{text-align:center;padding:10px;cursor:pointer;position:sticky;top:0;background:var(--s1);border-bottom:1px solid var(--b0);z-index:1}
+#phandle::before{content:'';display:inline-block;width:36px;height:4px;background:var(--b1);border-radius:2px}
+#phdr{padding:10px 14px 6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--purpleD);display:flex;align-items:center;justify-content:space-between}
+#pcls{background:none;border:none;color:var(--tm);cursor:pointer;font-size:22px;padding:0;line-height:1}
+#blist{padding:0 14px 14px}
+.bi{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--b0);cursor:pointer;align-items:flex-start}
+.bi:hover{opacity:.75}
+.bi:last-child{border-bottom:none}
+.bthumb{width:54px;height:54px;border-radius:var(--rs);flex-shrink:0;background:var(--s3);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--td)}
+.bthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.binfo{flex:1;min-width:0}
+.bname{font-size:13px;color:var(--tx);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bmeta{font-size:11px;color:var(--td);font-family:sans-serif}
+.bdist{font-size:11px;color:var(--purple);font-family:sans-serif;margin-top:2px}
+#bdet{padding:0 14px 20px;display:none}
+.dimg{width:100%;max-height:220px;object-fit:cover;border-radius:var(--rs);margin-bottom:12px;display:block;background:var(--s3)}
+.dnopic{width:100%;height:100px;background:var(--s3);border-radius:var(--rs);margin-bottom:12px;display:flex;align-items:center;justify-content:center;font-size:40px;color:var(--purpleL)}
+.dname{font-size:18px;color:var(--purpleD);margin-bottom:4px;line-height:1.3}
+.daddr{font-size:12px;color:var(--tm);font-family:sans-serif;margin-bottom:10px}
+.dtags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.tag{background:var(--s3);border:1px solid var(--b0);border-radius:5px;padding:3px 9px;font-size:11px;color:var(--tm);font-family:sans-serif}
+.tag.hi{border-color:var(--purple);color:var(--purpleD);background:var(--s2)}
+.dacts{display:flex;gap:8px;flex-wrap:wrap}
+.abtn{display:inline-flex;align-items:center;gap:5px;background:transparent;border:1px solid var(--b0);color:var(--tm);font-size:12px;padding:7px 12px;border-radius:var(--rs);cursor:pointer;font-family:sans-serif;transition:all .15s;text-decoration:none;white-space:nowrap}
+.abtn:hover{border-color:var(--purple);color:var(--purpleD)}
+.gpsdot{width:14px;height:14px;background:#4a9eff;border:2.5px solid white;border-radius:50%;box-shadow:0 0 0 5px rgba(74,158,255,.22)}
+.hpin{width:18px;height:18px;background:linear-gradient(135deg,var(--purpleL),var(--purple));border:2px solid #fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg);cursor:pointer;box-shadow:0 2px 6px rgba(75,37,104,.45)}
+.hpin.zero::after{content:'€';position:absolute;left:0;top:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;transform:rotate(45deg);font-size:10px;font-weight:bold;color:#fff;font-family:sans-serif}
+.myCluster{background:linear-gradient(135deg,var(--purpleL),var(--purple));border:2px solid #fff;border-radius:50%;color:#fff;font-size:12px;font-family:sans-serif;font-weight:600;display:flex;align-items:center;justify-content:center;width:36px;height:36px;box-shadow:0 2px 8px rgba(75,37,104,.35)}
+.leaflet-popup-content-wrapper{background:var(--s1)!important;border:1px solid var(--b1)!important;border-radius:var(--rs)!important;color:var(--tx)!important;box-shadow:0 4px 20px rgba(75,37,104,.22)!important}
+.leaflet-popup-tip{background:var(--s1)!important}
+.leaflet-popup-content{margin:8px 12px!important;font-family:sans-serif;min-width:160px}
+.lpname{font-size:13px;color:var(--purpleD);margin-bottom:4px}
+.lpaddr{font-size:11px;color:var(--tm)}
+.leaflet-control-zoom a{background:var(--s1)!important;color:var(--purpleD)!important;border-color:var(--b0)!important}
+.leaflet-control-attribution{background:rgba(255,255,255,.75)!important;color:var(--td)!important;font-size:9px!important}
+.leaflet-control-attribution a{color:var(--tm)!important}
+
+/* ── Add-a-spot feature ─────────────────────────────────────────────── */
+#addBtn{position:absolute;right:14px;bottom:44px;z-index:1200;background:var(--purple);color:#fff;border:none;padding:11px 16px;border-radius:999px;font-family:sans-serif;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 14px rgba(75,37,104,.35);display:flex;align-items:center;gap:6px;transition:all .15s}
+#addBtn:hover{background:var(--purpleD)}
+#addBtn.hidden{display:none}
+#pickBanner{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:1300;background:var(--purpleD);color:#fff;font-family:sans-serif;font-size:12.5px;padding:9px 8px 9px 14px;border-radius:999px;display:none;align-items:center;gap:10px;box-shadow:0 4px 14px rgba(75,37,104,.4);white-space:nowrap}
+#pickBanner.show{display:flex}
+#pickBanner button{background:rgba(255,255,255,.18);border:none;color:#fff;font-size:11px;padding:5px 11px;border-radius:999px;cursor:pointer;font-family:sans-serif}
+#pickBanner button:hover{background:rgba(255,255,255,.32)}
+#map.picking{cursor:crosshair}
+.pickpin{width:14px;height:14px;border-radius:50%;background:var(--purple);border:3px solid #fff;box-shadow:0 0 0 3px var(--purple),0 2px 8px rgba(75,37,104,.5)}
+#addbox{padding:2px 14px 20px;display:none}
+.addintro{font-family:sans-serif;font-size:12.5px;color:var(--tm);line-height:1.65;margin-bottom:14px}
+.coordrow{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--s2);border:1px solid var(--b0);border-radius:var(--rs);padding:9px 12px;margin-bottom:8px}
+.coordrow .clabel{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--tm);font-family:sans-serif;margin-bottom:2px}
+.coordrow .cval{font-size:15px;color:var(--purpleD);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-weight:600}
+.copybtn{background:var(--purple);color:#fff;border:none;font-size:11px;padding:7px 12px;border-radius:6px;cursor:pointer;font-family:sans-serif;flex-shrink:0;transition:background .15s}
+.copybtn:hover{background:var(--purpleD)}
+.copybtn.done{background:#4a9e6f}
+.addacts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.addnote{font-family:sans-serif;font-size:11px;color:var(--td);line-height:1.6;margin-top:12px;border-top:1px solid var(--b0);padding-top:10px}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="hdr">
+    <div id="hdr-top">
+      <h1>0€ Souvenir Map <span>official 0-euro banknote sale points across Europe</span></h1>
+      <div id="hdr-right">
+        <div id="ctry"><button class="cb on" data-c="all">All</button></div>
+        <div id="credit">by <a href="https://yenshuohuang.github.io/" target="_blank">Yen-Shuo Huang</a></div>
+      </div>
+    </div>
+    <div id="srow">
+      <input id="sinput" type="text" placeholder="Search name or city…" autocomplete="off"/>
+      <button class="ibtn" id="sbtn">Search</button>
+      <button class="ibtn" id="locbtn">&#9654;</button>
+    </div>
+  </div>
+  <div id="map"></div>
+  <button id="addBtn">📍 Add a selling spot you know</button>
+  <div id="pickBanner">📍 Tap the map to drop a pin at the spot <button id="pickCancel">Cancel</button></div>
+  <div id="panel">
+    <div id="phandle"></div>
+    <div id="phdr"><span id="ptitle">Spots</span><button id="pcls">&#215;</button></div>
+    <div id="blist"></div>
+    <div id="bdet"></div>
+    <div id="addbox">
+      <div class="addintro">Got it — here's your pin's location. Copy it, then paste into the Google Form along with the spot's name and a photo.</div>
+      <div class="coordrow">
+        <div><div class="clabel">Coordinates (lat, lon)</div><div class="cval" id="cvCoords">–</div></div>
+        <button class="copybtn" id="copyCoords">Copy</button>
+      </div>
+      <div class="addacts">
+        <a class="abtn" id="openForm" href="#" target="_blank" rel="noopener">📝 Open the submission form</a>
+        <button class="abtn" id="repick">↺ Pick a different spot</button>
+      </div>
+      <div class="addnote">The form may ask you to sign in with a Google account to attach a photo. Someone reviews each submission before it's added to the map.</div>
+    </div>
+  </div>
+  <div id="sbar">
+    <span id="stxt">Ready</span>
+    <span id="scnt"></span>
+  </div>
+</div>
+
+<script>
+const IMG_BASE = './images/';
+
+// ── GOOGLE FORM CONFIG ──────────────────────────────────────────────────
+// 1. Create a Google Form with fields: Spot name, City/Country, Coordinates
+//    (lat, lon), Photo upload (file-upload question), optional note.
+// 2. Get its shareable link and paste it below.
+// 3. Optional but recommended: in Forms, use "⋮ → Get pre-filled link",
+//    type a sample value into the Coordinates field, click "Get link", and
+//    copy that field's "entry.XXXXXXXXX" id into the constant below. This
+//    lets a picked location fill itself in — no paste needed. Leave it
+//    blank and the copy button still works fine as a manual fallback.
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdkaznvFID_8HU2lMlu1C-8r_85Oxm9hBlzjynDIVwbtQQW3w/viewform?usp=dialog';
+const GOOGLE_FORM_ENTRY_COORDS = ''; // e.g. 'entry.111111111'
+
+let map, cluster, gpsMark = null, allSpots = [], activeCountry = 'all';
+let pickMode = false, pickMarker = null;
+
+const setSt = (txt, cnt='') => {
+  document.getElementById('stxt').textContent = txt;
+  document.getElementById('scnt').textContent = cnt;
+};
+
+// ── MAP ───────────────────────────────────────────────────────────────────
+let pinIco, pickIco;
+function initMap() {
+  map = L.map('map', {zoomControl:true}).setView([50.0, 8.0], 5);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
+  }).addTo(map);
+  cluster = L.markerClusterGroup({
+    showCoverageOnHover:false, chunkedLoading:true, disableClusteringAtZoom:16,
+    spiderfyOnMaxZoom:false,
+    iconCreateFunction: c => L.divIcon({
+      html:`<div class="myCluster">${c.getChildCount()}</div>`,
+      className:'', iconSize:[36,36]
+    })
+  });
+  map.addLayer(cluster);
+  pinIco = L.divIcon({className:'', html:'<div class="hpin zero" style="position:relative"></div>', iconSize:[18,18], iconAnchor:[9,18]});
+  pickIco = L.divIcon({className:'', html:'<div class="pickpin"></div>', iconSize:[14,14], iconAnchor:[7,7]});
+  map.on('click', e => { if (pickMode) placePick(e.latlng); });
+}
+
+// ── MARKERS ───────────────────────────────────────────────────────────────
+function buildMarkers(spots) {
+  cluster.clearLayers();
+  const ms = spots.map(s => {
+    const m = L.marker([s.lat, s.lon], {icon: pinIco});
+    m.bindPopup(`<div class="lpname">${s.name}</div><div class="lpaddr">${s.city||''}</div>`, {autoPan:false});
+    m.on('click', () => showDetail(s));
+    return m;
+  });
+  cluster.addLayers(ms);
+  setSt('Ready — tap a pin or search', spots.length.toLocaleString() + ' spots');
+}
+
+// ── HAVERSINE ─────────────────────────────────────────────────────────────
+function hav(a,b,c,d) {
+  const R=6371000, dL=(c-a)*Math.PI/180, dG=(d-b)*Math.PI/180;
+  const x = Math.sin(dL/2)**2 + Math.cos(a*Math.PI/180)*Math.cos(c*Math.PI/180)*Math.sin(dG/2)**2;
+  return Math.round(R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x)));
+}
+
+// ── LIST VIEWS ────────────────────────────────────────────────────────────
+const openP = title => { document.getElementById('ptitle').textContent = title; document.getElementById('panel').classList.add('open'); };
+
+function renderList(list, title) {
+  openP(title);
+  document.getElementById('blist').style.display = 'block';
+  document.getElementById('bdet').style.display = 'none';
+  document.getElementById('addbox').style.display = 'none';
+  const el = document.getElementById('blist'); el.innerHTML = '';
+  if (!list.length) { el.innerHTML = `<div style="padding:16px;color:var(--tm);font-family:sans-serif;font-size:13px;">No spots found</div>`; return; }
+  list.forEach(s => {
+    const img = IMG_BASE + s.photo;
+    const row = document.createElement('div'); row.className = 'bi';
+    row.innerHTML = `
+      <div class="bthumb"><img src="${img}" loading="lazy" onerror="this.parentElement.textContent='€'"></div>
+      <div class="binfo"><div class="bname">${s.name}</div><div class="bmeta">${s.city||''}</div></div>`;
+    row.addEventListener('click', () => showDetail(s));
+    el.appendChild(row);
+  });
+}
+
+function showNearby(lat, lng) {
+  const near = allSpots
+    .map(s => ({s, d: hav(lat,lng,s.lat,s.lon)}))
+    .sort((a,b) => a.d - b.d)
+    .slice(0, 30);
+  renderList(near.map(x=>x.s), 'Nearest spots');
+  setSt('Nearest spots', near.length ? hav(lat,lng,near[0].s.lat,near[0].s.lon)+'m to closest' : '');
+}
+
+// ── DETAIL ────────────────────────────────────────────────────────────────
+function showDetail(s) {
+  openP(s.name);
+  document.getElementById('blist').style.display = 'none';
+  document.getElementById('addbox').style.display = 'none';
+  const det = document.getElementById('bdet'); det.style.display = 'block';
+  const img = IMG_BASE + s.photo;
+  det.innerHTML = `
+    <img class="dimg" src="${img}" loading="lazy" onerror="this.outerHTML='<div class=&quot;dnopic&quot;>€</div>'">
+    <div class="dname">${s.name}</div>
+    <div class="daddr">${s.city||''}${s.note_code ? ' · note '+s.note_code : ''}</div>
+    <div class="dtags">
+      <span class="tag hi">0€ Souvenir sale point</span>
+      ${s.city ? `<span class="tag">${s.city}</span>` : ''}
+    </div>
+    <div class="dacts">
+      ${s.wiki ? `<a class="abtn" href="${s.wiki}" target="_blank">⊞ Learn more</a>` : ''}
+      <a class="abtn" href="https://www.google.com/maps?q=${s.lat},${s.lon}" target="_blank">📍 Directions</a>
+    </div>`;
+  map.setView([s.lat, s.lon], Math.max(map.getZoom(), 13));
+}
+
+// ── SEARCH ────────────────────────────────────────────────────────────────
+function doSearch() {
+  const q = document.getElementById('sinput').value.trim().toLowerCase();
+  if (!q) return;
+  const hits = allSpots.filter(s => [s.name, s.city].filter(Boolean).join(' ').toLowerCase().includes(q));
+  renderList(hits, `"${q}" — ${hits.length} result${hits.length===1?'':'s'}`);
+  if (hits.length) map.setView([hits[0].lat, hits[0].lon], 12);
+  setSt(hits.length ? 'Search results' : 'No matches', hits.length ? hits.length+' found' : '');
+}
+document.getElementById('sbtn').addEventListener('click', doSearch);
+document.getElementById('sinput').addEventListener('keydown', e => { if (e.key==='Enter') doSearch(); });
+
+// ── GPS ───────────────────────────────────────────────────────────────────
+document.getElementById('locbtn').addEventListener('click', () => {
+  if (!navigator.geolocation) { setSt('Geolocation not supported',''); return; }
+  setSt('Getting location…',''); document.getElementById('locbtn').classList.add('on');
+  navigator.geolocation.getCurrentPosition(pos => {
+    const {latitude:lat, longitude:lng} = pos.coords;
+    if (gpsMark) map.removeLayer(gpsMark);
+    gpsMark = L.marker([lat,lng], {
+      icon: L.divIcon({className:'', html:'<div class="gpsdot"></div>', iconSize:[14,14], iconAnchor:[7,7]}),
+      zIndexOffset:1000
+    }).addTo(map);
+    map.setView([lat,lng], 9);
+    showNearby(lat, lng);
+  }, () => {
+    document.getElementById('locbtn').classList.remove('on');
+    setSt('Location denied','');
+  }, {enableHighAccuracy:true, timeout:12000});
+});
+
+// ── ADD A SPOT (Google Form hand-off) ──────────────────────────────────────
+function setPickMode(on) {
+  pickMode = on;
+  document.getElementById('map').classList.toggle('picking', on);
+  document.getElementById('pickBanner').classList.toggle('show', on);
+  document.getElementById('addBtn').classList.toggle('hidden', on);
+  if (!on) {
+    if (pickMarker) { map.removeLayer(pickMarker); pickMarker = null; }
+    document.getElementById('panel').classList.remove('open');
+  }
+}
+document.getElementById('addBtn').addEventListener('click', () => setPickMode(true));
+document.getElementById('pickCancel').addEventListener('click', () => setPickMode(false));
+
+function placePick(latlng) {
+  if (pickMarker) map.removeLayer(pickMarker);
+  pickMarker = L.marker(latlng, {icon: pickIco}).addTo(map);
+
+  const lat = latlng.lat.toFixed(5), lon = latlng.lng.toFixed(5);
+  const coords = `${lat}, ${lon}`;
+  document.getElementById('cvCoords').textContent = coords;
+
+  let formUrl = GOOGLE_FORM_URL;
+  if (GOOGLE_FORM_ENTRY_COORDS) {
+    const sep = formUrl.includes('?') ? '&' : '?';
+    formUrl += `${sep}${GOOGLE_FORM_ENTRY_COORDS}=${encodeURIComponent(coords)}`;
+  }
+  document.getElementById('openForm').href = formUrl;
+
+  document.getElementById('blist').style.display = 'none';
+  document.getElementById('bdet').style.display = 'none';
+  document.getElementById('addbox').style.display = 'block';
+  openP('Add a selling spot you know');
+}
+
+function copyVal(valId, btnId) {
+  const val = document.getElementById(valId).textContent;
+  navigator.clipboard.writeText(val).then(() => {
+    const btn = document.getElementById(btnId), old = btn.textContent;
+    btn.textContent = 'Copied ✓'; btn.classList.add('done');
+    setTimeout(() => { btn.textContent = old; btn.classList.remove('done'); }, 1500);
+  }).catch(() => { setSt('Copy failed — select and copy manually', ''); });
+}
+document.getElementById('copyCoords').addEventListener('click', () => copyVal('cvCoords', 'copyCoords'));
+document.getElementById('repick').addEventListener('click', () => document.getElementById('panel').classList.remove('open'));
+
+// ── PANEL ─────────────────────────────────────────────────────────────────
+document.getElementById('phandle').addEventListener('click', () => document.getElementById('panel').classList.toggle('open'));
+document.getElementById('pcls').addEventListener('click', () => {
+  document.getElementById('panel').classList.remove('open');
+  if (pickMode) setPickMode(false);
+});
+
+// ── BOOT ──────────────────────────────────────────────────────────────────
+initMap();
+setSt('Loading spots…', '');
+fetch('./spots.json')
+  .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+  .then(data => {
+    allSpots = data.spots || [];
+    buildMarkers(allSpots);
+  })
+  .catch(e => setSt('Could not load data: ' + e.message, ''));
+</script>
+</body>
+</html>
