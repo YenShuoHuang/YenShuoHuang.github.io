@@ -28,7 +28,7 @@ html,body{height:100%;font-family:Georgia,serif;background:var(--bg);color:var(-
 .ibtn{background:var(--s2);border:1px solid var(--b0);color:var(--purple);padding:8px 13px;border-radius:var(--rs);cursor:pointer;font-size:13px;transition:all .15s;flex-shrink:0;font-family:sans-serif;white-space:nowrap}
 .ibtn:hover{background:var(--s3);border-color:var(--purple)}
 #locbtn.on{background:var(--purple);border-color:var(--purpleD);color:#fff}
-#map{flex:1;z-index:1}
+#map{flex:1;z-index:1;position:relative}
 #sbar{position:absolute;bottom:0;left:0;right:0;background:var(--s1);border-top:1px solid var(--b0);padding:7px 14px;z-index:1000;display:flex;align-items:center;justify-content:space-between;min-height:34px}
 #stxt{font-size:12px;color:var(--tm);font-family:sans-serif}
 #scnt{font-size:12px;color:var(--purple);font-family:sans-serif;white-space:nowrap}
@@ -76,10 +76,11 @@ html,body{height:100%;font-family:Georgia,serif;background:var(--bg);color:var(-
 #addBtn{position:absolute;right:14px;bottom:44px;z-index:1200;background:var(--purple);color:#fff;border:none;padding:11px 16px;border-radius:999px;font-family:sans-serif;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 14px rgba(75,37,104,.35);display:flex;align-items:center;gap:6px;transition:all .15s}
 #addBtn:hover{background:var(--purpleD)}
 #addBtn.hidden{display:none}
-#pickBanner{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:1300;background:var(--purpleD);color:#fff;font-family:sans-serif;font-size:12.5px;padding:9px 8px 9px 14px;border-radius:999px;display:none;align-items:center;gap:10px;box-shadow:0 4px 14px rgba(75,37,104,.4);white-space:nowrap}
-#pickBanner.show{display:flex}
+#pickBanner{position:absolute;top:10px;left:50%;transform:translateX(-50%) translateY(-8px);z-index:1300;background:var(--purpleD);color:#fff;font-family:sans-serif;font-size:13px;font-weight:600;padding:10px 8px 10px 14px;border-radius:999px;display:none;align-items:center;gap:10px;box-shadow:0 6px 18px rgba(75,37,104,.5);white-space:nowrap;opacity:0;transition:opacity .25s ease, transform .25s ease}
+#pickBanner.show{display:flex;opacity:1;transform:translateX(-50%) translateY(0);animation:pickPulse 1.6s ease-in-out 2}
 #pickBanner button{background:rgba(255,255,255,.18);border:none;color:#fff;font-size:11px;padding:5px 11px;border-radius:999px;cursor:pointer;font-family:sans-serif}
 #pickBanner button:hover{background:rgba(255,255,255,.32)}
+@keyframes pickPulse{0%,100%{box-shadow:0 6px 18px rgba(75,37,104,.5)}50%{box-shadow:0 6px 22px rgba(75,37,104,.85),0 0 0 6px rgba(107,63,148,.18)}}
 #map.picking{cursor:crosshair}
 .pickpin{width:14px;height:14px;border-radius:50%;background:var(--purple);border:3px solid #fff;box-shadow:0 0 0 3px var(--purple),0 2px 8px rgba(75,37,104,.5)}
 #addbox{padding:2px 14px 20px;display:none}
@@ -110,9 +111,10 @@ html,body{height:100%;font-family:Georgia,serif;background:var(--bg);color:var(-
       <button class="ibtn" id="locbtn">&#9654;</button>
     </div>
   </div>
-  <div id="map"></div>
-  <button id="addBtn">📍 Add a selling spot you know</button>
-  <div id="pickBanner">📍 Tap the map to drop a pin at the spot <button id="pickCancel">Cancel</button></div>
+  <div id="map">
+    <button id="addBtn">📍 Add a selling spot you know</button>
+    <div id="pickBanner">👉 Tap the map to mark where the spot is <button id="pickCancel">Cancel</button></div>
+  </div>
   <div id="panel">
     <div id="phandle"></div>
     <div id="phdr"><span id="ptitle">Spots</span><button id="pcls">&#215;</button></div>
@@ -299,9 +301,12 @@ function setPickMode(on) {
   document.getElementById('map').classList.toggle('picking', on);
   document.getElementById('pickBanner').classList.toggle('show', on);
   document.getElementById('addBtn').classList.toggle('hidden', on);
-  if (!on) {
+  if (on) {
+    setSt('👉 Tap anywhere on the map to mark the spot', '');
+  } else {
     if (pickMarker) { map.removeLayer(pickMarker); pickMarker = null; }
     document.getElementById('panel').classList.remove('open');
+    setSt('Ready — tap a pin or search', allSpots.length ? allSpots.length.toLocaleString() + ' spots' : '');
   }
 }
 document.getElementById('addBtn').addEventListener('click', () => setPickMode(true));
@@ -314,6 +319,7 @@ function placePick(latlng) {
   const lat = latlng.lat.toFixed(5), lon = latlng.lng.toFixed(5);
   const coords = `${lat}, ${lon}`;
   document.getElementById('cvCoords').textContent = coords;
+  setSt('📍 Pin placed — copy the coordinates below', '');
 
   let formUrl = GOOGLE_FORM_URL;
   if (GOOGLE_FORM_ENTRY_COORDS) {
