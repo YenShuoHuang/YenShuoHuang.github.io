@@ -4,6 +4,60 @@
   "note": "Pilot batch. Locations verified against the 0-Euro-Souvenir collector registry (euro-souvenirscheine.de) which tracks every issued note and the site that sells it. Coordinates are the public entrance / main site location.",
   "spots": [
     {
+      "name": "Ghent",
+      "city": "Ghent",
+      "lat": 51.053125, 
+      "lon": 3.726110,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://en.wikipedia.org/wiki/Ghent",
+      "photo": "Ghent.jpg"
+    },
+    {
+      "name": "Schloss Heidelberg",
+      "city": "Heidelberg",
+      "lat": 49.409818, 
+      "lon": 8.714664,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://en.wikipedia.org/wiki/Heidelberg_Castle",
+      "photo": "SchlossHeidelberg.jpg"
+    },
+    {
+      "name": "Museum Karl-Marx-Haus",
+      "city": "Trier",
+      "lat": 49.753917, 
+      "lon": 6.635789,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://de.wikipedia.org/wiki/Karl-Marx-Haus",
+      "photo": "KarlMarx.jpg"
+    },
+    {
+      "name": "Cité des Sciences et de l'Industrie",
+      "city": "Paris",
+      "lat": 48.895665,
+      "lon": 2.387578,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://en.wikipedia.org/wiki/Cit%C3%A9_des_Sciences_et_de_l%27Industrie",
+      "photo": "CitéDesSciences.jpg"
+    },
+    {
+      "name": "Brugge alley",
+      "city": "Brugge",
+      "lat": 51.207358,
+      "lon": 3.226935,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://en.wikipedia.org/wiki/Bruges",
+      "photo": "BruggeAlley.jpg"
+    },
+    {
+      "name": "Kölner Dom",
+      "city": "Cologne",
+      "lat": 50.941112,
+      "lon": 6.9573183,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://en.wikipedia.org/wiki/Cologne_Cathedral",
+      "photo": "KolnerDom.jpg"
+    },
+    {
       "name": "Atomium",
       "city": "Brussels",
       "lat": 50.89472,
