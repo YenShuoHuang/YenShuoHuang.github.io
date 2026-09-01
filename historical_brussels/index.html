@@ -142,10 +142,19 @@ const setSt = (txt, cnt='') => {
   document.getElementById('scnt').textContent = cnt;
 };
 
+// ── CARTO BASEMAP CONFIG ────────────────────────────────────────────────
+// CARTO now requires a free API key for their basemap tiles, or every tile
+// shows an "API key required" watermark. Get one (no approval queue) at:
+//   https://carto.com/basemaps/apikey
+// then paste it below.
+const CARTO_API_KEY = 'cb1_2qdi_1_8dbdf1051e32aeba0eb2636a';
+
 // ── MAP ───────────────────────────────────────────────────────────────────────
 function initMap() {
   map = L.map('map', {zoomControl:true}).setView([50.847, 4.352], 13);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  const keyParam = (CARTO_API_KEY && !CARTO_API_KEY.startsWith('PASTE_'))
+    ? `?key=${encodeURIComponent(CARTO_API_KEY)}` : '';
+  L.tileLayer(`https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png${keyParam}`, {
     attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
   }).addTo(map);
   cluster = L.markerClusterGroup({
