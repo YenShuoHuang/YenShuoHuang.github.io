@@ -6,137 +6,137 @@
     {
       "name": "Grand Place",
       "city": "Brussels",
-      "lat": 50.846615, 
+      "lat": 50.846615,
       "lon": 4.353485,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://en.wikipedia.org/wiki/Grand-Place",
-      "photo": "GrandPlace.jpg"
+      "photo": "GrandPlace.jpg",
+      "availability": "available"
     },
     {
       "name": "Fort Breendonk",
       "city": "Willebroek",
-      "lat": 51.057861, 
+      "lat": 51.057861,
       "lon": 4.341761,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://en.wikipedia.org/wiki/Fort_Breendonk",
-      "photo": "FortBreendonk.jpg"
+      "photo": "FortBreendonk.jpg",
+      "availability": "available"
     },
     {
       "name": "Train World",
       "city": "Brussels",
-      "lat": 50.878656, 
+      "lat": 50.878656,
       "lon": 4.380656,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://en.wikipedia.org/wiki/Train_World",
-      "photo": "Schaarbeek.jpg"
+      "photo": "Schaarbeek.jpg",
+      "availability": "available"
     },
     {
       "name": "Schloss Sigmarlingen",
       "city": "Sigmarlingen",
-      "lat": 48.087617, 
+      "lat": 48.087617,
       "lon": 9.216036,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://en.wikipedia.org/wiki/Sigmaringen_Castle",
-      "photo": "Sigmarlingen.jpg"
+      "photo": "Sigmarlingen.jpg",
+      "availability": "available"
     },
     {
       "name": "Ghent",
       "city": "Ghent",
-      "lat": 51.053125, 
-      "lon": 3.726110,
-      "note_code": "ZEKG / ZEAM",
+      "lat": 51.053125,
+      "lon": 3.72611,
       "wiki": "https://en.wikipedia.org/wiki/Ghent",
-      "photo": "Ghent.jpg"
+      "photo": "Ghent.jpg",
+      "availability": "available"
     },
     {
       "name": "Schloss Heidelberg",
       "city": "Heidelberg",
-      "lat": 49.409818, 
+      "lat": 49.409818,
       "lon": 8.714664,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://en.wikipedia.org/wiki/Heidelberg_Castle",
-      "photo": "SchlossHeidelberg.jpg"
+      "photo": "SchlossHeidelberg.jpg",
+      "availability": "available"
     },
     {
       "name": "Museum Karl-Marx-Haus",
       "city": "Trier",
-      "lat": 49.753917, 
+      "lat": 49.753917,
       "lon": 6.635789,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://de.wikipedia.org/wiki/Karl-Marx-Haus",
-      "photo": "KarlMarx.jpg"
+      "photo": "KarlMarx.jpg",
+      "availability": "available"
     },
     {
       "name": "Cité des Sciences et de l'Industrie",
       "city": "Paris",
       "lat": 48.895665,
       "lon": 2.387578,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://en.wikipedia.org/wiki/Cit%C3%A9_des_Sciences_et_de_l%27Industrie",
-      "photo": "CitéDesSciences.jpg"
+      "photo": "CitéDesSciences.jpg",
+      "availability": "available"
     },
     {
       "name": "Brugge alley",
       "city": "Brugge",
       "lat": 51.207358,
       "lon": 3.226935,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://en.wikipedia.org/wiki/Bruges",
-      "photo": "BruggeAlley.jpg"
+      "photo": "BruggeAlley.jpg",
+      "availability": "available"
     },
     {
       "name": "Kölner Dom",
       "city": "Cologne",
       "lat": 50.941112,
       "lon": 6.9573183,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://en.wikipedia.org/wiki/Cologne_Cathedral",
-      "photo": "KolnerDom.jpg"
+      "photo": "KolnerDom.jpg",
+      "availability": "available"
     },
     {
       "name": "Atomium",
       "city": "Brussels",
       "lat": 50.89472,
       "lon": 4.34111,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://en.wikipedia.org/wiki/Atomium",
-      "photo": "Atomium.jpg"
+      "photo": "Atomium.jpg",
+      "availability": "available"
     },
     {
       "name": "Hundertwasserhaus",
       "city": "Vienna",
       "lat": 48.207656,
       "lon": 16.393998,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://en.wikipedia.org/wiki/Hundertwasserhaus",
-      "photo": "Hundertwasserhaus.jpg"
+      "photo": "Hundertwasserhaus.jpg",
+      "availability": "available"
     },
     {
       "name": "La Conciergerie",
       "city": "Paris",
-      "lat": 48.856260,
+      "lat": 48.85626,
       "lon": 2.345571,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://en.wikipedia.org/wiki/Conciergerie",
-      "photo": "Conciergerie.jpg"
+      "photo": "Conciergerie.jpg",
+      "availability": "available"
     },
     {
       "name": "Château Comtal",
       "city": "Carcassonne",
       "lat": 43.207223,
       "lon": 2.363239,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://en.wikipedia.org/wiki/Cit%C3%A9_de_Carcassonne#Chateau_Comtal",
-      "photo": "Comtal.jpg"
+      "photo": "Comtal.jpg",
+      "availability": "available"
     },
     {
       "name": "Panthéon",
       "city": "Paris",
-      "lat": 48.84614, 
+      "lat": 48.84614,
       "lon": 2.346198,
-      "note_code": "ZEKG / ZEAM",
       "wiki": "https://en.wikipedia.org/wiki/Panth%C3%A9on",
-      "photo": "Panthéon.jpg"
+      "photo": "Panthéon.jpg",
+      "availability": "available"
     }
   ]
 }

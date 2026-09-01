@@ -56,11 +56,14 @@ html,body{height:100%;font-family:Georgia,serif;background:var(--bg);color:var(-
 .dtags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
 .tag{background:var(--s3);border:1px solid var(--b0);border-radius:5px;padding:3px 9px;font-size:11px;color:var(--tm);font-family:sans-serif}
 .tag.hi{border-color:var(--purple);color:var(--purpleD);background:var(--s2)}
+.tag.avail{border-color:#4a9e6f;color:#2f7a4d;background:#eaf6ee}
+.tag.hist{border-color:var(--td);color:var(--tm);background:var(--s3)}
 .dacts{display:flex;gap:8px;flex-wrap:wrap}
 .abtn{display:inline-flex;align-items:center;gap:5px;background:transparent;border:1px solid var(--b0);color:var(--tm);font-size:12px;padding:7px 12px;border-radius:var(--rs);cursor:pointer;font-family:sans-serif;transition:all .15s;text-decoration:none;white-space:nowrap}
 .abtn:hover{border-color:var(--purple);color:var(--purpleD)}
 .gpsdot{width:14px;height:14px;background:#4a9eff;border:2.5px solid white;border-radius:50%;box-shadow:0 0 0 5px rgba(74,158,255,.22)}
 .hpin{width:18px;height:18px;background:linear-gradient(135deg,var(--purpleL),var(--purple));border:2px solid #fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg);cursor:pointer;box-shadow:0 2px 6px rgba(75,37,104,.45)}
+.hpin.historical{background:linear-gradient(135deg,#c7c0d1,#9a8fae);opacity:.8}
 .hpin.zero::after{content:'€';position:absolute;left:0;top:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;transform:rotate(45deg);font-size:10px;font-weight:bold;color:#fff;font-family:sans-serif}
 .myCluster{background:linear-gradient(135deg,var(--purpleL),var(--purple));border:2px solid #fff;border-radius:50%;color:#fff;font-size:12px;font-family:sans-serif;font-weight:600;display:flex;align-items:center;justify-content:center;width:36px;height:36px;box-shadow:0 2px 8px rgba(75,37,104,.35)}
 .leaflet-popup-content-wrapper{background:var(--s1)!important;border:1px solid var(--b1)!important;border-radius:var(--rs)!important;color:var(--tx)!important;box-shadow:0 4px 20px rgba(75,37,104,.22)!important}
@@ -101,7 +104,11 @@ html,body{height:100%;font-family:Georgia,serif;background:var(--bg);color:var(-
     <div id="hdr-top">
       <h1>0€ Souvenir Map <span>official 0-euro banknote sale points across Europe</span></h1>
       <div id="hdr-right">
-        <div id="ctry"><button class="cb on" data-c="all">All</button></div>
+        <div id="ctry">
+          <button class="cb on" data-av="all">All</button>
+          <button class="cb" data-av="available">Available</button>
+          <button class="cb" data-av="historical">Historical</button>
+        </div>
         <div id="credit">by <a href="https://yenshuohuang.github.io/" target="_blank">Yen-Shuo Huang</a></div>
       </div>
     </div>
@@ -161,7 +168,7 @@ const CARTO_API_KEY = 'cb1_2qdi_1_8dbdf1051e32aeba0eb2636a';
 const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdkaznvFID_8HU2lMlu1C-8r_85Oxm9hBlzjynDIVwbtQQW3w/viewform?usp=dialog';
 const GOOGLE_FORM_ENTRY_COORDS = ''; // e.g. 'entry.111111111'
 
-let map, cluster, gpsMark = null, allSpots = [], activeCountry = 'all';
+let map, cluster, gpsMark = null, allSpots = [], activeAvailability = 'all';
 let pickMode = false, pickMarker = null;
 
 const setSt = (txt, cnt='') => {
@@ -170,7 +177,7 @@ const setSt = (txt, cnt='') => {
 };
 
 // ── MAP ───────────────────────────────────────────────────────────────────
-let pinIco, pickIco;
+let pinIco, histIco, pickIco;
 function initMap() {
   map = L.map('map', {zoomControl:true}).setView([50.0, 8.0], 5);
   const keyParam = (CARTO_API_KEY && !CARTO_API_KEY.startsWith('PASTE_'))
@@ -188,16 +195,33 @@ function initMap() {
   });
   map.addLayer(cluster);
   pinIco = L.divIcon({className:'', html:'<div class="hpin zero" style="position:relative"></div>', iconSize:[18,18], iconAnchor:[9,18]});
+  histIco = L.divIcon({className:'', html:'<div class="hpin zero historical" style="position:relative"></div>', iconSize:[18,18], iconAnchor:[9,18]});
   pickIco = L.divIcon({className:'', html:'<div class="pickpin"></div>', iconSize:[14,14], iconAnchor:[7,7]});
   map.on('click', e => { if (pickMode) placePick(e.latlng); });
 }
+
+// ── AVAILABILITY FILTER ─────────────────────────────────────────────────
+function getFilteredSpots() {
+  if (activeAvailability === 'all') return allSpots;
+  return allSpots.filter(s => (s.availability || 'available') === activeAvailability);
+}
+document.querySelectorAll('#ctry .cb').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#ctry .cb').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    activeAvailability = btn.dataset.av;
+    buildMarkers(getFilteredSpots());
+  });
+});
 
 // ── MARKERS ───────────────────────────────────────────────────────────────
 function buildMarkers(spots) {
   cluster.clearLayers();
   const ms = spots.map(s => {
-    const m = L.marker([s.lat, s.lon], {icon: pinIco});
-    m.bindPopup(`<div class="lpname">${s.name}</div><div class="lpaddr">${s.city||''}</div>`, {autoPan:false});
+    const isHist = (s.availability || 'available') === 'historical';
+    const m = L.marker([s.lat, s.lon], {icon: isHist ? histIco : pinIco});
+    const availLabel = isHist ? 'Historical' : 'Available';
+    m.bindPopup(`<div class="lpname">${s.name}</div><div class="lpaddr">${s.city||''} · ${availLabel}</div>`, {autoPan:false});
     m.on('click', () => showDetail(s));
     return m;
   });
@@ -224,17 +248,19 @@ function renderList(list, title) {
   if (!list.length) { el.innerHTML = `<div style="padding:16px;color:var(--tm);font-family:sans-serif;font-size:13px;">No spots found</div>`; return; }
   list.forEach(s => {
     const img = IMG_BASE + s.photo;
+    const isHist = (s.availability || 'available') === 'historical';
     const row = document.createElement('div'); row.className = 'bi';
     row.innerHTML = `
       <div class="bthumb"><img src="${img}" loading="lazy" onerror="this.parentElement.textContent='€'"></div>
-      <div class="binfo"><div class="bname">${s.name}</div><div class="bmeta">${s.city||''}</div></div>`;
+      <div class="binfo"><div class="bname">${s.name}</div><div class="bmeta">${s.city||''} · ${isHist ? 'Historical' : 'Available'}</div></div>`;
     row.addEventListener('click', () => showDetail(s));
     el.appendChild(row);
   });
 }
 
 function showNearby(lat, lng) {
-  const near = allSpots
+  const pool = getFilteredSpots();
+  const near = pool
     .map(s => ({s, d: hav(lat,lng,s.lat,s.lon)}))
     .sort((a,b) => a.d - b.d)
     .slice(0, 30);
@@ -249,12 +275,14 @@ function showDetail(s) {
   document.getElementById('addbox').style.display = 'none';
   const det = document.getElementById('bdet'); det.style.display = 'block';
   const img = IMG_BASE + s.photo;
+  const isHist = (s.availability || 'available') === 'historical';
   det.innerHTML = `
     <img class="dimg" src="${img}" loading="lazy" onerror="this.outerHTML='<div class=&quot;dnopic&quot;>€</div>'">
     <div class="dname">${s.name}</div>
-    <div class="daddr">${s.city||''}${s.note_code ? ' · note '+s.note_code : ''}</div>
+    <div class="daddr">${s.city||''}</div>
     <div class="dtags">
       <span class="tag hi">0€ Souvenir sale point</span>
+      <span class="tag ${isHist ? 'hist' : 'avail'}">${isHist ? 'Historical' : 'Currently available'}</span>
       ${s.city ? `<span class="tag">${s.city}</span>` : ''}
     </div>
     <div class="dacts">
@@ -268,7 +296,8 @@ function showDetail(s) {
 function doSearch() {
   const q = document.getElementById('sinput').value.trim().toLowerCase();
   if (!q) return;
-  const hits = allSpots.filter(s => [s.name, s.city].filter(Boolean).join(' ').toLowerCase().includes(q));
+  const pool = getFilteredSpots();
+  const hits = pool.filter(s => [s.name, s.city].filter(Boolean).join(' ').toLowerCase().includes(q));
   renderList(hits, `"${q}" — ${hits.length} result${hits.length===1?'':'s'}`);
   if (hits.length) map.setView([hits[0].lat, hits[0].lon], 12);
   setSt(hits.length ? 'Search results' : 'No matches', hits.length ? hits.length+' found' : '');
@@ -306,7 +335,7 @@ function setPickMode(on) {
   } else {
     if (pickMarker) { map.removeLayer(pickMarker); pickMarker = null; }
     document.getElementById('panel').classList.remove('open');
-    setSt('Ready — tap a pin or search', allSpots.length ? allSpots.length.toLocaleString() + ' spots' : '');
+    setSt('Ready — tap a pin or search', getFilteredSpots().length ? getFilteredSpots().length.toLocaleString() + ' spots' : '');
   }
 }
 document.getElementById('addBtn').addEventListener('click', () => setPickMode(true));
@@ -359,7 +388,7 @@ fetch('./spots.json')
   .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
   .then(data => {
     allSpots = data.spots || [];
-    buildMarkers(allSpots);
+    buildMarkers(getFilteredSpots());
   })
   .catch(e => setSt('Could not load data: ' + e.message, ''));
 </script>
