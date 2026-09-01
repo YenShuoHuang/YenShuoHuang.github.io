@@ -4,6 +4,42 @@
   "note": "Pilot batch. Locations verified against the 0-Euro-Souvenir collector registry (euro-souvenirscheine.de) which tracks every issued note and the site that sells it. Coordinates are the public entrance / main site location.",
   "spots": [
     {
+      "name": "Grand Place",
+      "city": "Brussels",
+      "lat": 50.846615, 
+      "lon": 4.353485,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://en.wikipedia.org/wiki/Grand-Place",
+      "photo": "GrandPlace.jpg"
+    },
+    {
+      "name": "Fort Breendonk",
+      "city": "Willebroek",
+      "lat": 51.057861, 
+      "lon": 4.341761,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://en.wikipedia.org/wiki/Fort_Breendonk",
+      "photo": "FortBreendonk.jpg"
+    },
+    {
+      "name": "Train World",
+      "city": "Brussels",
+      "lat": 50.878656, 
+      "lon": 4.380656,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://en.wikipedia.org/wiki/Train_World",
+      "photo": "Schaarbeek.jpg"
+    },
+    {
+      "name": "Schloss Sigmarlingen",
+      "city": "Sigmarlingen",
+      "lat": 48.087617, 
+      "lon": 9.216036,
+      "note_code": "ZEKG / ZEAM",
+      "wiki": "https://en.wikipedia.org/wiki/Sigmaringen_Castle",
+      "photo": "Sigmarlingen.jpg"
+    },
+    {
       "name": "Ghent",
       "city": "Ghent",
       "lat": 51.053125, 
