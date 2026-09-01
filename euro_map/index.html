@@ -140,6 +140,13 @@ html,body{height:100%;font-family:Georgia,serif;background:var(--bg);color:var(-
 <script>
 const IMG_BASE = './images/';
 
+// ── CARTO BASEMAP CONFIG ────────────────────────────────────────────────
+// CARTO now requires a free API key for their basemap tiles, or every tile
+// shows an "API key required" watermark. Get one (no approval queue) at:
+//   https://carto.com/basemaps/apikey
+// then paste it below.
+const CARTO_API_KEY = 'cb1_2qdi_1_8dbdf1051e32aeba0eb2636a';
+
 // ── GOOGLE FORM CONFIG ──────────────────────────────────────────────────
 // 1. Create a Google Form with fields: Spot name, City/Country, Coordinates
 //    (lat, lon), Photo upload (file-upload question), optional note.
@@ -164,7 +171,9 @@ const setSt = (txt, cnt='') => {
 let pinIco, pickIco;
 function initMap() {
   map = L.map('map', {zoomControl:true}).setView([50.0, 8.0], 5);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  const keyParam = (CARTO_API_KEY && !CARTO_API_KEY.startsWith('PASTE_'))
+    ? `?key=${encodeURIComponent(CARTO_API_KEY)}` : '';
+  L.tileLayer(`https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png${keyParam}`, {
     attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
   }).addTo(map);
   cluster = L.markerClusterGroup({
