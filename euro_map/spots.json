@@ -10,7 +10,8 @@
       "lon": 4.353485,
       "wiki": "https://en.wikipedia.org/wiki/Grand-Place",
       "photo": "GrandPlace.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "vending machine"
     },
     {
       "name": "Fort Breendonk",
@@ -19,7 +20,8 @@
       "lon": 4.341761,
       "wiki": "https://en.wikipedia.org/wiki/Fort_Breendonk",
       "photo": "FortBreendonk.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "vending machine"
     },
     {
       "name": "Train World",
@@ -28,7 +30,8 @@
       "lon": 4.380656,
       "wiki": "https://en.wikipedia.org/wiki/Train_World",
       "photo": "Schaarbeek.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "vending machine"
     },
     {
       "name": "Schloss Sigmarlingen",
@@ -37,7 +40,8 @@
       "lon": 9.216036,
       "wiki": "https://en.wikipedia.org/wiki/Sigmaringen_Castle",
       "photo": "Sigmarlingen.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "vending machine"
     },
     {
       "name": "Ghent",
@@ -46,7 +50,8 @@
       "lon": 3.72611,
       "wiki": "https://en.wikipedia.org/wiki/Ghent",
       "photo": "Ghent.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "vending machine"
     },
     {
       "name": "Schloss Heidelberg",
@@ -55,7 +60,8 @@
       "lon": 8.714664,
       "wiki": "https://en.wikipedia.org/wiki/Heidelberg_Castle",
       "photo": "SchlossHeidelberg.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "vending machine"
     },
     {
       "name": "Museum Karl-Marx-Haus",
@@ -64,7 +70,8 @@
       "lon": 6.635789,
       "wiki": "https://de.wikipedia.org/wiki/Karl-Marx-Haus",
       "photo": "KarlMarx.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "gift shop"
     },
     {
       "name": "Cité des Sciences et de l'Industrie",
@@ -73,7 +80,8 @@
       "lon": 2.387578,
       "wiki": "https://en.wikipedia.org/wiki/Cit%C3%A9_des_Sciences_et_de_l%27Industrie",
       "photo": "CitéDesSciences.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "vending machine"
     },
     {
       "name": "Brugge alley",
@@ -82,7 +90,8 @@
       "lon": 3.226935,
       "wiki": "https://en.wikipedia.org/wiki/Bruges",
       "photo": "BruggeAlley.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "vending machine"
     },
     {
       "name": "Kölner Dom",
@@ -91,7 +100,8 @@
       "lon": 6.9573183,
       "wiki": "https://en.wikipedia.org/wiki/Cologne_Cathedral",
       "photo": "KolnerDom.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "vending machine"
     },
     {
       "name": "Atomium",
@@ -100,7 +110,8 @@
       "lon": 4.34111,
       "wiki": "https://en.wikipedia.org/wiki/Atomium",
       "photo": "Atomium.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "gift shop"
     },
     {
       "name": "Hundertwasserhaus",
@@ -109,7 +120,8 @@
       "lon": 16.393998,
       "wiki": "https://en.wikipedia.org/wiki/Hundertwasserhaus",
       "photo": "Hundertwasserhaus.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "gift shop"
     },
     {
       "name": "La Conciergerie",
@@ -118,7 +130,8 @@
       "lon": 2.345571,
       "wiki": "https://en.wikipedia.org/wiki/Conciergerie",
       "photo": "Conciergerie.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "gift shop"
     },
     {
       "name": "Château Comtal",
@@ -127,7 +140,8 @@
       "lon": 2.363239,
       "wiki": "https://en.wikipedia.org/wiki/Cit%C3%A9_de_Carcassonne#Chateau_Comtal",
       "photo": "Comtal.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "gift shop"
     },
     {
       "name": "Panthéon",
@@ -136,7 +150,8 @@
       "lon": 2.346198,
       "wiki": "https://en.wikipedia.org/wiki/Panth%C3%A9on",
       "photo": "Panthéon.jpg",
-      "availability": "available"
+      "availability": "available",
+      "sell": "gift shop"
     }
   ]
 }

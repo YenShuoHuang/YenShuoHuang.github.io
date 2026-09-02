@@ -220,8 +220,8 @@ function buildMarkers(spots) {
   const ms = spots.map(s => {
     const isHist = (s.availability || 'available') === 'historical';
     const m = L.marker([s.lat, s.lon], {icon: isHist ? histIco : pinIco});
-    const availLabel = isHist ? 'Historical' : 'Available';
-    m.bindPopup(`<div class="lpname">${s.name}</div><div class="lpaddr">${s.city||''} · ${availLabel}</div>`, {autoPan:false});
+    const availLabel = isHist ? 'Historical' : 'Currently available';
+    m.bindPopup(`<div class="lpname">${s.name}</div><div class="lpaddr">${availLabel}${s.sell ? ' · '+s.sell : ''}</div>`, {autoPan:false});
     m.on('click', () => showDetail(s));
     return m;
   });
