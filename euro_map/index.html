@@ -281,10 +281,8 @@ function showDetail(s) {
     <div class="dname">${s.name}</div>
     <div class="daddr">${s.city||''}</div>
     <div class="dtags">
-      <span class="tag hi">0€ Souvenir sale point</span>
       <span class="tag ${isHist ? 'hist' : 'avail'}">${isHist ? 'Historical' : 'Currently available'}</span>
       ${s.sell ? `<span class="tag">${s.sell}</span>` : ''}
-      ${s.city ? `<span class="tag">${s.city}</span>` : ''}
     </div>
     <div class="dacts">
       ${s.wiki ? `<a class="abtn" href="${s.wiki}" target="_blank">⊞ Learn more</a>` : ''}
