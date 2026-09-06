@@ -93,8 +93,8 @@
       {
         "name": "Swarovski Kristallwelten",
         "city": "Wattens",
-        "lat": null,
-        "lon": null,
+        "lat": 47.293813,
+        "lon": 11.600754,
         "wiki": "https://en.wikipedia.org/wiki/Swarovski_Kristallwelten",
         "photo": "",
         "availability": "available",
@@ -104,8 +104,8 @@
       {
         "name": "Grossglockner Hochalpenstrasse",
         "city": "Grossglockner",
-        "lat": null,
-        "lon": null,
+        "lat": 47.081124,
+        "lon": 12.842791,
         "wiki": "https://en.wikipedia.org/wiki/Grossglockner_High_Alpine_Road",
         "photo": "",
         "availability": "available",

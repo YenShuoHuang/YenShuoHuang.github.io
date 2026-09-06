@@ -381,13 +381,38 @@ document.getElementById('pcls').addEventListener('click', () => {
 });
 
 // ── BOOT ──────────────────────────────────────────────────────────────────
+// spots.json is now grouped by country, e.g.:
+//   { "generated": "...", "Austria": { "spots": [...] }, "Belgium": {...}, ... }
+// Each spot no longer carries its own "country" key (it's implied by the
+// group), so we tag it back on while flattening into one array. Spots whose
+// coordinates haven't been filled in yet (lat/lon === null, still pending
+// manual verification) are counted but excluded from the map itself.
+function flattenSpots(data) {
+  const flat = [];
+  Object.keys(data).forEach(key => {
+    if (key === 'generated') return;
+    const group = data[key];
+    if (group && Array.isArray(group.spots)) {
+      group.spots.forEach(s => flat.push(Object.assign({}, s, { country: s.country || key })));
+    }
+  });
+  return flat;
+}
+
 initMap();
 setSt('Loading spots…', '');
 fetch('./spots.json')
   .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
   .then(data => {
-    allSpots = data.spots || [];
+    const flat = flattenSpots(data);
+    const withCoords = flat.filter(s => typeof s.lat === 'number' && typeof s.lon === 'number');
+    const pending = flat.length - withCoords.length;
+    allSpots = withCoords;
     buildMarkers(getFilteredSpots());
+    setSt(
+      'Ready — tap a pin or search',
+      withCoords.length.toLocaleString() + ' spots' + (pending ? ` · ${pending.toLocaleString()} pending coordinates` : '')
+    );
   })
   .catch(e => setSt('Could not load data: ' + e.message, ''));
 </script>
