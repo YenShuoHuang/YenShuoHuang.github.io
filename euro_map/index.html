@@ -113,7 +113,7 @@ html,body{height:100%;font-family:Georgia,serif;background:var(--bg);color:var(-
       </div>
     </div>
     <div id="srow">
-      <input id="sinput" type="text" placeholder="Search name or city…" autocomplete="off"/>
+      <input id="sinput" type="text" placeholder="Search name, city or country…" autocomplete="off"/>
       <button class="ibtn" id="sbtn">Search</button>
       <button class="ibtn" id="locbtn">&#9654;</button>
     </div>
@@ -252,7 +252,7 @@ function renderList(list, title) {
     const row = document.createElement('div'); row.className = 'bi';
     row.innerHTML = `
       <div class="bthumb"><img src="${img}" loading="lazy" onerror="this.parentElement.textContent='€'"></div>
-      <div class="binfo"><div class="bname">${s.name}</div><div class="bmeta">${s.city||''} · ${isHist ? 'Historical' : 'Available'}</div></div>`;
+      <div class="binfo"><div class="bname">${s.name}</div><div class="bmeta">${[s.city, s.country].filter(Boolean).join(', ')} · ${isHist ? 'Historical' : 'Available'}</div></div>`;
     row.addEventListener('click', () => showDetail(s));
     el.appendChild(row);
   });
@@ -279,7 +279,7 @@ function showDetail(s) {
   det.innerHTML = `
     <img class="dimg" src="${img}" loading="lazy" onerror="this.outerHTML='<div class=&quot;dnopic&quot;>€</div>'">
     <div class="dname">${s.name}</div>
-    <div class="daddr">${s.city||''}</div>
+    <div class="daddr">${[s.city, s.country].filter(Boolean).join(', ')}</div>
     <div class="dtags">
       <span class="tag ${isHist ? 'hist' : 'avail'}">${isHist ? 'Historical' : 'Currently available'}</span>
       ${s.sell ? `<span class="tag">${s.sell}</span>` : ''}
@@ -296,7 +296,7 @@ function doSearch() {
   const q = document.getElementById('sinput').value.trim().toLowerCase();
   if (!q) return;
   const pool = getFilteredSpots();
-  const hits = pool.filter(s => [s.name, s.city].filter(Boolean).join(' ').toLowerCase().includes(q));
+  const hits = pool.filter(s => [s.name, s.city, s.country].filter(Boolean).join(' ').toLowerCase().includes(q));
   renderList(hits, `"${q}" — ${hits.length} result${hits.length===1?'':'s'}`);
   if (hits.length) map.setView([hits[0].lat, hits[0].lon], 12);
   setSt(hits.length ? 'Search results' : 'No matches', hits.length ? hits.length+' found' : '');
