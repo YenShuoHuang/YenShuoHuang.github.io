@@ -805,9 +805,9 @@
       {
         "name": "Lascaux",
         "city": "Montignac",
-        "lat": null,
-        "lon": null,
-        "wiki": "",
+        "lat": 45.0582115,
+        "lon": 1.1696989,
+        "wiki": "https://en.wikipedia.org/wiki/Lascaux",
         "photo": "",
         "availability": "available",
         "sell": "unknown",
@@ -816,9 +816,9 @@
       {
         "name": "Filitosa",
         "city": "Corsica",
-        "lat": null,
-        "lon": null,
-        "wiki": "",
+        "lat": 41.74490177,
+        "lon": 8.8703065,
+        "wiki": "https://en.wikipedia.org/wiki/Filitosa",
         "photo": "",
         "availability": "available",
         "sell": "unknown",
@@ -3346,6 +3346,219 @@
         "availability": "available",
         "sell": "unknown",
         "code": "XEGZ"
+      }
+    ]
+  },
+   "Switzerland": {
+    "spots": [
+      {
+        "name": "Barryland - Musée et Chiens du Saint-Bernard",
+        "city": "Martigny",
+        "lat": 46.09521609,
+        "lon": 7.0739911,
+        "wiki": "https://fr.wikipedia.org/wiki/Barryland_-_Musée_et_chiens_du_Saint-Bernard",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHAB"
+      },
+      {
+        "name": "Swiss Vapeur Parc",
+        "city": "Le Bouveret",
+        "lat": 6.857505,
+        "lon": 46.385072,
+        "wiki": "https://en.wikipedia.org/wiki/Swiss_Vapeur_Parc",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHAF"
+      },
+      {
+        "name": "Aquatis",
+        "city": "Lausanne",
+        "lat": 46.540813448,
+        "lon": 6.6570676,
+        "wiki": "https://fr.wikipedia.org/wiki/Aquatis",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHAH"
+      },
+      {
+        "name": "Relais du Saint Bernard",
+        "city": "Bourg-Saint-Pierre",
+        "lat": 46.1267895,
+        "lon": 7.0604271,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHAM"
+      },
+      {
+        "name": "International Museum of Horology",
+        "city": "La Chaux-de-Fonds",
+        "lat": 47.100665,
+        "lon": 6.8304925,
+        "wiki": "https://en.wikipedia.org/wiki/International_Museum_of_Horology",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHAT"
+      },
+      {
+        "name": "Queen The Studio Experience",
+        "city": "Montreux",
+        "lat": 46.4297645,
+        "lon": 6.9115176,
+        "wiki": "https://en.wikipedia.org/wiki/Queen:_The_Studio_Experience",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHAU"
+      },
+      {
+        "name": "Lausanne Cathedral",
+        "city": "Lausanne",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Lausanne_Cathedral",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHAV"
+      },
+      {
+        "name": "Karting Vuiteboeuf",
+        "city": "Vuiteboeuf",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHAW"
+      },
+      {
+        "name": "Gornergrat",
+        "city": "Zermatt",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Gornergrat_Railway",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHAX"
+      },
+      {
+        "name": "Matterhorn Glacier Paradise",
+        "city": "Zermatt",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Klein_Matterhorn",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHAX"
+      },
+      {
+        "name": "Stanserhorn",
+        "city": "Stans",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Stanserhorn",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHAY"
+      },
+      {
+        "name": "Grottes de Vallorbe",
+        "city": "Vallorbe",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://fr.wikipedia.org/wiki/Grottes_de_Vallorbe",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHBB"
+      },
+      {
+        "name": "Rhine Falls",
+        "city": "Neuhausen am Rheinfall",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Rhine_Falls",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHBC"
+      },
+      {
+        "name": "Stockhorn",
+        "city": "Erlenbach im Simmental",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Stockhorn",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHBF"
+      },
+      {
+        "name": "Aquaparc",
+        "city": "Le Bouveret",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHBG"
+      },
+      {
+        "name": "Alimentarium",
+        "city": "Vevey",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Alimentarium",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHBM"
+      },
+      {
+        "name": "Saint-Léonard Underground Lake",
+        "city": "Saint-Léonard",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Saint-Léonard_underground_lake",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHBZ"
+      },
+      {
+        "name": "Chillon Castle",
+        "city": "Veytaux",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Chillon_Castle",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHCG"
+      },
+      {
+        "name": "Knie's Kinderzoo",
+        "city": "Rapperswil",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Knie's_Kinderzoo",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "CHCM"
       }
     ]
   }
