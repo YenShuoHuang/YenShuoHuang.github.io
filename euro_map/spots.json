@@ -1322,9 +1322,9 @@
       {
         "name": "Cerza Parc Zoologique",
         "city": "Lisieux",
-        "lat": null,
-        "lon": null,
-        "wiki": "",
+        "lat": 49.18214,
+        "lon": 0.31190,
+        "wiki": "https://fr.wikipedia.org/wiki/Cerza",
         "photo": "",
         "availability": "available",
         "sell": "unknown",
