@@ -1309,22 +1309,11 @@
         "code": "UEDM"
       },
       {
-        "name": "Aquarium de Vannes",
-        "city": "Vannes",
-        "lat": null,
-        "lon": null,
-        "wiki": "",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "UEDP"
-      },
-      {
         "name": "Parc du Petit Prince",
         "city": "Ungersheim",
-        "lat": null,
-        "lon": null,
-        "wiki": "",
+        "lat": 47.861427,
+        "lon": 7.297649,
+        "wiki": "https://en.wikipedia.org/wiki/Parc_du_Petit_Prince",
         "photo": "",
         "availability": "available",
         "sell": "unknown",
@@ -3281,7 +3270,7 @@
         "lon": 12.4921,
         "wiki": "https://en.wikipedia.org/wiki/Colosseum",
         "photo": "",
-        "availability": "unavailable",
+        "availability": "historical",
         "sell": "unknown",
         "code": "SEAY"
       }
