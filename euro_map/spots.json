@@ -1696,9 +1696,9 @@
       {
         "name": "Abbaye de Jumièges",
         "city": "Jumièges",
-        "lat": null,
-        "lon": null,
-        "wiki": "",
+        "lat": 49.4318677,
+        "lon": 0.8178147,
+        "wiki": "https://en.wikipedia.org/wiki/Jumi%C3%A8ges_Abbey",
         "photo": "",
         "availability": "available",
         "sell": "unknown",
@@ -3204,8 +3204,8 @@
       {
         "name": "Swiss Vapeur Parc",
         "city": "Le Bouveret",
-        "lat": 6.857505,
-        "lon": 46.385072,
+        "lat": 46.385072,
+        "lon": 6.857505,
         "wiki": "https://en.wikipedia.org/wiki/Swiss_Vapeur_Parc",
         "photo": "",
         "availability": "available",
