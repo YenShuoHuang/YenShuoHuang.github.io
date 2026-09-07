@@ -3272,6 +3272,21 @@
       }
     ]
   },
+  "Italy": {
+    "spots": [
+      {
+        "name": "Rome Colosseum",
+        "city": "Rome",
+        "lat": 41.8897379,
+        "lon": 12.4921,
+        "wiki": "https://en.wikipedia.org/wiki/Colosseum",
+        "photo": "",
+        "availability": "unavailable",
+        "sell": "unknown",
+        "code": "SEAY"
+      }
+	]
+  },
    "Switzerland": {
     "spots": [
       {
