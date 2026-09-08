@@ -4530,6 +4530,113 @@
       }
 	]
   },
+  "Netherlands": {
+    "spots": [
+      {
+        "name": "Attractiepark Slagharen",
+        "city": "Slagharen",
+        "lat": 52.621864,
+        "lon": 6.56414,
+        "wiki": "https://en.wikipedia.org/wiki/Attractiepark_Slagharen",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "PEAA"
+      },
+      {
+        "name": "Wouda Pumping Station (Woudagemaal)",
+        "city": "Lemmer",
+        "lat": 52.84635,
+        "lon": 5.67960,
+        "wiki": "https://en.wikipedia.org/wiki/Wouda_pumping_station",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "PEAE"
+      },
+      {
+        "name": "Keukenhof",
+        "city": "Lisse",
+        "lat": 52.267768,
+        "lon": 4.54018,
+        "wiki": "https://en.wikipedia.org/wiki/Keukenhof",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "PEAJ"
+      },
+      {
+        "name": "Royal Palace of Amsterdam",
+        "city": "Amsterdam",
+        "lat": 52.37316,
+        "lon": 4.891576,
+        "wiki": "https://en.wikipedia.org/wiki/Royal_Palace_of_Amsterdam",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "PEAK"
+      },
+      {
+        "name": "Westkapelle Hoge Licht (Lighthouse)",
+        "city": "Westkapelle",
+        "lat": 51.52919,
+        "lon": 3.447169,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "PECC"
+      },
+      {
+        "name": "Amsterdam Westertoren",
+        "city": "Amsterdam",
+        "lat": 52.37462,
+        "lon": 4.88360,
+        "wiki": "https://en.wikipedia.org/wiki/Westerkerk",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "PECE"
+      }
+    ]
+  },
+  "Luxembourg": {
+    "spots": [
+      {
+        "name": "Bourscheid Castle",
+        "city": "Bourscheid",
+        "lat": 49.90578,
+        "lon": 6.07970,
+        "wiki": "https://en.wikipedia.org/wiki/Bourscheid_Castle",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "REAB"
+      },
+      {
+        "name": "Vianden Castle",
+        "city": "Vianden",
+        "lat": 49.93478,
+        "lon": 6.20270,
+        "wiki": "https://en.wikipedia.org/wiki/Vianden_Castle",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "REAC"
+      },
+      {
+        "name": "European Museum Schengen",
+        "city": "Schengen",
+        "lat": 49.47081,
+        "lon": 6.366319,
+        "wiki": "https://de.wikipedia.org/wiki/Europäisches_Museum_Schengen",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "ZEAH"
+      }
+    ]
+  },
    "Switzerland": {
     "spots": [
       {
