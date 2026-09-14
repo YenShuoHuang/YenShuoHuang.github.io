@@ -4087,12 +4087,12 @@
       {
         "name": "Botanischer Garten Wuppertal",
         "city": "Wuppertal",
-        "lat": 51.2599,
-        "lon": 7.16038,
+        "lat": 51.26056,
+        "lon": 7.160629,
         "wiki": "https://en.wikipedia.org/wiki/Botanischer_Garten_Wuppertal",
-        "photo": "",
+        "photo": "BotanischerGartenWuppertal.jpg",
         "availability": "available",
-        "sell": "unknown",
+        "sell": "vending machine",
         "code": "XEGY"
       },
       {
@@ -4362,8 +4362,8 @@
     {
       "name": "Aachen Cathedral",
       "city": "Aachen",
-      "lat": null,
-      "lon": null,
+      "lat": 50.77576,
+      "lon": 6.083436,
       "wiki": "",
       "photo": "",
       "availability": "available",
@@ -4534,17 +4534,6 @@
       "availability": "available",
       "sell": "unknown",
       "code": "XELM"
-    },
-    {
-      "name": "Barmer Bergbahn",
-      "city": "Wuppertal",
-      "lat": null,
-      "lon": null,
-      "wiki": "",
-      "photo": "",
-      "availability": "available",
-      "sell": "unknown",
-      "code": "XELQ"
     },
     {
       "name": "Festung Ehrenbreitstein",
@@ -4868,10 +4857,10 @@
     {
       "name": "Wuppertaler Schwebebahn",
       "city": "Wuppertal",
-      "lat": null,
-      "lon": null,
+      "lat": 51.2559459,
+      "lon": 7.149157,
       "wiki": "",
-      "photo": "",
+      "photo": "WuppertalerSchwebebahn.jpg",
       "availability": "available",
       "sell": "unknown",
       "code": "XEPD"
