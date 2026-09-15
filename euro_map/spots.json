@@ -3103,7 +3103,7 @@
         "photo": "KolnerDom.jpg",
         "availability": "available",
         "sell": "vending machine",
-        "code": "XEBJ"
+        "code": "XEHH"
       },
       {
         "name": "Marksburg",
@@ -4109,9 +4109,9 @@
     {
       "name": "Wartburg",
       "city": "Eisenach",
-      "lat": null,
-      "lon": null,
-      "wiki": "",
+      "lat": 50.966713,
+      "lon": 10.30639,
+      "wiki": "https://en.wikipedia.org/wiki/Wartburg",
       "photo": "",
       "availability": "available",
       "sell": "unknown",
@@ -4120,8 +4120,8 @@
     {
       "name": "Europa-Rosarium Sangerhausen",
       "city": "Sangerhausen",
-      "lat": null,
-      "lon": null,
+      "lat": 51.4732729,
+      "lon": 11.314827,
       "wiki": "",
       "photo": "",
       "availability": "available",
@@ -4129,33 +4129,11 @@
       "code": "XEHC"
     },
     {
-      "name": "Cologne Cathedral",
-      "city": "Cologne",
-      "lat": null,
-      "lon": null,
-      "wiki": "",
-      "photo": "",
-      "availability": "available",
-      "sell": "unknown",
-      "code": "XEHH"
-    },
-    {
-      "name": "Drei Gleichen (Burgen)",
-      "city": "Wandersleben",
-      "lat": null,
-      "lon": null,
-      "wiki": "",
-      "photo": "",
-      "availability": "available",
-      "sell": "unknown",
-      "code": "XEHM"
-    },
-    {
       "name": "Wormser Dom",
       "city": "Worms",
-      "lat": null,
-      "lon": null,
-      "wiki": "",
+      "lat": 49.629827,
+      "lon": 8.360400,
+      "wiki": "https://en.wikipedia.org/wiki/Worms_Cathedral",
       "photo": "",
       "availability": "available",
       "sell": "unknown",
@@ -4164,31 +4142,20 @@
     {
       "name": "BMW Museum",
       "city": "Munich",
-      "lat": null,
-      "lon": null,
-      "wiki": "",
+      "lat": 48.1766679,
+      "lon": 11.559076,
+      "wiki": "https://en.wikipedia.org/wiki/BMW_Museum",
       "photo": "",
       "availability": "available",
       "sell": "unknown",
       "code": "XEHS"
     },
     {
-      "name": "Little BIG City Berlin",
-      "city": "Berlin",
-      "lat": null,
-      "lon": null,
-      "wiki": "",
-      "photo": "",
-      "availability": "available",
-      "sell": "unknown",
-      "code": "XEHW"
-    },
-    {
       "name": "Merseburger Dom",
       "city": "Merseburg",
-      "lat": null,
-      "lon": null,
-      "wiki": "",
+      "lat": 51.35857,
+      "lon": 12.00067,
+      "wiki": "https://en.wikipedia.org/wiki/Merseburg_Cathedral",
       "photo": "",
       "availability": "available",
       "sell": "unknown",
