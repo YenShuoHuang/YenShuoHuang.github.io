@@ -4901,8 +4901,8 @@
     {
       "name": "Legoland Discovery Centre Oberhausen",
       "city": "Oberhausen",
-      "lat": null,
-      "lon": null,
+      "lat": 51.4931025,
+      "lon": 6.8792869,
       "wiki": "",
       "photo": "",
       "availability": "available",
@@ -4912,8 +4912,8 @@
     {
       "name": "Phänomenta",
       "city": "Flensburg",
-      "lat": null,
-      "lon": null,
+      "lat": 51.221596,
+      "lon": 7.628444,
       "wiki": "",
       "photo": "",
       "availability": "available",
@@ -4923,12 +4923,12 @@
     {
       "name": "Kloster Birnau",
       "city": "Uhldingen-Mühlhofen",
-      "lat": null,
-      "lon": null,
-      "wiki": "",
-      "photo": "",
+      "lat": 47.745691,
+      "lon": 9.2197289,
+      "wiki": "https://de.wikipedia.org/wiki/Wallfahrtskirche_Birnau",
+      "photo": "KlosterBirnau.png",
       "availability": "available",
-      "sell": "unknown",
+      "sell": "gift shop",
       "code": "XERC"
     },
     {
