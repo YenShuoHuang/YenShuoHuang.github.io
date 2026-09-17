@@ -5905,21 +5905,10 @@
         "code": "SECQ"
       },
       {
-        "name": "Autodromo Enzo e Dino Ferrari",
-        "city": "Imola",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Autodromo_Enzo_e_Dino_Ferrari",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SECQ"
-      },
-      {
         "name": "Galleria dell'Accademia (David)",
         "city": "Florence",
-        "lat": null,
-        "lon": null,
+        "lat": 43.776802,
+        "lon": 11.258631,
         "wiki": "https://en.wikipedia.org/wiki/Galleria_dell'Accademia",
         "photo": "",
         "availability": "available",
@@ -5929,8 +5918,8 @@
       {
         "name": "Certosa di Pavia",
         "city": "Pavia",
-        "lat": null,
-        "lon": null,
+        "lat": 45.256985,
+        "lon": 9.147808,
         "wiki": "https://en.wikipedia.org/wiki/Certosa_di_Pavia",
         "photo": "",
         "availability": "available",
@@ -5938,32 +5927,10 @@
         "code": "SECT"
       },
       {
-        "name": "Sanctuary of San Pio (Padre Pio)",
-        "city": "San Giovanni Rotondo",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/San_Giovanni_Rotondo",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SECU"
-      },
-      {
-        "name": "Lake Como",
-        "city": "Lake Como",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Lake_Como",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SEDP"
-      },
-      {
         "name": "Castel Sant'Angelo",
         "city": "Rome",
-        "lat": null,
-        "lon": null,
+        "lat": 41.902877,
+        "lon": 12.466346,
         "wiki": "https://en.wikipedia.org/wiki/Castel_Sant'Angelo",
         "photo": "",
         "availability": "available",
@@ -5971,10 +5938,10 @@
         "code": "SEDR"
       },
       {
-        "name": "Royal Palace of Caserta",
+        "name": "Reggia di Caserta",
         "city": "Caserta",
-        "lat": null,
-        "lon": null,
+        "lat": 41.072493,
+        "lon": 14.327178,
         "wiki": "https://en.wikipedia.org/wiki/Royal_Palace_of_Caserta",
         "photo": "",
         "availability": "available",
@@ -5982,10 +5949,10 @@
         "code": "SEDS"
       },
       {
-        "name": "Verona Arena",
+        "name": "Arena di Verona",
         "city": "Verona",
-        "lat": null,
-        "lon": null,
+        "lat": 45.438053,
+        "lon": 10.993860,
         "wiki": "https://en.wikipedia.org/wiki/Verona_Arena",
         "photo": "",
         "availability": "available",
@@ -5993,32 +5960,10 @@
         "code": "SEDU"
       },
       {
-        "name": "Brescia Castle",
-        "city": "Brescia",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Brescia_Castle",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SEDV"
-      },
-      {
-        "name": "Cinque Terre",
-        "city": "Cinque Terre",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Cinque_Terre",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SEEA"
-      },
-      {
         "name": "Pantheon",
         "city": "Rome",
-        "lat": null,
-        "lon": null,
+        "lat": 41.898966,
+        "lon": 12.476905,
         "wiki": "https://en.wikipedia.org/wiki/Pantheon,_Rome",
         "photo": "",
         "availability": "available",
@@ -6026,32 +5971,10 @@
         "code": "SEEC"
       },
       {
-        "name": "Lake Maggiore",
-        "city": "Lake Maggiore",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Lake_Maggiore",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SEEH"
-      },
-      {
-        "name": "Trevi Fountain",
-        "city": "Rome",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Trevi_Fountain",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SEEJ"
-      },
-      {
         "name": "San Siro Stadium",
         "city": "Milan",
-        "lat": null,
-        "lon": null,
+        "lat": 45.47711,
+        "lon": 9.123437,
         "wiki": "https://en.wikipedia.org/wiki/San_Siro",
         "photo": "",
         "availability": "available",
@@ -6059,10 +5982,10 @@
         "code": "SEFA"
       },
       {
-        "name": "Capitolium of Brescia",
+        "name": "Tempio Capitolino (Capitolium)",
         "city": "Brescia",
-        "lat": null,
-        "lon": null,
+        "lat": 45.540037,
+        "lon": 10.225718,
         "wiki": "https://en.wikipedia.org/wiki/Capitolium_(Brescia)",
         "photo": "",
         "availability": "available",
