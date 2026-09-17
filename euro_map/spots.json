@@ -5759,6 +5759,65 @@
 	  
     ]
   },
+  "Great Britain": {
+    "spots": [
+      {
+        "name": "King's College Chapel",
+        "city": "Cambridge",
+        "lat": 52.204831,
+        "lon": 0.118989,
+        "wiki": "https://en.wikipedia.org/wiki/King's_College_Chapel,_Cambridge",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "GBAD"
+      },
+      {
+        "name": "Old Trafford Cricket Ground",
+        "city": "Manchester",
+        "lat": 53.457021,
+        "lon": -2.287843,
+        "wiki": "https://en.wikipedia.org/wiki/Old_Trafford_Cricket_Ground",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "GBAH"
+      },
+      {
+        "name": "Sea Life Scarborough",
+        "city": "Scarborough",
+        "lat": 54.301287,
+        "lon": -0.410038,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "GBAL"
+      },
+      {
+        "name": "Nothe Fort",
+        "city": "Weymouth",
+        "lat": 50.607567,
+        "lon": -2.444461,
+        "wiki": "https://en.wikipedia.org/wiki/Nothe_Fort",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "GBAW"
+      },
+      {
+        "name": "Tower Bridge",
+        "city": "London",
+        "lat": 51.504271,
+        "lon": -0.076343,
+        "wiki": "https://en.wikipedia.org/wiki/Tower_Bridge",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "GBAZ"
+      }
+    ]
+  },
   "Italy": {
     "spots": [
       {
@@ -5848,17 +5907,6 @@
         "availability": "available",
         "sell": "unknown",
         "code": "SEBP"
-      },
-      {
-        "name": "Ponte Vecchio",
-        "city": "Florence",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Ponte_Vecchio",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SEBR"
       },
       {
         "name": "Basilica Papale e Sacro Convento di San Francesco in Assisi",
