@@ -5756,7 +5756,6 @@
       "sell": "unknown",
       "code": "XEZZ"
     }
-	  
     ]
   },
   "Great Britain": {
@@ -6146,6 +6145,384 @@
         "availability": "available",
         "sell": "unknown",
         "code": "ZEAH"
+      }
+    ]
+  },
+  "Spain": {
+    "spots": [
+      {
+        "name": "Acueducto de Segovia",
+        "city": "Segovia",
+        "lat": 40.948057,
+        "lon": -4.118331,
+        "wiki": "https://en.wikipedia.org/wiki/Aqueduct_of_Segovia",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEAA"
+      },
+      {
+        "name": "Plaza de Toros de Las Ventas",
+        "city": "Madrid",
+        "lat": 40.432983,
+        "lon": -3.663487,
+        "wiki": "https://en.wikipedia.org/wiki/Las_Ventas",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEAB"
+      },
+      {
+        "name": "Zoo Aquarium de Madrid",
+        "city": "Madrid",
+        "lat": 40.409054,
+        "lon": -3.761214,
+        "wiki": "https://en.wikipedia.org/wiki/Zoo_Aquarium_de_Madrid",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEAE"
+      },
+      {
+        "name": "Teleférico de Benalmádena",
+        "city": "Benalmádena",
+        "lat": 36.616589,
+        "lon": -4.559566,
+        "wiki": "https://en.wikipedia.org/wiki/Teleférico_Benalmádena",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEAF"
+      },
+      {
+        "name": "Parque Warner Madrid",
+        "city": "San Martín de la Vega",
+        "lat": 40.229089,
+        "lon": -3.592920,
+        "wiki": "https://en.wikipedia.org/wiki/Parque_Warner_Madrid",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEAG"
+      },
+      {
+        "name": "Camp Nou",
+        "city": "Barcelona",
+        "lat": 41.380195,
+        "lon": 2.120868,
+        "wiki": "https://en.wikipedia.org/wiki/Camp_Nou",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEAH"
+      },
+      {
+        "name": "Selwo Marina",
+        "city": "Benalmádena",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEAM"
+      },
+      {
+        "name": "Faunia",
+        "city": "Madrid",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Faunia",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEAP"
+      },
+      {
+        "name": "Bioparc Valencia",
+        "city": "Valencia",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Bioparc_Valencia",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEAS"
+      },
+      {
+        "name": "Alcázar of Segovia",
+        "city": "Segovia",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Alcázar_of_Segovia",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEBA"
+      },
+      {
+        "name": "La Giralda (Seville Cathedral)",
+        "city": "Seville",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Giralda",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEBG"
+      },
+      {
+        "name": "Roman Theatre of Cartagena",
+        "city": "Cartagena",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Roman_Theatre_of_Cartagena",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEBH"
+      },
+      {
+        "name": "Episcopal Palace of Astorga",
+        "city": "Astorga",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Episcopal_Palace,_Astorga",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEBK"
+      },
+      {
+        "name": "Sea Life Benalmádena",
+        "city": "Benalmádena",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEBL"
+      },
+      {
+        "name": "Setenil de las Bodegas",
+        "city": "Setenil de las Bodegas",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Setenil_de_las_Bodegas",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEBQ"
+      },
+      {
+        "name": "Parque Europa",
+        "city": "Torrejón de Ardoz",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEBS"
+      },
+      {
+        "name": "Sagrada Família",
+        "city": "Barcelona",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Sagrada_Família",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEBT"
+      },
+      {
+        "name": "PortAventura - Nickelodeon Land",
+        "city": "Salou",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/PortAventura_Park",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEBU"
+      },
+      {
+        "name": "Santuario de Covadonga",
+        "city": "Covadonga",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Covadonga",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEBY"
+      },
+      {
+        "name": "Alhambra",
+        "city": "Granada",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Alhambra",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VECP"
+      },
+      {
+        "name": "Puente Nuevo de Ronda",
+        "city": "Ronda",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Puente_Nuevo",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VECQ"
+      },
+      {
+        "name": "Plaza de Toros de Ronda",
+        "city": "Ronda",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Plaza_de_Toros_de_la_Real_Maestranza_de_Caballería_de_Ronda",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VECQ"
+      },
+      {
+        "name": "Selwo Aventura",
+        "city": "Estepona",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VECS"
+      },
+      {
+        "name": "Isla Mágica",
+        "city": "Seville",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Isla_Mágica",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VECV"
+      },
+      {
+        "name": "Granada Cathedral",
+        "city": "Granada",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Granada_Cathedral",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEDD"
+      },
+      {
+        "name": "Catalunya en Miniatura",
+        "city": "Torrelles de Llobregat",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEDH"
+      },
+      {
+        "name": "Loarre Castle",
+        "city": "Loarre",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Loarre_Castle",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEDQ"
+      },
+      {
+        "name": "Casa Batlló",
+        "city": "Barcelona",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Casa_Batlló",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEEE"
+      },
+      {
+        "name": "Es Vedrà",
+        "city": "Ibiza",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Es_Vedrà",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEEP"
+      },
+      {
+        "name": "Mini Hollywood (Oasys)",
+        "city": "Tabernas",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Mini_Hollywood",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEEQ"
+      },
+      {
+        "name": "Walls of Ávila",
+        "city": "Ávila",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Walls_of_Ávila",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEEX"
+      },
+      {
+        "name": "Museo del Ferrocarril de Madrid",
+        "city": "Madrid",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Railway_Museum_of_Madrid",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEFH"
+      },
+      {
+        "name": "Madrid Atocha Station",
+        "city": "Madrid",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Madrid_Atocha_railway_station",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEGD"
+      },
+      {
+        "name": "Valladolid Cathedral",
+        "city": "Valladolid",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Valladolid_Cathedral",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "VEGJ"
       }
     ]
   },
