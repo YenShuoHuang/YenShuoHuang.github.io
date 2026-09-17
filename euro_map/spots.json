@@ -5762,7 +5762,7 @@
   "Italy": {
     "spots": [
       {
-        "name": "Rome Colosseum",
+        "name": "Roma Colosseum",
         "city": "Rome",
         "lat": 41.8897379,
         "lon": 12.4921,
@@ -5775,8 +5775,8 @@
 	  {
         "name": "Galleria Vittorio Emanuele II",
         "city": "Milan",
-        "lat": null,
-        "lon": null,
+        "lat": 45.464917,
+        "lon": 9.190056,
         "wiki": "https://en.wikipedia.org/wiki/Galleria_Vittorio_Emanuele_II",
         "photo": "",
         "availability": "available",
@@ -5784,10 +5784,10 @@
         "code": "SEAB"
       },
       {
-        "name": "Mausoleo Serbelloni",
+        "name": "Chiesa Parrocchiale dei SS. MM. Protaso e Gervaso",
         "city": "Gorgonzola",
-        "lat": null,
-        "lon": null,
+        "lat": 45.531097,
+        "lon": 9.408656,
         "wiki": "",
         "photo": "",
         "availability": "available",
@@ -5795,10 +5795,10 @@
         "code": "SEAT"
       },
       {
-        "name": "Milan Cathedral (Duomo di Milano)",
+        "name": "Duomo di Milano",
         "city": "Milan",
-        "lat": null,
-        "lon": null,
+        "lat": 45.464153,
+        "lon": 9.190692,
         "wiki": "https://en.wikipedia.org/wiki/Milan_Cathedral",
         "photo": "",
         "availability": "available",
@@ -5808,8 +5808,8 @@
       {
         "name": "Stadio Comunale di Gorgonzola",
         "city": "Gorgonzola",
-        "lat": null,
-        "lon": null,
+        "lat": 45.529004,
+        "lon": 9.401481,
         "wiki": "",
         "photo": "",
         "availability": "available",
@@ -5817,21 +5817,10 @@
         "code": "SEAX"
       },
       {
-        "name": "Rialto Bridge",
-        "city": "Venice",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Rialto_Bridge",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SEBC"
-      },
-      {
         "name": "Mole Antonelliana",
         "city": "Turin",
-        "lat": null,
-        "lon": null,
+        "lat": 45.069206,
+        "lon": 7.693089,
         "wiki": "https://en.wikipedia.org/wiki/Mole_Antonelliana",
         "photo": "",
         "availability": "available",
@@ -5839,21 +5828,10 @@
         "code": "SEBF"
       },
       {
-        "name": "Pompeii",
-        "city": "Pompei",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Pompeii",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SEBH"
-      },
-      {
-        "name": "Estense Castle",
+        "name": "Castello Estense",
         "city": "Ferrara",
-        "lat": null,
-        "lon": null,
+        "lat": 44.837833,
+        "lon": 11.619417,
         "wiki": "https://en.wikipedia.org/wiki/Estense_Castle",
         "photo": "",
         "availability": "available",
@@ -5861,21 +5839,10 @@
         "code": "SEBJ"
       },
       {
-        "name": "Leaning Tower of Pisa",
-        "city": "Pisa",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SEBM"
-      },
-      {
-        "name": "Juliet's House (Casa di Giulietta)",
+        "name": "Casa di Giulietta",
         "city": "Verona",
-        "lat": null,
-        "lon": null,
+        "lat": 45.441926,
+        "lon": 10.998295,
         "wiki": "https://en.wikipedia.org/wiki/Casa_di_Giulietta",
         "photo": "",
         "availability": "available",
@@ -5894,43 +5861,10 @@
         "code": "SEBR"
       },
       {
-        "name": "Doge's Palace (Palazzo Ducale)",
-        "city": "Venice",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Doge's_Palace,_Venice",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SEBS"
-      },
-      {
-        "name": "Trulli of Alberobello",
-        "city": "Alberobello",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Alberobello",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SEBT"
-      },
-      {
-        "name": "Bergamo Alta (Città Alta)",
-        "city": "Bergamo",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Bergamo",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SEBU"
-      },
-      {
-        "name": "Basilica of Saint Francis of Assisi",
+        "name": "Basilica Papale e Sacro Convento di San Francesco in Assisi",
         "city": "Assisi",
-        "lat": null,
-        "lon": null,
+        "lat": 43.074632,
+        "lon": 12.606154,
         "wiki": "https://en.wikipedia.org/wiki/Basilica_of_Saint_Francis_of_Assisi",
         "photo": "",
         "availability": "available",
@@ -5938,21 +5872,10 @@
         "code": "SEBW"
       },
       {
-        "name": "Civita di Bagnoregio",
-        "city": "Bagnoregio",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Civita_di_Bagnoregio",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SEBZ"
-      },
-      {
-        "name": "Castel Nuovo (Maschio Angioino)",
+        "name": "Maschio Angioino",
         "city": "Naples",
-        "lat": null,
-        "lon": null,
+        "lat": 40.838386,
+        "lon": 14.252698,
         "wiki": "https://en.wikipedia.org/wiki/Castel_Nuovo",
         "photo": "",
         "availability": "available",
@@ -5960,43 +5883,10 @@
         "code": "SECA"
       },
       {
-        "name": "Valley of the Temples",
-        "city": "Agrigento",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Valley_of_the_Temples",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SECB"
-      },
-      {
-        "name": "Gardaland",
-        "city": "Castelnuovo del Garda",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Gardaland",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SECE"
-      },
-      {
-        "name": "Lake Garda",
-        "city": "Lake Garda",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Lake_Garda",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "SECK"
-      },
-      {
         "name": "Autodromo Nazionale Monza",
         "city": "Monza",
-        "lat": null,
-        "lon": null,
+        "lat": 45.61843,
+        "lon": 9.283330,
         "wiki": "https://en.wikipedia.org/wiki/Autodromo_Nazionale_Monza",
         "photo": "",
         "availability": "available",
@@ -6006,8 +5896,8 @@
       {
         "name": "Mugello Circuit",
         "city": "Mugello",
-        "lat": null,
-        "lon": null,
+        "lat": 43.997567,
+        "lon": 11.371953,
         "wiki": "https://en.wikipedia.org/wiki/Mugello_Circuit",
         "photo": "",
         "availability": "available",
@@ -6357,7 +6247,7 @@
         "code": "CHAU"
       },
       {
-        "name": "Lausanne Cathedral",
+        "name": "Cathédrale de Lausanne",
         "city": "Lausanne",
         "lat": 46.52271,
         "lon": 6.63482,
