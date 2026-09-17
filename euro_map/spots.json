@@ -6219,8 +6219,8 @@
       {
         "name": "Selwo Marina",
         "city": "Benalmádena",
-        "lat": null,
-        "lon": null,
+        "lat": 36.592630,
+        "lon": -4.532041,
         "wiki": "",
         "photo": "",
         "availability": "available",
@@ -6230,8 +6230,8 @@
       {
         "name": "Faunia",
         "city": "Madrid",
-        "lat": null,
-        "lon": null,
+        "lat": 40.392386,
+        "lon": -3.614754,
         "wiki": "https://en.wikipedia.org/wiki/Faunia",
         "photo": "",
         "availability": "available",
@@ -6241,8 +6241,8 @@
       {
         "name": "Bioparc Valencia",
         "city": "Valencia",
-        "lat": null,
-        "lon": null,
+        "lat": 39.478044,
+        "lon": -0.407803,
         "wiki": "https://en.wikipedia.org/wiki/Bioparc_Valencia",
         "photo": "",
         "availability": "available",
@@ -6250,10 +6250,10 @@
         "code": "VEAS"
       },
       {
-        "name": "Alcázar of Segovia",
+        "name": "Alcázar de Segovia",
         "city": "Segovia",
-        "lat": null,
-        "lon": null,
+        "lat": 40.952381,
+        "lon": -4.132059,
         "wiki": "https://en.wikipedia.org/wiki/Alcázar_of_Segovia",
         "photo": "",
         "availability": "available",
@@ -6263,8 +6263,8 @@
       {
         "name": "La Giralda (Seville Cathedral)",
         "city": "Seville",
-        "lat": null,
-        "lon": null,
+        "lat": 37.386125,
+        "lon": -5.992609,
         "wiki": "https://en.wikipedia.org/wiki/Giralda",
         "photo": "",
         "availability": "available",
@@ -6272,21 +6272,10 @@
         "code": "VEBG"
       },
       {
-        "name": "Roman Theatre of Cartagena",
-        "city": "Cartagena",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Roman_Theatre_of_Cartagena",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "VEBH"
-      },
-      {
-        "name": "Episcopal Palace of Astorga",
+        "name": "Palacio Gaudí Astorga",
         "city": "Astorga",
-        "lat": null,
-        "lon": null,
+        "lat": 42.457725,
+        "lon": -6.055812,
         "wiki": "https://en.wikipedia.org/wiki/Episcopal_Palace,_Astorga",
         "photo": "",
         "availability": "available",
@@ -6296,8 +6285,8 @@
       {
         "name": "Sea Life Benalmádena",
         "city": "Benalmádena",
-        "lat": null,
-        "lon": null,
+        "lat": 36.596652,
+        "lon": -4.515234,
         "wiki": "",
         "photo": "",
         "availability": "available",
@@ -6305,21 +6294,10 @@
         "code": "VEBL"
       },
       {
-        "name": "Setenil de las Bodegas",
-        "city": "Setenil de las Bodegas",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Setenil_de_las_Bodegas",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "VEBQ"
-      },
-      {
         "name": "Parque Europa",
         "city": "Torrejón de Ardoz",
-        "lat": null,
-        "lon": null,
+        "lat": 40.446667,
+        "lon": -3.453094,
         "wiki": "",
         "photo": "",
         "availability": "available",
@@ -6329,8 +6307,8 @@
       {
         "name": "Sagrada Família",
         "city": "Barcelona",
-        "lat": null,
-        "lon": null,
+        "lat": 41.40332,
+        "lon": 2.173889,
         "wiki": "https://en.wikipedia.org/wiki/Sagrada_Família",
         "photo": "",
         "availability": "available",
