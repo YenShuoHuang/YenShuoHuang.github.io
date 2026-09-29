@@ -6159,6 +6159,406 @@
       }
     ]
   },
+  "Portugal": {
+    "spots": [
+      {
+        "name": "Castelo de Guimarães",
+        "city": "Guimarães",
+        "lat": 41.448031,
+        "lon": -8.290500,
+        "wiki": "https://en.wikipedia.org/wiki/Guimarães_Castle",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEAB"
+      },
+      {
+        "name": "Lisbon Cathedral (Sé de Lisboa)",
+        "city": "Lisbon",
+        "lat": 38.709884,
+        "lon": -9.133252,
+        "wiki": "https://en.wikipedia.org/wiki/Lisbon_Cathedral",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEAF"
+      },
+      {
+        "name": "Ponte de D. Luís",
+        "city": "Porto",
+        "lat": 41.142742,
+        "lon": -8.612206,
+        "wiki": "https://en.wikipedia.org/wiki/Dom_Luís_I_Bridge",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEAJ"
+      },
+      {
+        "name": "Engenhos do Norte",
+        "city": "Porto da Cruz, Madeira",
+        "lat": 32.7741690,
+        "lon": -16.827998,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEAK"
+      },
+      {
+        "name": "Castelo de Santa Maria da Feira",
+        "city": "Santa Maria da Feira",
+        "lat": 40.920847,
+        "lon": -8.542716,
+        "wiki": "https://en.wikipedia.org/wiki/Santa_Maria_da_Feira_Castle",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEAL"
+      },
+      {
+        "name": "Estádio da Luz",
+        "city": "Lisbon",
+        "lat": 38.751388,
+        "lon": -9.184286,
+        "wiki": "https://en.wikipedia.org/wiki/Estádio_da_Luz",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEAN"
+      },
+      {
+        "name": "Estádio do Dragão",
+        "city": "Porto",
+        "lat": 41.161673,
+        "lon": -8.582723,
+        "wiki": "https://en.wikipedia.org/wiki/Estádio_do_Dragão",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEAP"
+      },
+      {
+        "name": "Museu do Caramulo",
+        "city": "Caramulo",
+        "lat": 40.569697,
+        "lon": -8.171807,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEAQ"
+      },
+      {
+        "name": "Estádio do Marítimo",
+        "city": "Funchal, Madeira",
+        "lat": 32.645663,
+        "lon": -16.929118,
+        "wiki": "https://en.wikipedia.org/wiki/Estádio_dos_Barreiros",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEAT"
+      },
+      {
+        "name": "Nossa Senhora do Sameiro",
+        "city": "Braga",
+        "lat": 41.541808,
+        "lon": -8.369785,
+        "wiki": "https://en.wikipedia.org/wiki/Sanctuary_of_Our_Lady_of_Sameiro",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEAX"
+      },
+      {
+        "name": "Castelo de Marvão",
+        "city": "Marvão",
+        "lat": 39.396112,
+        "lon": -7.379236,
+        "wiki": "https://en.wikipedia.org/wiki/Marvão",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEAZ"
+      },
+      {
+        "name": "Porto Bridge Climb (Ponte da Arábida)",
+        "city": "Porto",
+        "lat": 41.148689,
+        "lon": -8.640577,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEBC"
+      },
+      {
+        "name": "Estádio José Alvalade",
+        "city": "Lisbon",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Estádio_José_Alvalade",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEBF"
+      },
+      {
+        "name": "Zoo de Lagos",
+        "city": "Lagos",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEBH"
+      },
+      {
+        "name": "Zoomarine Algarve",
+        "city": "Albufeira",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Zoomarine_Algarve",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEBL"
+      },
+      {
+        "name": "Cabo de São Vicente",
+        "city": "Sagres",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Cape_St._Vincent",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEBQ"
+      },
+      {
+        "name": "Paço dos Duques de Bragança",
+        "city": "Guimarães",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Paço_dos_Duques_de_Bragança",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEBS"
+      },
+      {
+        "name": "Sea Life Porto",
+        "city": "Porto",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEBT"
+      },
+      {
+        "name": "Ponte Romana de Trajano",
+        "city": "Chaves",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MECA"
+      },
+      {
+        "name": "Grutas de Mira de Aire",
+        "city": "Mira de Aire",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Mira_de_Aire_Caves",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MECC"
+      },
+      {
+        "name": "Lisbon Zoo",
+        "city": "Lisbon",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Lisbon_Zoo",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MECD"
+      },
+      {
+        "name": "Dino Parque Lourinhã",
+        "city": "Lourinhã",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MECG"
+      },
+      {
+        "name": "Bom Jesus do Monte",
+        "city": "Braga",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Bom_Jesus_do_Monte",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MECH"
+      },
+      {
+        "name": "Santuário de Santa Luzia",
+        "city": "Viana do Castelo",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Santa_Luzia_Church,_Viana_do_Castelo",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MECJ"
+      },
+      {
+        "name": "Nossa Senhora dos Remédios",
+        "city": "Lamego",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Sanctuary_of_Our_Lady_of_Remedies,_Lamego",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MECL"
+      },
+      {
+        "name": "Circuito de Vila Real",
+        "city": "Vila Real",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Vila_Real_circuit",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MECN"
+      },
+      {
+        "name": "Paços do Concelho de Cantanhede",
+        "city": "Cantanhede",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MECP"
+      },
+      {
+        "name": "Grutas da Moeda",
+        "city": "Moeda",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MECS"
+      },
+      {
+        "name": "Fundação Côa Parque",
+        "city": "Vila Nova de Foz Côa",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Côa_Valley_Paleolithic_Art_Sites",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MECV"
+      },
+      {
+        "name": "Telecabine Lisboa",
+        "city": "Lisbon",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MECY"
+      },
+      {
+        "name": "Torre dos Clérigos",
+        "city": "Porto",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Torre_dos_Clérigos",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEDM"
+      },
+      {
+        "name": "NaturWaterPark",
+        "city": "Vila Real",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEDL"
+      },
+      {
+        "name": "Fundação Eça de Queiroz",
+        "city": "Tormes, Baião",
+        "lat": null,
+        "lon": null,
+        "wiki": "",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEFE"
+      },
+      {
+        "name": "Batalha Monastery",
+        "city": "Batalha",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Batalha_Monastery",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEFH"
+      },
+      {
+        "name": "Castelo de São Jorge",
+        "city": "Lisbon",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/São_Jorge_Castle",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MENN"
+      },
+      {
+        "name": "Sanctuary of Fátima",
+        "city": "Fátima",
+        "lat": null,
+        "lon": null,
+        "wiki": "https://en.wikipedia.org/wiki/Sanctuary_of_Fátima",
+        "photo": "",
+        "availability": "available",
+        "sell": "unknown",
+        "code": "MEPF"
+      }
+    ]
+  },
   "Spain": {
     "spots": [
       {
