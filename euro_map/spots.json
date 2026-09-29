@@ -293,6 +293,17 @@
   "Belgium": {
     "spots": [
       {
+        "name": "Belgian Beer World",
+        "city": "Brussels",
+        "lat": 50.84784,
+        "lon": 4.350496,
+        "wiki": "https://en.wikipedia.org/wiki/Belgian_Beer_World",
+        "photo": "BeerWorld.jpg",
+        "availability": "available",
+        "sell": "vending machine",
+        "code": "ZEAD"
+      },
+      {
         "name": "Grand Place",
         "city": "Brussels",
         "lat": 50.846615,
@@ -6316,21 +6327,10 @@
         "code": "VEBT"
       },
       {
-        "name": "PortAventura - Nickelodeon Land",
-        "city": "Salou",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/PortAventura_Park",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "VEBU"
-      },
-      {
         "name": "Santuario de Covadonga",
         "city": "Covadonga",
-        "lat": null,
-        "lon": null,
+        "lat": 43.3087636,
+        "lon": -5.0534998,
         "wiki": "https://en.wikipedia.org/wiki/Covadonga",
         "photo": "",
         "availability": "available",
@@ -6340,8 +6340,8 @@
       {
         "name": "Alhambra",
         "city": "Granada",
-        "lat": null,
-        "lon": null,
+        "lat": 37.174324,
+        "lon": -3.584057,
         "wiki": "https://en.wikipedia.org/wiki/Alhambra",
         "photo": "",
         "availability": "available",
@@ -6351,8 +6351,8 @@
       {
         "name": "Puente Nuevo de Ronda",
         "city": "Ronda",
-        "lat": null,
-        "lon": null,
+        "lat": 36.741743,
+        "lon": -5.167017,
         "wiki": "https://en.wikipedia.org/wiki/Puente_Nuevo",
         "photo": "",
         "availability": "available",
@@ -6362,8 +6362,8 @@
       {
         "name": "Plaza de Toros de Ronda",
         "city": "Ronda",
-        "lat": null,
-        "lon": null,
+        "lat": 36.741743,
+        "lon": -5.167017,
         "wiki": "https://en.wikipedia.org/wiki/Plaza_de_Toros_de_la_Real_Maestranza_de_Caballería_de_Ronda",
         "photo": "",
         "availability": "available",
@@ -6373,8 +6373,8 @@
       {
         "name": "Selwo Aventura",
         "city": "Estepona",
-        "lat": null,
-        "lon": null,
+        "lat": 36.462954,
+        "lon": -5.085597,
         "wiki": "",
         "photo": "",
         "availability": "available",
@@ -6384,8 +6384,8 @@
       {
         "name": "Isla Mágica",
         "city": "Seville",
-        "lat": null,
-        "lon": null,
+        "lat": 37.405504,
+        "lon": -6.000457,
         "wiki": "https://en.wikipedia.org/wiki/Isla_Mágica",
         "photo": "",
         "availability": "available",
@@ -6393,10 +6393,10 @@
         "code": "VECV"
       },
       {
-        "name": "Granada Cathedral",
+        "name": "Catedral de Granada",
         "city": "Granada",
-        "lat": null,
-        "lon": null,
+        "lat": 37.176138,
+        "lon": -3.599457,
         "wiki": "https://en.wikipedia.org/wiki/Granada_Cathedral",
         "photo": "",
         "availability": "available",
@@ -6406,8 +6406,8 @@
       {
         "name": "Catalunya en Miniatura",
         "city": "Torrelles de Llobregat",
-        "lat": null,
-        "lon": null,
+        "lat": 41.359267,
+        "lon": 1.986131,
         "wiki": "",
         "photo": "",
         "availability": "available",
@@ -6415,10 +6415,10 @@
         "code": "VEDH"
       },
       {
-        "name": "Loarre Castle",
+        "name": "Castillo de Loarre",
         "city": "Loarre",
-        "lat": null,
-        "lon": null,
+        "lat": 42.327015,
+        "lon": -0.609826,
         "wiki": "https://en.wikipedia.org/wiki/Loarre_Castle",
         "photo": "",
         "availability": "available",
@@ -6428,8 +6428,8 @@
       {
         "name": "Casa Batlló",
         "city": "Barcelona",
-        "lat": null,
-        "lon": null,
+        "lat": 41.39168,
+        "lon": 2.164963,
         "wiki": "https://en.wikipedia.org/wiki/Casa_Batlló",
         "photo": "",
         "availability": "available",
@@ -6437,21 +6437,10 @@
         "code": "VEEE"
       },
       {
-        "name": "Es Vedrà",
-        "city": "Ibiza",
-        "lat": null,
-        "lon": null,
-        "wiki": "https://en.wikipedia.org/wiki/Es_Vedrà",
-        "photo": "",
-        "availability": "available",
-        "sell": "unknown",
-        "code": "VEEP"
-      },
-      {
         "name": "Mini Hollywood (Oasys)",
         "city": "Tabernas",
-        "lat": null,
-        "lon": null,
+        "lat": 37.020498,
+        "lon": -2.430875,
         "wiki": "https://en.wikipedia.org/wiki/Mini_Hollywood",
         "photo": "",
         "availability": "available",
@@ -6459,10 +6448,10 @@
         "code": "VEEQ"
       },
       {
-        "name": "Walls of Ávila",
+        "name": "Ávila Ciudad Amurallada",
         "city": "Ávila",
-        "lat": null,
-        "lon": null,
+        "lat": 40.658236,
+        "lon": -4.696661,
         "wiki": "https://en.wikipedia.org/wiki/Walls_of_Ávila",
         "photo": "",
         "availability": "available",
@@ -6472,8 +6461,8 @@
       {
         "name": "Museo del Ferrocarril de Madrid",
         "city": "Madrid",
-        "lat": null,
-        "lon": null,
+        "lat": 40.399375,
+        "lon": -3.692034,
         "wiki": "https://en.wikipedia.org/wiki/Railway_Museum_of_Madrid",
         "photo": "",
         "availability": "available",
@@ -6483,8 +6472,8 @@
       {
         "name": "Madrid Atocha Station",
         "city": "Madrid",
-        "lat": null,
-        "lon": null,
+        "lat": 40.406701,
+        "lon": -3.691115,
         "wiki": "https://en.wikipedia.org/wiki/Madrid_Atocha_railway_station",
         "photo": "",
         "availability": "available",
@@ -6492,10 +6481,10 @@
         "code": "VEGD"
       },
       {
-        "name": "Valladolid Cathedral",
+        "name": "Chatedral de Valladolid",
         "city": "Valladolid",
-        "lat": null,
-        "lon": null,
+        "lat": 41.652462,
+        "lon": -4.723414,
         "wiki": "https://en.wikipedia.org/wiki/Valladolid_Cathedral",
         "photo": "",
         "availability": "available",
