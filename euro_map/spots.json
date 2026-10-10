@@ -3163,12 +3163,23 @@
       {
         "name": "Technik Museum Sinsheim",
         "city": "Sinsheim",
-        "lat": 49.23917,
-        "lon": 8.89723,
+        "lat": 49.23919,
+        "lon": 8.89785,
         "wiki": "https://de.wikipedia.org/wiki/Technik-Museum_Sinsheim",
-        "photo": "",
+        "photo": "TMSinsheim.jpg",
         "availability": "available",
-        "sell": "unknown",
+        "sell": "vending machine",
+        "code": "XEAW"
+      },
+      {
+        "name": "U17 Boot at Technik Museum Sinsheim",
+        "city": "Sinsheim",
+        "lat": 49.23939,
+        "lon": 8.896775,
+        "wiki": "https://de.wikipedia.org/wiki/Technik-Museum_Sinsheim",
+        "photo": "U17.jpg",
+        "availability": "available",
+        "sell": "vending machine",
         "code": "XEAW"
       },
       {
