@@ -3095,6 +3095,17 @@
         "code": "XELU"
       },
       {
+        "name": "Porta Nigra",
+        "city": "Trier",
+        "lat": 49.759564,
+        "lon": 6.643513,
+        "wiki": "https://en.wikipedia.org/wiki/Porta_Nigra",
+        "photo": "PortaNigra.jpg",
+        "availability": "available",
+        "sell": "gift shop",
+        "code": "XEAN"
+      },
+      {
         "name": "Museum Karl-Marx-Haus",
         "city": "Trier",
         "lat": 49.753917,
